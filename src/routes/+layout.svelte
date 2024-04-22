@@ -1,6 +1,5 @@
 <script>
 	/** @type {import('./$types').LayoutData} */
-	// export let data;
 	import '../app.css';
 </script>
 
@@ -43,8 +42,8 @@
 				<details>
 					<summary>Parent</summary>
 					<ul class="p-2">
-						<li><a>Submenu 1</a></li>
-						<li><a>Submenu 2</a></li>
+						<li><a href="/">Submenu 1</a></li>
+						<li><a href="/">Submenu 2</a></li>
 					</ul>
 				</details>
 			</li>
@@ -56,3 +55,53 @@
 	</div>
 </div>
 <slot />
+
+<!-- footer section -->
+
+<footer class="footer mt-10 p-10 bg-neutral text-neutral-content">
+	<div class=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+		<div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+			<h2>EZ-SITE</h2>
+			<!-- <img src={asdf IMAGENAME} alt="asdf IMAGE NAME" class="h-11" /> -->
+
+			<p class="mt-3 text-sm text-neutral-content/80">This is a super short tagline.</p>
+			<p class="mt-3 text-sm text-neutral-content/60">Copyright © 2024 - All rights reserved</p>
+		</div>
+	</div>
+	<nav>
+		<h6 class="footer-title">Links</h6>
+		<a
+			class="link link-hover"
+			href="mailto:youremail@example.com"
+			target="_blank"
+			rel="noreferrer noopener">Email Us</a
+		>
+		<a class="link link-hover" href="/" target="_blank" rel="noreferrer noopener">Docs</a>
+		<button class="link link-hover" onclick="my_modal_1.showModal()">Pop-up!</button>
+		<dialog id="my_modal_1" class="modal">
+			<div class="modal-box text-neutral">
+				<h3 class="font-bold text-lg mb-2">This is a pop-up message!</h3>
+				<p class="mb-2">I'm not sure what else to say.</p>
+				<p class="mb-2">So I suppose I'll stop now. ;)</p>
+
+				<div class="modal-action">
+					<form method="dialog">
+						<button class="btn">Close</button>
+					</form>
+				</div>
+			</div>
+		</dialog>
+		<a class="link link-hover" href="/#pricing">Pricing</a>
+	</nav>
+	<nav>
+		<h6 class="footer-title">Legal</h6>
+		<a class="link link-hover" href="/">Terms of Service</a>
+		<a class="link link-hover" href="/">Privacy Policy</a>
+	</nav>
+	<nav>
+		<h6 class="footer-title">Other Stuff</h6>
+		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Some other link </a>
+
+		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Yet another link</a>
+	</nav>
+</footer>
