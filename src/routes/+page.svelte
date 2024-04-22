@@ -1,24 +1,35 @@
 <script>
 	import pete_is_cool from '$lib/assets/images/pete_is_cool.jpeg';
+
+	const featuredOnImages = [
+		{
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
+			alt: 'Google'
+		},
+		{
+			src: 'https://doyouevenblog.com/wp-content/uploads/2024/02/DYEB-Logo-2021.png',
+			alt: 'DYEB'
+		},
+		{
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
+			alt: 'Google'
+		},
+		{
+			src: 'https://doyouevenblog.com/wp-content/uploads/2024/02/DYEB-Logo-2021.png',
+			alt: 'DYEB'
+		},
+		{
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
+			alt: 'Google'
+		}
+	];
 </script>
 
 <div>
-	<!-- hero section -->
-	<!-- <div class="hero min-h-screen bg-base-200">
-		<div class="hero-content flex-col lg:flex-row-reverse">
-			<img src={pete_is_cool} alt="pete" class="max-w-sm rounded-lg shadow-2xl" />
-			<div>
-				<h1 class="lg:text-7xl font-bold">Welcome to Pete's blank starter website template!</h1>
-				<p class="py-6">Duplicate, customize, then deploy. Host this website for free forever.</p>
-				<button class="btn btn-primary">Get Started</button>
-			</div>
-		</div>
-	</div> -->
-
-	<!-- mine -->
-	<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-4">
+	<!-- hero -->
+	<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-4 lg:py-8">
 		<div class="lg:self-center w-full">
-			<h1 class="text-3xl lg:text-7xl font-bold">
+			<h1 class="text-3xl lg:text-7xl font-black">
 				Welcome to Pete's blank starter website template!
 			</h1>
 			<p class="py-6">Duplicate, customize, then deploy. Host this website for free forever.</p>
@@ -74,5 +85,75 @@
 		<div>
 			<img src={pete_is_cool} alt="pete" class="w-full rounded-lg shadow-2xl" />
 		</div>
+	</div>
+
+	<!-- featured on images -->
+	<div class="bg-gray-200 p-10">
+		<div class=" flex lg:mx-16 gap-5 flex-wrap justify-between items-center">
+			{#each featuredOnImages as image}
+				<img
+					src={image.src}
+					alt={image.alt}
+					class="h-4 md:h-8 w-auto object-contain filter grayscale"
+				/>
+			{/each}
+		</div>
+	</div>
+
+	<!-- various cards -->
+	<div class="py-8 lg:py-24">
+		<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Stuff I'm building right meow</h2>
+		<div class="w-5/6 mx-auto flex flex-wrap gap-4">
+			<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+				<figure>
+					<img
+						src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+						alt="Shoes"
+					/>
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">Shoes!</h2>
+					<p>If a dog chews shoes whose shoes does he choose?</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-primary">Buy Now</button>
+					</div>
+				</div>
+			</div>
+			<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+				<figure>
+					<img
+						src="https://images.pexels.com/photos/4651259/pexels-photo-4651259.jpeg"
+						alt="Shoes"
+					/>
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">Raccoons!</h2>
+					<p>Because who doesn't like racooons???</p>
+					<div class="card-actions justify-end">
+						<button class="btn btn-primary">Read More</button>
+					</div>
+				</div>
+			</div>
+			<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+				<figure>
+					<img
+						src="https://images.pexels.com/photos/17965550/pexels-photo-17965550/free-photo-of-adorable-kitten-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						alt="Shoes"
+					/>
+				</figure>
+				<div class="card-body">
+					<h2 class="card-title">Awwwwww!</h2>
+					<p>I'm also awwwwwwwww!!</p>
+					<div class="card-actions justify-end">
+						<button class="link">This one's a link</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- not sure yet -->
+	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+		<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Not sure yet</h2>
 	</div>
 </div>
