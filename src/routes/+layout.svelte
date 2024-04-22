@@ -60,7 +60,7 @@
 
 <footer class="footer mt-10 p-10 bg-neutral text-neutral-content">
 	<div class=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-		<div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+		<div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-left">
 			<h2>EZ-SITE</h2>
 			<!-- <img src={asdf IMAGENAME} alt="asdf IMAGE NAME" class="h-11" /> -->
 
@@ -100,8 +100,9 @@
 	</nav>
 	<nav>
 		<h6 class="footer-title">Other Stuff</h6>
-		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Some other link </a>
-
+		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">
+			Some other link
+		</a>
 		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Yet another link</a>
 	</nav>
 </footer>
