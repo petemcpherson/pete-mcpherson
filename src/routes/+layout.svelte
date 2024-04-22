@@ -38,18 +38,67 @@
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/about">About</a></li>
+
 			<li>
 				<details>
-					<summary>Parent</summary>
+					<summary>Theme</summary>
 					<ul class="p-2">
-						<li><a href="/">Submenu 1</a></li>
-						<li><a href="/">Submenu 2</a></li>
+						<!-- <li><a href="/">Normal Link 1</a></li>
+						<li><a href="/">Normal Link 2</a></li> -->
+						<!-- theme controller -->
+
+						<li>
+							<input
+								type="radio"
+								name="theme-dropdown"
+								class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+								aria-label="Default"
+								value="default"
+							/>
+						</li>
+						<li>
+							<input
+								type="radio"
+								name="theme-dropdown"
+								class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+								aria-label="Retro"
+								value="retro"
+							/>
+						</li>
+						<li>
+							<input
+								type="radio"
+								name="theme-dropdown"
+								class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+								aria-label="Cyberpunk"
+								value="cyberpunk"
+							/>
+						</li>
+						<li>
+							<input
+								type="radio"
+								name="theme-dropdown"
+								class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+								aria-label="Valentine"
+								value="valentine"
+							/>
+						</li>
+						<li>
+							<input
+								type="radio"
+								name="theme-dropdown"
+								class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+								aria-label="Aqua"
+								value="aqua"
+							/>
+						</li>
 					</ul>
 				</details>
 			</li>
 			<li><a href="/speaking">Speaking</a></li>
 		</ul>
 	</div>
+
 	<div class="navbar-end">
 		<a href="/" class="btn">Click me</a>
 	</div>
