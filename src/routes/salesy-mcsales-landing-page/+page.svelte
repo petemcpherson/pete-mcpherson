@@ -1,6 +1,6 @@
 <script>
 	/** @type {import('./$types').PageData} */
-	// export let data;
+	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
 
 	let email = '';
 
@@ -14,9 +14,213 @@
 </script>
 
 <!-- header -->
-<div class="px-8 lg:px-48 py-4 lg:py-20 text-center m-4">
-	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-7xl">About Pete McPherson (& EZ-SITE!)</h1>
-	<p class="mb-3 text-primary italic">This could be a really fancy tagline.</p>
+<div class="px-4 lg:px-48 py-6 lg:py-20 text-center m-4">
+	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-5xl">Finally, some sweet benefit</h1>
+	<p class="mb-4 md:mb-8 font-black text-2xl lg:text-3xl">
+		So you'll never have to have problems again.
+	</p>
+
+	<p class="mb-4 md:mb-8 text-lg text-primary italic">
+		Honestly, This might be the most important purchasing decision of your entire life. Ever.
+		Seriously though.
+	</p>
+	<!-- video -->
+	<div>
+		<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;">
+			<iframe
+				src="https://www.loom.com/embed/2cf5529de331410ba893787821b2a1e7?sid=9e527282-4201-40ed-bc31-1ba89c0148b5"
+				frameborder="0"
+				title="Demo vid"
+				webkitallowfullscreen
+				mozallowfullscreen
+				allowfullscreen
+				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+			></iframe>
+		</div>
+	</div>
+	<div class="flex justify-center">
+		<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW</a>
+	</div>
+</div>
+
+<!-- pain points -->
+
+<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+	<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
+		<h1 class="my-10 font-black text-3xl lg:text-7xl text-center">Ugh, pain point.</h1>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3 md:p-6">
+			<div>
+				<img src="https://via.placeholder.com/400x300" alt="Placeholder" class="w-full mb-4" />
+				<p>
+					Pain point 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nulla
+					sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+				</p>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/400x300" alt="Placeholder" class="w-full mb-4" />
+				<p>
+					Pain point 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nulla
+					sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+				</p>
+			</div>
+			<div>
+				<img src="https://via.placeholder.com/400x300" alt="Placeholder" class="w-full mb-4" />
+				<p>
+					Pain point 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nulla
+					sit amet aliquam lacinia, nisl nisl aliquam nisl, nec aliquam nisl nisl sit amet nisl.
+				</p>
+			</div>
+		</div>
+		<div class="p-3 md:p-6 prose text-neutral-content text-lg">
+			<p>But seriously, more copy.</p>
+			<p>
+				After all, why say few and simple words when you can write more words to make more money?
+			</p>
+			<p>
+				Because money is, after all, why we are all here. Come to think of it, I should probably
+				start charging money for this template.
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- bio section -->
+
+<div class="py-8 lg:py-24">
+	<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-8 lg:py-8">
+		<div>
+			<img src={pete_drinks_espresso} alt="pete" class="w-full rounded-lg shadow-2xl" />
+		</div>
+		<div class="lg:self-center w-full">
+			<h1 class="text-3xl lg:text-7xl font-black mb-3">Hi, I'm a bio section 👋️</h1>
+			<p class="mb-3">
+				My name is Pete, and hot damn I'm awesome. You should hire me. Pay me money for things.
+			</p>
+			<p class="mb-3">Follow me on OnlyDads. Subscribe to my newsletter, twice.</p>
+			<a href="/" class="btn btn-primary">Learn more</a>
+		</div>
+	</div>
+</div>
+
+<!-- testimonials -->
+<div class="py-8 lg:py-24">
+	<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Testimonials</h2>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4 lg:mx-20">
+		<div>
+			<div class="avatar flex justify-center mb-3">
+				<div class="w-24 rounded-full">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+			<p class="italic text-center mb-2">
+				"This product changed my life! I can't imagine living without it now."
+			</p>
+			<p class="text-center">- John Doe</p>
+		</div>
+		<div>
+			<div class="avatar flex justify-center mb-3">
+				<div class="w-24 rounded-full">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+			<p class="italic text-center mb-2">
+				"I was skeptical at first, but after using this product for a week, I was hooked. It's
+				amazing!"
+			</p>
+			<p class="text-center">- Jane Smith</p>
+		</div>
+		<div>
+			<div class="avatar flex justify-center mb-3">
+				<div class="w-24 rounded-full">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+
+			<p class="italic text-center mb-2">
+				"I've tried many similar products, but this one is by far the best. Highly recommended!"
+			</p>
+			<p class="text-center">- Mike Johnson</p>
+		</div>
+	</div>
+	<div class="p-8 md:p-20">
+		<div class="mb-3 flex justify-center avatar-group -space-x-6 rtl:space-x-reverse">
+			<div class="avatar">
+				<div class="w-12">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+			<div class="avatar">
+				<div class="w-12">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+			<div class="avatar">
+				<div class="w-12">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+			<div class="avatar">
+				<div class="w-12">
+					<img
+						alt="something"
+						src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+					/>
+				</div>
+			</div>
+		</div>
+		<p class="text-center">Over a million people love this friggin product.</p>
+	</div>
+	<div class="flex justify-center">
+		<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW</a>
+	</div>
+</div>
+
+<!-- faqs -->
+
+<div class="py-8 lg:py-24">
+	<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
+		<h1 class="my-10 font-black text-3xl lg:text-7xl text-center">FAQS</h1>
+
+		<div class="collapse collapse-arrow bg-base-200">
+			<input type="radio" name="my-accordion-2" checked="checked" />
+			<div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+			<div class="collapse-content">
+				<p>hello</p>
+			</div>
+		</div>
+		<div class="collapse collapse-arrow bg-base-200">
+			<input type="radio" name="my-accordion-2" />
+			<div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+			<div class="collapse-content">
+				<p>hello</p>
+			</div>
+		</div>
+		<div class="collapse collapse-arrow bg-base-200">
+			<input type="radio" name="my-accordion-2" />
+			<div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+			<div class="collapse-content">
+				<p>hello</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- divider -->
@@ -122,5 +326,8 @@
 				</button>
 			</div>
 		</form>
+		<div class="flex justify-center">
+			<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW WITH A BUTTON</a>
+		</div>
 	</div>
 </div>

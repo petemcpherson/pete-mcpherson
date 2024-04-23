@@ -118,7 +118,7 @@
 					</details>
 				</li>
 				<li><a href="/about">About</a></li>
-				<li><a href="/speaking">Speaking</a></li>
+				<li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li>
 				<li><a href="/projects">Projects</a></li>
 			</ul>
 		</div>
@@ -222,7 +222,7 @@
 				</details>
 			</li>
 			<li><a href="/about">About</a></li>
-			<li><a href="/speaking">Speaking</a></li>
+			<li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li>
 			<li><a href="/projects">Projects</a></li>
 		</ul>
 	</div>
