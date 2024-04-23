@@ -11,12 +11,59 @@
 				'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
 		);
 	};
+
+	const projects = [
+		{
+			title: 'Project 1',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		},
+		{
+			title: 'Project 2',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		},
+		{
+			title: 'Project 3',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		},
+		{
+			title: 'Project 3',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		},
+		{
+			title: 'Project 3',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		},
+		{
+			title: 'Project 3',
+			description:
+				'This is a project that I have done. It was a great project that I have done. It was a great project that I have done. It was a great project that I have done.',
+			image: 'https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg'
+		}
+	];
 </script>
 
 <!-- header -->
 <div class="px-8 lg:px-48 py-4 lg:py-20 text-center m-4">
-	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-7xl">This could be a speaking page!</h1>
-	<p class="mb-3 text-primary italic">This could be a really fancy tagline.</p>
+	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-7xl">Show off your projects/clients/jobs</h1>
+	<p class="mb-4 md:mb-8 text-primary italic">Or use your imagination for what to do here.</p>
+	<!-- page link buttons -->
+	<div class="flex flex-col justify-center md:flex-row md:flex-wrap gap-2">
+		<a href="/projects#category1" class="btn btn-primary md:flex-initial">Category 1</a>
+		<a href="/projects#category2" class="btn btn-secondary md:flex-initial">Category 2</a>
+		<a href="/projects#category3" class="btn btn-accent md:flex-initial">Category 3</a>
+		<a href="/projects#category4" class="btn btn-outline md:flex-initial">Category 4</a>
+		<a href="/projects#category5" class="btn btn-ghost md:flex-initial">Category 5</a>
+	</div>
 </div>
 
 <!-- divider -->
@@ -32,9 +79,76 @@
 	<div class="divider divider-error">Error</div> -->
 </div>
 
+<!-- category 1 -->
+<div class="p-4 lg:py-12" id="category1">
+	<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Category 1</h2>
+	<p class="mb-4 md:mb-8 text-center italic">You could use image cards like this.</p>
+
+	<div class="w-5/6 mx-auto flex flex-wrap gap-4">
+		<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+			<figure>
+				<img
+					src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+					alt="Shoes"
+				/>
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">Shoes!</h2>
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+				<div class="card-actions justify-end">
+					<a href="/" class="btn btn-primary">Visit</a>
+				</div>
+			</div>
+		</div>
+		<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+			<figure>
+				<img src="https://images.pexels.com/photos/4651259/pexels-photo-4651259.jpeg" alt="Shoes" />
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">Raccoons!</h2>
+				<p>Because who doesn't like racooons???</p>
+				<div class="card-actions justify-end">
+					<a href="/" class="btn btn-primary">Read More</a>
+				</div>
+			</div>
+		</div>
+		<div class="card w-96 bg-base-100 shadow-xl flex-auto">
+			<figure>
+				<img
+					src="https://images.pexels.com/photos/17965550/pexels-photo-17965550/free-photo-of-adorable-kitten-on-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+					alt="Shoes"
+				/>
+			</figure>
+			<div class="card-body">
+				<h2 class="card-title">Awwwwww!</h2>
+				<p>I'm also awwwwwwwww!!</p>
+				<div class="card-actions justify-end">
+					<a href="/" class="link">This one's a link</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- category 2 -->
+<div class="p-4 lg:py-12 bg-neutral-200" id="category2">
+	<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Category 2</h2>
+	<p class="mb-4 md:mb-8 text-center italic">Or maybe some that look like this.</p>
+
+	<div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-4 gap-8 md:m-8">
+		{#each projects as project}
+			<div class="bg-base-100 rounded-lg p-4 md:p-12">
+				<h2 class="text-xl font-black">{project.title}</h2>
+				<p class="mb-1 md:mb-3">{project.description}</p>
+				<img src={project.image} alt={project.title} class="w-full" />
+			</div>
+		{/each}
+	</div>
+</div>
+
 <!-- text -->
 
-<div class="py-4 lg:py-12">
+<!-- <div class="py-4 lg:py-12">
 	<div class="mx-5 md:w-1/2 md:mx-auto prose">
 		<p>
 			This is could be some amazing content! We're going to start with talking about ourselves, and
@@ -97,7 +211,7 @@
 			facilisis.
 		</p>
 	</div>
-</div>
+</div> -->
 
 <!-- CTA  -->
 <div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">

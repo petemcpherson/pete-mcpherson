@@ -22,7 +22,6 @@
 				>
 			</div>
 			<ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-				<li><a href="/about">About</a></li>
 				<li>
 					<details>
 						<summary>Theme</summary>
@@ -118,15 +117,15 @@
 						</ul>
 					</details>
 				</li>
+				<li><a href="/about">About</a></li>
 				<li><a href="/speaking">Speaking</a></li>
+				<li><a href="/projects">Projects</a></li>
 			</ul>
 		</div>
 		<a href="/" class="btn btn-ghost text-xl">EZ SITE</a>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
-			<li><a href="/about">About</a></li>
-
 			<li>
 				<details>
 					<summary>Theme</summary>
@@ -222,7 +221,9 @@
 					</ul>
 				</details>
 			</li>
+			<li><a href="/about">About</a></li>
 			<li><a href="/speaking">Speaking</a></li>
+			<li><a href="/projects">Projects</a></li>
 		</ul>
 	</div>
 
