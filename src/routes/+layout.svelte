@@ -1,6 +1,7 @@
 <script>
 	/** @type {import('./$types').LayoutData} */
 	import '../app.css';
+	import Analytics from '$lib/components/Analytics.svelte';
 </script>
 
 <div class="navbar bg-base-100">
@@ -307,3 +308,5 @@
 		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Yet another link</a>
 	</nav>
 </footer>
+
+<Analytics />
