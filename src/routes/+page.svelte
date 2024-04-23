@@ -1,5 +1,6 @@
 <script>
 	import pete_is_cool from '$lib/assets/images/pete_is_cool.jpeg';
+	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
 
 	const featuredOnImages = [
 		{
@@ -152,8 +153,40 @@
 		</div>
 	</div>
 
-	<!-- not sure yet -->
+	<!-- copy bullets -->
 	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
-		<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Not sure yet</h2>
+		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
+			<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Oh look, a headline.</h2>
+			<p class="mb-3">
+				Ok, fine. I'll use this space for something useful. Let's utlize this space to tell you what
+				this <span class="text-secondary">FREE</span> template includes:
+			</p>
+			<ol>
+				<li>✅️ This entire website as a template</li>
+				<li>✅️ SEO-friendly</li>
+				<li>✅️ Lots of color/font themes</li>
+				<li>✅️ 100% Customizable</li>
+				<li>✅️ Mini-course with detailed setup + customization guide</li>
+				<li>✅️ Free hosting (Cloudflare Pages, Vercel, or Netlify)</li>
+			</ol>
+		</div>
+	</div>
+
+	<!-- bio section -->
+
+	<div class="py-8 lg:py-24">
+		<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-8 lg:py-8">
+			<div>
+				<img src={pete_drinks_espresso} alt="pete" class="w-full rounded-lg shadow-2xl" />
+			</div>
+			<div class="lg:self-center w-full">
+				<h1 class="text-3xl lg:text-7xl font-black mb-3">Hi, I'm a bio section 👋️</h1>
+				<p class="mb-3">
+					My name is Pete, and hot damn I'm awesome. You should hire me. Pay me money for things.
+				</p>
+				<p class="mb-3">Follow me on OnlyDads. Subscribe to my newsletter, twice.</p>
+				<a href="/" class="btn btn-primary">Learn more</a>
+			</div>
+		</div>
 	</div>
 </div>
