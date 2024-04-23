@@ -1,6 +1,7 @@
 <script>
 	/** @type {import('./$types').PageData} */
 	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
+	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
 
@@ -12,6 +13,8 @@
 		);
 	};
 </script>
+
+<Head title="Landing Page Template" />
 
 <!-- header -->
 <div class="px-4 lg:px-48 py-6 lg:py-20 text-center m-4">

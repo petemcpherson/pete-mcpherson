@@ -1,6 +1,7 @@
 <script>
 	/** @type {import('./$types').PageData} */
 	// export let data;
+	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
 
@@ -51,6 +52,8 @@
 		}
 	];
 </script>
+
+<Head title="Projects" />
 
 <!-- header -->
 <div class="px-8 lg:px-48 py-4 lg:py-20 text-center m-4">

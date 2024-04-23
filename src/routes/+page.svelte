@@ -1,6 +1,7 @@
 <script>
 	import pete_is_cool from '$lib/assets/images/pete_is_cool.jpeg';
 	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
+	import Head from '$lib/components/Head.svelte';
 
 	const featuredOnImages = [
 		{
@@ -25,6 +26,8 @@
 		}
 	];
 </script>
+
+<Head />
 
 <div>
 	<!-- hero -->
