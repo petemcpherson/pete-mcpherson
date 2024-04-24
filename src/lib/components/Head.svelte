@@ -1,5 +1,7 @@
 <script>
 	import { config } from '$lib/config';
+	// you can optionally import a share image here for the entire site?
+	// import socialImage from '$lib/assets/images/socialImage.png';
 
 	export let title = 'EZ-SITE';
 	export let description = config.description;
@@ -9,6 +11,7 @@
 	export let rtl = false;
 	let titleFromUrl = url.split('/').pop().replace('-', ' ');
 	export let img = `${url}/og?message=${rtl ? titleFromUrl : title}`;
+	// export let img = socialImage;
 </script>
 
 <svelte:head>
