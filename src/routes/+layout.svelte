@@ -310,3 +310,13 @@
 </footer>
 
 <Analytics />
+
+<style>
+	:global(body) {
+		font-family: 'Cantarell', sans-serif;
+	}
+
+	:global(h1, h2, h3, h4, h5, h6, .special-font) {
+		font-family: 'Fjalla One', sans-serif;
+	}
+</style>

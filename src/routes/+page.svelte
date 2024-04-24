@@ -167,10 +167,13 @@
 			<ol>
 				<li>✅️ This entire website as a template</li>
 				<li>✅️ SEO-friendly</li>
-				<li>✅️ Lots of color/font themes</li>
+				<li>✅️ Google Analytics support</li>
+				<li>✅️ Google Fonts support</li>
+				<li>✅️ Lots of color themes</li>
 				<li>✅️ 100% Customizable</li>
 				<li>✅️ Mini-course with detailed setup + customization guide</li>
 				<li>✅️ Free hosting (Cloudflare Pages, Vercel, or Netlify)</li>
+				<li>✅️ 100% free</li>
 			</ol>
 		</div>
 	</div>

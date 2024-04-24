@@ -1,42 +1,33 @@
 <script>
-	/** @type {import('./$types').PageData} */
-	// export let data;
 	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
-	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37urol5';
-
-	// const handleSubmit = () => {
-	// 	alert(
-	// 		'You submitted the email: ' +
-	// 			email +
-	// 			'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
-	// 	);
-	// };
+	// zapier requires a premium zapier plan
+	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/asdf/asdf';
 
 	const handleSubmit = async () => {
-		// alert(
-		// 	'You submitted the email: ' +
-		// 		email +
-		// 		'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
-		// );
+		alert(
+			'You submitted the email: ' +
+				email +
+				'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
+		);
 
-		const res = await fetch('/api/zapier', {
-			method: 'POST',
+		// const res = await fetch('/api/zapier', {
+		// 	method: 'POST',
 
-			headers: {
-				'Content-Type': 'application/json'
-			},
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
 
-			body: JSON.stringify({ email, zapierUrl })
-		});
+		// 	body: JSON.stringify({ email, zapierUrl })
+		// });
 
-		if (res.ok) {
-			// goto('/thank-you-page-you-need-to-create');
-		} else {
-			console.error('Failed to submit email');
-			alert('Failed to submit email');
-		}
+		// if (res.ok) {
+		// 	// goto('/thank-you-page-you-need-to-create');
+		// } else {
+		// 	console.error('Failed to submit email');
+		// 	alert('Failed to submit email');
+		// }
 	};
 </script>
 

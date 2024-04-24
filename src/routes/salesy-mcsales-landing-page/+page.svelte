@@ -23,10 +23,10 @@
 		So you'll never have to have problems again.
 	</p>
 
-	<p class="mb-4 md:mb-8 text-lg text-primary italic">
+	<h2 class="mb-4 md:mb-8 text-lg text-primary italic">
 		Honestly, This might be the most important purchasing decision of your entire life. Ever.
 		Seriously though.
-	</p>
+	</h2>
 	<!-- video -->
 	<div>
 		<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;">
