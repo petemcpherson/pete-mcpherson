@@ -103,9 +103,9 @@
 			alt="dogs"
 		/>
 		<p>
-			Pretium lectus quam id leo in vitae turpis massa sed. Nullam non nisi est sit amet facilisis
-			magna etiam tempor. Neque ornare aenean euismod elementum nisi. Natoque penatibus et magnis
-			dis parturient montes nascetur ridiculus mus. Eget duis at tellus at urna condimentum. Vitae
+			a lectus quam id leo in vitae turpis massa sed. Nullam non nisi est sit amet facilisis magna
+			etiam tempor. Neque ornare aenean euismod elementum nisi. Natoque penatibus et magnis dis
+			parturient montes nascetur ridiculus mus. Eget duis at tellus at urna condimentum. Vitae
 			elementum curabitur vitae nunc sed. Eget mi proin sed libero. Scelerisque viverra mauris in
 			aliquam. Massa vitae tortor condimentum lacinia quis vel eros donec. Vitae tempus quam
 			pellentesque nec nam aliquam sem et tortor. Nunc lobortis mattis aliquam faucibus. Tellus
