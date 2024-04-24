@@ -123,7 +123,7 @@
 				<li><a href="/projects">Projects</a></li>
 			</ul>
 		</div>
-		<a href="/" class="btn btn-ghost text-xl">EZ SITE</a>
+		<a href="/" class="btn btn-ghost text-xl special-font">EZ SITE</a>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
@@ -232,7 +232,8 @@
 		<div class="mx-5 flex self-center">
 			<label class="swap swap-rotate">
 				<!-- this hidden checkbox controls the state -->
-				<input type="checkbox" class="theme-controller" value="synthwave" />
+				<!-- ASDF theme to switch to in the "value" below!! I.else. light mode/dark mode -->
+				<input type="checkbox" class="theme-controller" value="cupcake" />
 				<!-- sun icon -->
 				<svg
 					class="swap-off fill-current w-10 h-10"
@@ -313,10 +314,10 @@
 
 <style>
 	:global(body) {
-		font-family: 'Cantarell', sans-serif;
+		font-family: 'Synonym', sans-serif;
 	}
 
 	:global(h1, h2, h3, h4, h5, h6, .special-font) {
-		font-family: 'Fjalla One', sans-serif;
+		font-family: 'Chillax', sans-serif;
 	}
 </style>
