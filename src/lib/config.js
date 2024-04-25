@@ -1,5 +1,5 @@
 export const analytics = {
-	id: 'G-asdf'
+	id: 'G-1F60GQC4CJ'
 }
 
 export const config = {
