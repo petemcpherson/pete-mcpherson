@@ -3,27 +3,53 @@
 	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
 	import Head from '$lib/components/Head.svelte';
 
+	let email = '';
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		console.log(email);
+
+		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/asdf/asdf/';
+
+		const res = await fetch('/api/zapier', {
+			method: 'POST',
+
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ email, zapierUrl })
+		});
+
+		if (res.ok) {
+			// goto('/thank-you-page-you-need-to-create');
+		} else {
+			console.error('Failed to submit email');
+			alert('Failed to submit email');
+		}
+	};
+
 	const featuredOnImages = [
 		{
-			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
-			alt: 'Google'
+			src: 'https://doyouevenblog.com/wp-content/uploads/2020/09/forbes-logo-black-transparent-1536x402.png',
+			alt: 'Forbes'
 		},
 		{
-			src: 'https://doyouevenblog.com/wp-content/uploads/2024/02/DYEB-Logo-2021.png',
-			alt: 'DYEB'
+			src: 'https://doyouevenblog.com/wp-content/uploads/2020/09/npr.png',
+			alt: 'NPR'
 		},
 		{
-			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
-			alt: 'Google'
+			src: 'https://doyouevenblog.com/wp-content/uploads/2020/09/BI-1536x700.png',
+			alt: 'Business Insider'
 		},
 		{
-			src: 'https://doyouevenblog.com/wp-content/uploads/2024/02/DYEB-Logo-2021.png',
-			alt: 'DYEB'
-		},
-		{
-			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
-			alt: 'Google'
+			src: 'https://doyouevenblog.com/wp-content/uploads/2020/09/lifeh.png',
+			alt: 'Lifehacker'
 		}
+		// {
+		// 	src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/544px-Google_2015_logo.svg.png',
+		// 	alt: 'Google'
+		// }
 	];
 </script>
 
@@ -33,14 +59,16 @@
 	<!-- hero -->
 	<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-4 lg:py-8">
 		<div class="lg:self-center w-full">
-			<h1 class="text-3xl lg:text-7xl font-black">
-				Welcome to Pete's blank starter website template!
-			</h1>
-			<p class="py-6">Duplicate, customize, then deploy. Host this website for free forever.</p>
-			<button class="btn btn-primary">Get Started</button>
+			<h1 class="text-3xl lg:text-7xl font-black">Entrepreneur. Creator. Builder.</h1>
+			<p class="py-6">
+				Hi, I'm Pete McPherson, and I'm so glad you're here. I'm a former accountant turned
+				entrepreneur, developer, bloggers, podcaster, YouTuber.
+			</p>
+			<a href="/projects" class="btn btn-primary">Spy on my projects</a>
 			<!-- social icons -->
 			<div class="flex gap-4 mt-8">
-				<a href="/">
+				<!-- twitter -->
+				<a href="https://twitter.com/doyouevenblog/" target="_blank" rel="noreferrer noopener">
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -50,7 +78,8 @@
 						></path></svg
 					>
 				</a>
-				<a href="/">
+				<!-- instagram -->
+				<a href="https://www.instagram.com/bloggerpete" target="_blank" rel="noreferrer noopener">
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -62,7 +91,8 @@
 						></path></svg
 					>
 				</a>
-				<a href="/">
+				<!-- github -->
+				<a href="https://github.com/petemcpherson" target="_blank" rel="noreferrer noopener">
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -74,7 +104,12 @@
 						></path></svg
 					>
 				</a>
-				<a href="/">
+				<!-- linkedIn -->
+				<a
+					href="https://www.linkedin.com/in/petemcpherson/"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -105,7 +140,7 @@
 	</div>
 
 	<!-- various cards -->
-	<div class="py-8 lg:py-24">
+	<!-- <div class="py-8 lg:py-24">
 		<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Stuff I'm building right meow</h2>
 		<div class="w-5/6 mx-auto flex flex-wrap gap-4">
 			<div class="card w-96 bg-base-100 shadow-xl flex-auto">
@@ -154,10 +189,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- copy bullets -->
-	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+	<!-- <div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
 		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
 			<h2 class="my-10 text-center font-black text-3xl lg:text-7xl">Oh look, a headline.</h2>
 			<p class="mb-3">
@@ -176,11 +211,11 @@
 				<li>✅️ 100% free</li>
 			</ol>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- bio section -->
 
-	<div class="py-8 lg:py-24">
+	<!-- <div class="py-8 lg:py-24">
 		<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-8 lg:py-8">
 			<div>
 				<img src={pete_drinks_espresso} alt="pete" class="w-full rounded-lg shadow-2xl" />
@@ -193,6 +228,37 @@
 				<p class="mb-3">Follow me on OnlyDads. Subscribe to my newsletter, twice.</p>
 				<a href="/" class="btn btn-primary">Learn more</a>
 			</div>
+		</div>
+	</div> -->
+
+	<!-- CTA  -->
+	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose text-center">
+			<h1 class="my-10 font-black text-3xl lg:text-7xl">
+				Each week, I send a simple round-up email with cool stuff.
+			</h1>
+			<p class="mb-3">
+				Enter your email below to join the newsletter. It's free, not salesy at all.
+			</p>
+
+			<!-- email form that submits a function (at the top of this file) -->
+			<!-- you could use that and fire off a Zapier webhook, or just send an email to your ESP -->
+			<form class="my-8">
+				<div class="flex flex-col md:flex-row md:flex-wrap gap-2">
+					<input
+						type="email"
+						placeholder="Enter your email"
+						bind:value={email}
+						class="input input-bordered md:flex-auto"
+					/>
+					<button type="submit" class="btn md:flex-initial" on:click={handleSubmit}>
+						Sign me up!
+					</button>
+				</div>
+			</form>
+			<!-- <div class="flex justify-center">
+				<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW WITH A BUTTON</a>
+			</div> -->
 		</div>
 	</div>
 </div>

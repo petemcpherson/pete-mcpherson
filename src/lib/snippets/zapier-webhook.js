@@ -7,22 +7,24 @@ const handleSubmit = async (event) => {
 
     console.log('firing function with email: ', email);
 
-    const res = await fetch('/api/zapier/waitlist', {
-        method: 'POST',
+   const zapierUrl = 'https://hooks.zapier.com/hooks/catch/asdf/asdf/';
 
-        headers: {
-            'Content-Type': 'application/json'
-        },
+    const res = await fetch('/api/zapier', {
+			method: 'POST',
 
-        body: JSON.stringify({ email })
-    });
+			headers: {
+				'Content-Type': 'application/json'
+			},
 
-    if (res.ok) {
-        goto('/waitlist-thanks');
-    } else {
-        console.error('Failed to submit email');
-        alert('Failed to submit email');
-    }
+			body: JSON.stringify({ email, zapierUrl })
+		});
+
+		if (res.ok) {
+			// goto('/thank-you-page-you-need-to-create');
+		} else {
+			console.error('Failed to submit email');
+			alert('Failed to submit email');
+		}
 };
 
 

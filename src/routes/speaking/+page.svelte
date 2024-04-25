@@ -40,7 +40,6 @@
 			This is could be some amazing content! We're going to start with talking about ourselves, and
 			then maybe add some more copywriting relating to our services, projects, etc.
 		</p>
-
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
 			labore et dolore magna aliqua. Imperdiet sed euismod nisi porta lorem mollis aliquam ut

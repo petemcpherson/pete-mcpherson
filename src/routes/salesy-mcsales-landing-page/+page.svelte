@@ -5,12 +5,38 @@
 
 	let email = '';
 
-	const handleSubmit = () => {
-		alert(
-			'You submitted the email: ' +
-				email +
-				'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
-		);
+	// const handleSubmit = () => {
+	// 	alert(
+	// 		'You submitted the email: ' +
+	// 			email +
+	// 			'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
+	// 	);
+	// };
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		console.log('firing function with email: ', email);
+
+		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37hwee8/';
+
+		const res = await fetch('/api/zapier', {
+			method: 'POST',
+
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ email, zapierUrl })
+		});
+
+		if (res.ok) {
+			// goto('/thank-you-page-you-need-to-create');
+			alert('Successfully signed up!');
+		} else {
+			console.error('Failed to submit email');
+			alert('Failed to submit email');
+		}
 	};
 </script>
 
@@ -322,7 +348,7 @@
 					type="email"
 					placeholder="Enter your email"
 					bind:value={email}
-					class="input input-bordered text-neutral md:flex-auto"
+					class="input input-bordered md:flex-auto"
 				/>
 				<button type="submit" class="btn btn-secondary md:flex-initial" on:click={handleSubmit}>
 					Sign me up!
