@@ -25,7 +25,9 @@
 			<ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 				<li><a href="/about">About</a></li>
 				<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
-				<li><a href="/projects">Projects</a></li>
+				<li>
+					<a href="https://indiepa.ge/pete" target="_blank" rel="noreferrer noopener">Projects</a>
+				</li>
 			</ul>
 		</div>
 		<a href="/" class="mx-1 md:mx-5 text-xl special-font">Pete McPherson</a>
@@ -34,7 +36,9 @@
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/about">About</a></li>
 			<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
-			<li><a href="/projects">Projects</a></li>
+			<li>
+				<a href="https://indiepa.ge/pete" target="_blank" rel="noreferrer noopener">Projects</a>
+			</li>
 		</ul>
 	</div>
 
@@ -68,6 +72,15 @@
 	</div>
 </div>
 <slot />
+
+<!-- fixed message -->
+<div class="fixed bottom-3 right-3 p-2 border border-dotted bg-neutral text-neutral-content">
+	<p>
+		<a href="https://ez-site.pages.dev/" target="_blank" rel="noferrer noopener"
+			>Steal this website template for free.</a
+		>
+	</p>
+</div>
 
 <!-- footer section -->
 
@@ -104,25 +117,57 @@
 				</div>
 			</div>
 		</dialog> -->
+	</nav>
+	<nav>
+		<h6 class="footer-title">Apps</h6>
+		<a class="link link-hover" href="https://fabb.ai/" target="_blank" rel="noferrer noopener"
+			>FABB.ai</a
+		>
+		<a class="link link-hover" href="https://topicalmap.ai/" target="_blank" rel="noferrer noopener"
+			>TopicalMap.ai</a
+		>
+		<a
+			class="link link-hover"
+			href="https://promptimizer.com/"
+			target="_blank"
+			rel="noferrer noopener">Promptimizer</a
+		>
+		<a
+			class="link link-hover"
+			href="https://ez-site.pages.dev/"
+			target="_blank"
+			rel="noferrer noopener">EZ-SITE</a
+		>
+		<a class="link link-hover" href="https://ezcour.se/" target="_blank" rel="noferrer noopener"
+			>EZ-COURSE</a
+		>
+	</nav>
+	<nav>
+		<h6 class="footer-title">Brands of Mine</h6>
 		<a
 			class="link link-hover"
 			href="https://doyouevenblog.com/"
 			target="_blank"
-			rel="noreferrer noopener">Do You Even Blog</a
+			rel="noferrer noopener"
+		>
+			Do You Even Blog
+		</a>
+		<a class="link link-hover" href="https://keebnews.com/" target="_blank" rel="noferrer noopener"
+			>KeebNews</a
+		>
+		<a
+			class="link link-hover"
+			href="https://betternotetaking.com/"
+			target="_blank"
+			rel="noferrer noopener">Better Note Taking</a
+		>
+		<a
+			class="link link-hover"
+			href="https://doyouevenpizza.com/"
+			target="_blank"
+			rel="noferrer noopener">Do You Even Pizza</a
 		>
 	</nav>
-	<!-- <nav>
-		<h6 class="footer-title">Legal</h6>
-		<a class="link link-hover" href="/">Terms of Service</a>
-		<a class="link link-hover" href="/">Privacy Policy</a>
-	</nav> -->
-	<!-- <nav>
-		<h6 class="footer-title">Other Stuff</h6>
-		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">
-			Some other link
-		</a>
-		<a class="link link-hover" href="/" target="_blank" rel="noferrer noopener">Yet another link</a>
-	</nav> -->
 </footer>
 
 <Analytics />

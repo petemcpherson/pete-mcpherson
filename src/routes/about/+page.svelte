@@ -3,31 +3,26 @@
 
 	let email = '';
 	// zapier requires a premium zapier plan
-	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/asdf/asdf';
+	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
 
 	const handleSubmit = async () => {
-		alert(
-			'You submitted the email: ' +
-				email +
-				'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
-		);
+		const res = await fetch('/api/zapier', {
+			method: 'POST',
 
-		// const res = await fetch('/api/zapier', {
-		// 	method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
 
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	},
+			body: JSON.stringify({ email, zapierUrl })
+		});
 
-		// 	body: JSON.stringify({ email, zapierUrl })
-		// });
-
-		// if (res.ok) {
-		// 	// goto('/thank-you-page-you-need-to-create');
-		// } else {
-		// 	console.error('Failed to submit email');
-		// 	alert('Failed to submit email');
-		// }
+		if (res.ok) {
+			// goto('/thank-you-page-you-need-to-create');
+			alert('Ur in! Check your email for confirmation!');
+		} else {
+			console.error('Failed to submit email');
+			alert('Failed to submit email');
+		}
 	};
 </script>
 
@@ -35,21 +30,15 @@
 
 <!-- header -->
 <div class="px-8 lg:px-48 py-4 lg:py-20 text-center m-4">
-	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-7xl">About Pete McPherson (& EZ-SITE!)</h1>
-	<p class="mb-3 text-primary italic">This could be a really fancy tagline.</p>
+	<h1 class="mb-4 md:mb-8 font-black text-3xl lg:text-7xl">
+		I, Pete McPherson, am a <i>generalist.</i>
+	</h1>
+	<p class="mb-3 text-primary italic">A true jack of all trades.</p>
 </div>
 
 <!-- divider -->
 <div class="flex flex-col w-full">
-	<div class="divider">Default Divider</div>
-	<div class="divider divider-neutral">Neutral Divider</div>
-	<div class="divider divider-primary">Primary Divider</div>
-	<div class="divider divider-secondary">Secondary Divider</div>
-	<!-- <div class="divider divider-accent">Accent</div> -->
-	<!-- <div class="divider divider-success">Success</div>
-	<div class="divider divider-warning">Warning</div>
-	<div class="divider divider-info">Info</div>
-	<div class="divider divider-error">Error</div> -->
+	<div class="divider divider-primary">story 👇</div>
 </div>
 
 <!-- text -->
@@ -57,64 +46,88 @@
 <div class="py-4 lg:py-12">
 	<div class="mx-5 md:w-1/2 md:mx-auto prose">
 		<p>
-			This is could be some amazing content! We're going to start with talking about ourselves, and
-			then maybe add some more copywriting relating to our services, projects, etc.
+			I never really knew what I wanted to be when I grew up. I wanted to be everything! <i
+				>How could one person choose to just do one thing all of their life?</i
+			>
 		</p>
 
+		<p>So I struggled.</p>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-			labore et dolore magna aliqua. Imperdiet sed euismod nisi porta lorem mollis aliquam ut
-			porttitor. Purus in massa tempor nec feugiat nisl. Metus aliquam eleifend mi in nulla posuere
-			sollicitudin aliquam. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque.
-			Pharetra magna ac placerat vestibulum lectus mauris.
-		</p>
-		<ol>
-			<li>asdf asdf asdf asdf asdf asdf</li>
-			<li>asdf asdf asdf asdf asdf asdf</li>
-			<li>asdf asdf asdf asdf asdf asdf</li>
-		</ol>
-		<p>
-			Tempor commodo ullamcorper a lacus vestibulum sed arcu non odio. Pretium nibh ipsum consequat
-			nisl vel pretium. Sapien pellentesque habitant morbi tristique senectus et netus. Facilisis
-			sed odio morbi quis commodo odio aenean sed adipiscing. Nulla porttitor massa id neque
-			aliquam. Sapien faucibus et molestie ac. <a href="/" class="link">I'm a link, beotch.</a>
-			Leo in vitae turpis massa. Mattis vulputate enim nulla aliquet porttitor lacus. Mattis molestie
-			a iaculis at erat pellentesque adipiscing commodo elit. Eget velit aliquet sagittis id consectetur.
-			Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Viverra orci sagittis eu volutpat.
-			Sagittis orci a scelerisque purus semper eget duis at.
+			I was good at a lot of things and chose to pursue music until I realized I didn't actually
+			want to do it as a living. Three years into my college degree, no less...
 		</p>
 		<p>
-			Ac placerat vestibulum lectus mauris ultrices eros. Massa tincidunt nunc pulvinar sapien et
-			ligula ullamcorper malesuada proin. Morbi enim nunc faucibus a pellentesque sit. Gravida
-			rutrum quisque non tellus orci ac.
+			I was told by my parents, teachers, counselors, and just about everybody else that all I
+			needed in life was to "get a job."
 		</p>
-		<h2>Oh look, a subheader!</h2>
 		<p>
-			Morbi enim nunc faucibus a pellentesque sit amet porttitor eget. Cursus turpis massa tincidunt
-			dui. Mus mauris vitae ultricies leo integer. Ipsum nunc aliquet bibendum enim facilisis
-			gravida. Pharetra diam sit amet nisl suscipit. Ornare massa eget egestas purus. Faucibus et
-			molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Sit amet luctus venenatis lectus
-			magna fringilla urna. Mattis pellentesque id nibh tortor id aliquet lectus. A cras semper
-			auctor neque vitae tempus quam pellentesque. Lorem sed risus ultricies tristique nulla aliquet
-			enim. Feugiat in ante metus dictum.
+			So after finally graduating with a degree in sociology from the University of Georgia, I
+			decided to go a completely different route and get my master's in accounting so I could be a
+			highly paid accountant.
 		</p>
-		<img
-			src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-			alt="dogs"
-		/>
+		<p>Fun, right?</p>
+		<p><i>Right?!</i></p>
 		<p>
-			a lectus quam id leo in vitae turpis massa sed. Nullam non nisi est sit amet facilisis magna
-			etiam tempor. Neque ornare aenean euismod elementum nisi. Natoque penatibus et magnis dis
-			parturient montes nascetur ridiculus mus. Eget duis at tellus at urna condimentum. Vitae
-			elementum curabitur vitae nunc sed. Eget mi proin sed libero. Scelerisque viverra mauris in
-			aliquam. Massa vitae tortor condimentum lacinia quis vel eros donec. Vitae tempus quam
-			pellentesque nec nam aliquam sem et tortor. Nunc lobortis mattis aliquam faucibus. Tellus
-			elementum sagittis vitae et leo duis ut diam quam. Suspendisse faucibus interdum posuere lorem
-			ipsum dolor. Sociis natoque penatibus et magnis dis parturient. Quis viverra nibh cras
-			pulvinar mattis nunc. Sit amet est placerat in egestas erat imperdiet. Donec et odio
-			pellentesque diam volutpat. Tellus id interdum velit laoreet id donec ultrices tincidunt. Mi
-			ipsum faucibus vitae aliquet nec. Convallis posuere morbi leo urna molestie at elementum eu
-			facilisis.
+			I graduated, got a full-time adult job, passed my CPA exam, and got my CPA license, and I
+			<span class="text-error">HATED</span> basically every second of it for a couple of years.
+		</p>
+		<h2>So I quit.</h2>
+		<p>
+			I decided to leave a really fantastic career and pursue a job at a startup that would allow me
+			to develop my entrepreneurial muscle.
+		</p>
+		<p>
+			After selling our house and moving across the state, my family of three and a half (my wife
+			was expecting our 2nd child)...I started my job...
+		</p>
+		<p>...and got laid off after <span class="text-success">one paycheck.</span></p>
+		<p>womp womp.</p>
+		<h2>
+			So I reached out and spoke to some Creator friends who were making more than six figures a
+			year...
+		</h2>
+		<p>I asked them tons of questions. I wanted to know HOW.</p>
+		<p>
+			Thankfully, I was smart enough to record and publish these sessions, and the (award-winning)
+			Do You Even Blog Podcast was born.
+		</p>
+		<p>That was May of 2017, and I've been going strong ever since ;)</p>
+		<h2>Now, I'm a generalist.</h2>
+		<ul>
+			<li>I've given keynote speaches</li>
+			<li>I've built 4 apps in the past year, which have grossed $50k. I'm not a developer.</li>
+			<li>The DYEB podcast has over 2M downloads (and I have another podcast as well)</li>
+			<li>I have 3 YouTube channels</li>
+			<li>I own a portfolio of smaller websites (i.e. blogs)</li>
+			<li>
+				I've worked with dozens of well-known brands, creating cool content and building helpful
+				things (mostly in the digital marketing space)
+			</li>
+			<li>and more.</li>
+		</ul>
+		<h2>My 'Purpose'</h2>
+		<p>Might seem corny, but this is actually surprisingly easy for me.</p>
+		<p>
+			<mark>I aim to make the internet better. I want to make it more fun and interesting.</mark>
+		</p>
+		<p>
+			These days I am mostly focused on growing my weekly roundup newsletter where I share
+			interesting finds and cool tools from around the internet.
+		</p>
+		<p>and building apps.</p>
+		<p>
+			Web apps, mobile apps, you name it. I have an idea list a mile long and I am looking to see
+			just how many useful and fun tools I can ship for people.
+		</p>
+		<h2>There are a few different ways I can help you.</h2>
+		<p>
+			<b>Want to follow along for the ride and discover cool stuff that'll make your life better?</b
+			> Use the form below to join my weekly newsletter.
+		</p>
+		<p>
+			<b>Want to better your own brand?</b> I'm a master at producing content and doing digital
+			marketing that makes people follow you with fierce loyalty.
+			<a href="mailto:pete@doyouevenblog.com">Email me and let's chat</a>.
 		</p>
 	</div>
 </div>
@@ -122,20 +135,19 @@
 <!-- CTA  -->
 <div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
 	<div class="md:w-1/2 mx-2 md:mx-auto leading-loose text-center">
-		<h1 class="my-10 font-black text-3xl lg:text-7xl">Oh look, a CTA section.</h1>
+		<h1 class="my-10 font-black text-3xl lg:text-7xl">Follow me. Not in a weird way.</h1>
 		<p class="mb-3">
-			You give me your email, I'll <span class="text-secondary">sell you things.</span>
+			This is NOT a sales funnel. It's a friendly, human email I send out weekly-ish, sharing cool
+			stuff I find.
 		</p>
 
-		<!-- email form that submits a function (at the top of this file) -->
-		<!-- you could use that and fire off a Zapier webhook, or just send an email to your ESP -->
 		<form class="my-8">
 			<div class="flex flex-col md:flex-row md:flex-wrap gap-2">
 				<input
 					type="email"
 					placeholder="Enter your email"
 					bind:value={email}
-					class="input input-bordered text-neutral md:flex-auto"
+					class="input input-bordered text-neutral-content md:flex-auto"
 				/>
 				<button type="submit" class="btn btn-secondary md:flex-initial" on:click={handleSubmit}>
 					Sign me up!

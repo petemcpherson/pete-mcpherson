@@ -9,7 +9,7 @@
 		event.preventDefault();
 		console.log(email);
 
-		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/asdf/asdf/';
+		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
 
 		const res = await fetch('/api/zapier', {
 			method: 'POST',
@@ -23,6 +23,7 @@
 
 		if (res.ok) {
 			// goto('/thank-you-page-you-need-to-create');
+			alert('Thanks for subscribing!');
 		} else {
 			console.error('Failed to submit email');
 			alert('Failed to submit email');
@@ -64,7 +65,7 @@
 				Hi, I'm Pete McPherson, and I'm so glad you're here. I'm a former accountant turned
 				entrepreneur, developer, bloggers, podcaster, YouTuber.
 			</p>
-			<a href="/projects" class="btn btn-primary">Spy on my projects</a>
+			<a href="/about" class="btn btn-primary">story time</a>
 			<!-- social icons -->
 			<div class="flex gap-4 mt-8">
 				<!-- twitter -->
