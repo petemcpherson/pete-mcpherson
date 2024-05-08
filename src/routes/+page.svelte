@@ -60,10 +60,10 @@
 	<!-- hero -->
 	<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-4 lg:py-8">
 		<div class="lg:self-center w-full">
-			<h1 class="text-3xl lg:text-7xl font-black">Entrepreneur. Creator. Builder.</h1>
+			<h1 class="text-3xl lg:text-7xl font-black">I build things that make the internet better.</h1>
 			<p class="py-6">
-				Hi, I'm Pete McPherson, and I'm so glad you're here. I'm a former accountant turned
-				entrepreneur, developer, bloggers, podcaster, YouTuber.
+				Hi, I'm Pete McPherson! I'm a former accountant turned entrepreneur, indie developer,
+				blogger, podcaster, YouTuber. My mission is to make the internet fun (and useful) again.
 			</p>
 			<a href="/about" class="btn btn-primary">story time</a>
 			<!-- social icons -->
