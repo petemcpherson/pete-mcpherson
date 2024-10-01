@@ -52,6 +52,7 @@
 		// 	alt: 'Google'
 		// }
 	];
+	// just a note
 </script>
 
 <Head />
