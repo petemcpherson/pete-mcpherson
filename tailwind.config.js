@@ -32,16 +32,27 @@ export default {
       "business",
       "acid",
       "lemonade",
-      "night",
       "coffee",
       "winter",
       "dim",
       "nord",
       "sunset",
+      {
+      night: {
+        ...require('daisyui/src/theming/themes')['night'],
+        // primary: '#F471B5',
+        primary: '#05B6D3',
+        neutral: '#153B50',
+        "base-100": '#111'
+       }
+   }  ,
     ],
   },
 
 
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require("daisyui"),
+  ],
 }
 
