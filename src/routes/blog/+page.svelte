@@ -3,6 +3,11 @@
 	export let data;
 
 	const posts = data.posts;
+
+	const formatDate = (date) => {
+		const options = { year: 'numeric', month: 'long', day: 'numeric' };
+		return new Date(date).toLocaleDateString('en-US', options);
+	};
 </script>
 
 <div class="container mx-auto px-4 py-8">
@@ -11,12 +16,21 @@
 		{#each posts as post}
 			<a
 				href={`/blog/${post.slug}`}
-				class="block bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+				class="block border border-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
 			>
 				<div class="p-6">
-					<h2 class="text-xl font-semibold mb-2">{post.title}</h2>
-					<p class="text-gray-600 mb-4">{post.updated}</p>
-					<p class="text-gray-700">{post.description}</p>
+					<h2 class="text-xl md:text-3xl font-black mb-2">{post.title}</h2>
+					<p class="mb-4">{formatDate(post.updated)}</p>
+					<p class="text-base-content/70 mb-4">{post.description}</p>
+					{#if post.tags.length > 0}
+						<div class="flex flex-wrap justify-start md:justify-end gap-2">
+							{#each post.tags as tag}
+								<span class="badge badge-primary">
+									{tag}
+								</span>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</a>
 		{/each}
