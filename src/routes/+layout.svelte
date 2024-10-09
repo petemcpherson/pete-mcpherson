@@ -23,6 +23,7 @@
 				>
 			</div>
 			<ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+				<li><a href="/blog">Blog</a></li>
 				<li><a href="/about">About</a></li>
 				<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
 				<li>
@@ -34,6 +35,7 @@
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
+			<li><a href="/blog">Blog</a></li>
 			<li><a href="/about">About</a></li>
 			<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
 			<li>
