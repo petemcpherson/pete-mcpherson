@@ -2,12 +2,22 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	const posts = data.posts;
+	// Sort posts by created date in descending order (newest first)
+	const posts = data.posts.sort((a, b) => {
+		const dateA = new Date(a.created || a.updated);
+		const dateB = new Date(b.created || b.updated);
+		return dateB - dateA;
+	});
 
 	const formatDate = (date) => {
+		if (!date) return 'Date unavailable';
+		const parsedDate = new Date(date);
+		if (isNaN(parsedDate.getTime())) return 'Invalid date';
 		const options = { year: 'numeric', month: 'long', day: 'numeric' };
-		return new Date(date).toLocaleDateString('en-US', options);
+		return parsedDate.toLocaleDateString('en-US', options);
 	};
+
+	// console.log('Posts data:', posts); // For debugging
 </script>
 
 <div class="container mx-auto px-4 py-8">
@@ -20,9 +30,9 @@
 			>
 				<div class="p-6">
 					<h2 class="text-xl md:text-3xl font-black mb-2">{post.title}</h2>
-					<p class="mb-4">{formatDate(post.updated)}</p>
+					<p class="mb-4">{formatDate(post.created || post.updated)}</p>
 					<p class="text-base-content/70 mb-4">{post.description}</p>
-					{#if post.tags.length > 0}
+					{#if post.tags && post.tags.length > 0}
 						<div class="flex flex-wrap justify-start md:justify-end gap-2">
 							{#each post.tags as tag}
 								<span class="badge badge-primary">

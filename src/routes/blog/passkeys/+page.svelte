@@ -16,15 +16,15 @@
 </p>
 <p>This is for you.</p>
 
-<div class="sticky-note p-6 rounded-lg my-8">
-	<h2 class="text-2xl font-bold text-center mb-4">STICKY NOTE - Passkeys 👇</h2>
+<div class="sticky-note font-black text-center p-6 rounded-lg my-8">
+	<h2 class="text-2xl text-primary mb-4">STICKY NOTE - Passkeys 👇</h2>
 	<img
 		src="https://doyouevenblog.com/sendy/uploads/1728330529.jpg"
 		alt="Passkeys Sticky Note"
 		class="w-full max-w-md mx-auto rounded-lg shadow-lg"
 	/>
 
-	<p class="mt-4 text-center">
+	<p class="mt-4">
 		<a
 			href="https://drive.google.com/file/d/1C2nUMrWkbyAdLzSl8e46C8Pbgyawd57r/view?usp=sharing"
 			class="text-primary underline"
@@ -61,9 +61,9 @@
 <p>You enable passkeys.</p>
 <p>A "private key" is stored on your local device, and the website keeps a "public key."</p>
 
-<div class="bg-yellow-100 p-4 rounded-lg my-4">
+<div class="sticky-note text-black font-black p-4 rounded-lg my-4">
 	<p>
-		<strong>Private key 👉 </strong>Never leaves your device, and is therefore protected by face ID,
+		<b>Private key 👉 </b>Never leaves your device, and is therefore protected by face ID,
 		fingerprint, a PIN, etc.
 	</p>
 </div>
@@ -103,10 +103,25 @@
 	<strong>NOTE</strong>: Lastpass does NOT support passkeys yet, because they're lame.
 </p>
 <p>
-	Use <a href="https://bitwarden.com/" class="text-blue-600 hover:underline">Bitwarden</a> (what I
-	recommend),
-	<a href="https://www.dashlane.com/" class="text-blue-600 hover:underline">Dashlane</a>, or
-	<a href="https://1password.com/" class="text-blue-600 hover:underline">1password</a>.
+	Use <a
+		href="https://bitwarden.com/"
+		class="text-primary underline"
+		target="_blank"
+		rel="noopener noreferrer">Bitwarden</a
+	>
+	(what I recommend),
+	<a
+		href="https://www.dashlane.com/"
+		class="text-primary underline"
+		target="_blank"
+		rel="noopener noreferrer">Dashlane</a
+	>, or
+	<a
+		href="https://1password.com/"
+		class="text-primary underline"
+		target="_blank"
+		rel="noopener noreferrer">1password</a
+	>.
 </p>
 
 <h2 class="text-3xl font-bold mt-8 mb-4">Why are passkeys better?</h2>
