@@ -10,6 +10,7 @@
 	const post = data.post;
 	const title = post.title;
 	const description = post.description;
+	const img = fincon2024_takeaways;
 	let email;
 
 	const handleSubmit = async (event) => {
@@ -38,12 +39,11 @@
 	};
 </script>
 
-<Head {title} {description} />
-<svelte:head>
-	<!-- OpenGraph Meta Tags for Social Media Sharing -->
+<Head {title} {description} {img} />
+<!-- <svelte:head>
 	<meta property="og:image" content={fincon2024_takeaways} />
 	<meta property="og:image:alt" content={description} />
-</svelte:head>
+</svelte:head> -->
 
 <!-- start content -->
 <img class="w-full" src={fincon2024_takeaways} alt="FinCon24" />
