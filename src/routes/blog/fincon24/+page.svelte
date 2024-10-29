@@ -3,6 +3,7 @@
 	import stress_test from '$lib/assets/images/fincon24/stress_test.png';
 	import joe from '$lib/assets/images/fincon24/joe.png';
 	import mins from '$lib/assets/images/fincon24/mins.png';
+	import fincon2024_takeaways from '$lib/assets/images/fincon24/fincon2024_takeaways.jpg';
 
 	export let data;
 
@@ -38,8 +39,14 @@
 </script>
 
 <Head {title} {description} />
+<svelte:head>
+	<!-- OpenGraph Meta Tags for Social Media Sharing -->
+	<meta property="og:image" content={fincon2024_takeaways} />
+	<meta property="og:image:alt" content={description} />
+</svelte:head>
 
 <!-- start content -->
+<img class="w-full" src={fincon2024_takeaways} alt="FinCon24" />
 <div>
 	<p>
 		FinCon24 in Atlanta was a blast. I met a lot of cool people, learned a few things, and got to
