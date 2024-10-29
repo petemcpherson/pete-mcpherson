@@ -40,10 +40,6 @@
 </script>
 
 <Head {title} {description} {img} />
-<!-- <svelte:head>
-	<meta property="og:image" content={fincon2024_takeaways} />
-	<meta property="og:image:alt" content={description} />
-</svelte:head> -->
 
 <!-- start content -->
 <img class="w-full" src={fincon2024_takeaways} alt="FinCon24" />
