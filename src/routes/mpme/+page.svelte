@@ -4,6 +4,7 @@
 	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
+	let buyLink = 'https://doyouevenblog.com/';
 
 	// const handleSubmit = () => {
 	// 	alert(
@@ -38,6 +39,24 @@
 			alert('Failed to submit email');
 		}
 	};
+
+	let countdown;
+
+	const calculateCountdown = () => {
+		const endDate = new Date('2025-01-12T23:59:00-05:00');
+		const now = new Date();
+		const timeRemaining = endDate - now;
+
+		const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+		countdown = `Registration closes in ${days} days, ${hours} hours, ${minutes} mins, and ${seconds} seconds`;
+	};
+
+	calculateCountdown();
+	setInterval(calculateCountdown, 1000);
 </script>
 
 <Head title="Most Productive Month Ever" />
@@ -58,11 +77,18 @@
 			</h2>
 
 			<div class="flex justify-center">
-				<a href="/" class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a>
+				<a href={buyLink} class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a>
 			</div>
 		</div>
 	</div>
 	<!-- </div> -->
+
+	<!-- Countdown Timer -->
+	<div class="bg-accent text-accent-content text-xl py-4 md:py-8 text-center text-lg space-y-4">
+		<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
+
+		{countdown}
+	</div>
 
 	<!-- copy 1 -->
 
@@ -90,22 +116,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- bio section -->
-
-	<!-- <div class="py-8 lg:py-24">
-		<div class="m-5 lg:m-7 items-start space-y-4 lg:w-5/6 lg:mx-auto lg:flex lg:gap-8 lg:py-8">
-			
-			<div class="lg:self-center w-full">
-				<h1 class="text-3xl lg:text-7xl font-black mb-3">Hi, I'm a bio section 👋️</h1>
-				<p class="mb-3">
-					My name is Pete, and hot damn I'm awesome. You should hire me. Pay me money for things.
-				</p>
-				<p class="mb-3">Follow me on OnlyDads. Subscribe to my newsletter, twice.</p>
-				<a href="/" class="btn btn-primary">Learn more</a>
-			</div>
-		</div>
-	</div> -->
 
 	<!-- testimonials -->
 	<div class="py-8 lg:py-24">
@@ -208,45 +218,10 @@
 				</p>
 			</div>
 		</div>
-		<div class="p-8 md:p-20">
-			<div class="mb-3 flex justify-center avatar-group -space-x-6 rtl:space-x-reverse">
-				<div class="avatar">
-					<div class="w-12">
-						<img
-							alt="something"
-							src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-						/>
-					</div>
-				</div>
-				<div class="avatar">
-					<div class="w-12">
-						<img
-							alt="something"
-							src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-						/>
-					</div>
-				</div>
-				<div class="avatar">
-					<div class="w-12">
-						<img
-							alt="something"
-							src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-						/>
-					</div>
-				</div>
-				<div class="avatar">
-					<div class="w-12">
-						<img
-							alt="something"
-							src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-						/>
-					</div>
-				</div>
-			</div>
-			<p class="text-center">Over a million people love this friggin product.</p>
-		</div>
+		<div class="h-6 md:h-12"></div>
+
 		<div class="flex justify-center">
-			<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW</a>
+			<a href={buyLink} class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a>
 		</div>
 	</div>
 
