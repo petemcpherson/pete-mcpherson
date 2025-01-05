@@ -4,7 +4,7 @@
 	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
-	let buyLink = 'https://doyouevenblog.com/';
+	let buyLink = 'https://buy.stripe.com/cN26qf6dO9HP2zK3cd';
 
 	// const handleSubmit = () => {
 	// 	alert(
@@ -84,7 +84,7 @@
 	<!-- </div> -->
 
 	<!-- Countdown Timer -->
-	<div class="bg-accent text-accent-content text-xl py-4 md:py-8 text-center text-lg space-y-4">
+	<div class="bg-accent text-accent-content text-xl py-4 md:py-8 text-center space-y-4">
 		<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
 
 		{countdown}
@@ -225,48 +225,12 @@
 		</div>
 	</div>
 
-	<!-- faqs -->
-
-	<div class="py-8 lg:py-24">
-		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
-			<h1 class="my-10 font-black text-3xl lg:text-7xl text-center">FAQS</h1>
-
-			<div class="collapse collapse-arrow bg-base-200">
-				<input type="radio" name="my-accordion-2" checked="checked" />
-				<div class="collapse-title text-xl font-medium">
-					Click to open this one and close others
-				</div>
-				<div class="collapse-content">
-					<p>hello</p>
-				</div>
-			</div>
-			<div class="collapse collapse-arrow bg-base-200">
-				<input type="radio" name="my-accordion-2" />
-				<div class="collapse-title text-xl font-medium">
-					Click to open this one and close others
-				</div>
-				<div class="collapse-content">
-					<p>hello</p>
-				</div>
-			</div>
-			<div class="collapse collapse-arrow bg-base-200">
-				<input type="radio" name="my-accordion-2" />
-				<div class="collapse-title text-xl font-medium">
-					Click to open this one and close others
-				</div>
-				<div class="collapse-content">
-					<p>hello</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- divider -->
 	<div class="flex flex-col w-full">
-		<div class="divider">Default Divider</div>
-		<div class="divider divider-neutral">Neutral Divider</div>
-		<div class="divider divider-primary">Primary Divider</div>
-		<div class="divider divider-secondary">Secondary Divider</div>
+		<!-- <div class="divider">Default Divider</div> -->
+		<!-- <div class="divider divider-neutral">Neutral Divider</div> -->
+		<div class="divider divider-primary">QUESTIONSSSSS</div>
+		<!-- <div class="divider divider-secondary">Secondary Divider</div> -->
 		<!-- <div class="divider divider-accent">Accent</div> -->
 		<!-- <div class="divider divider-success">Success</div>
 	<div class="divider divider-warning">Warning</div>
@@ -278,68 +242,69 @@
 
 	<div class="py-4 lg:py-12">
 		<div class="mx-5 md:w-1/2 md:mx-auto prose">
+			<h2>How much does it cost?</h2>
+			<p>The program costs $99 for the entire month.</p>
+
+			<h2>What kinds of goals can I set?</h2>
+			<p>You can choose any goal that’s specific, actionable, and measurable. For example:</p>
+			<ul>
+				<li>“I want to HIT PUBLISH on my 1st YouTube vid.”</li>
+				<li>“I want to get 3 months ahead on emails”</li>
+				<li>“I want to start a new blog and have the 1st post LIVE”</li>
+			</ul>
+
+			<h2>When do the Zoom calls happen?</h2>
 			<p>
-				This is could be some amazing content! We're going to start with talking about ourselves,
-				and then maybe add some more copywriting relating to our services, projects, etc.
+				We’ll determine the best time for the group, but they’ll likely happen around 10am, 11am, or
+				Noon Eastern Time.
+				<span class="text-primary"
+					>If you can't make it live, DON'T worry!! Replays are available, and it's mostly for
+					consulting, advice, questions for Pete, etc.</span
+				>
 			</p>
 
+			<h2>Is this an ongoing mastermind?</h2>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-				labore et dolore magna aliqua. Imperdiet sed euismod nisi porta lorem mollis aliquam ut
-				porttitor. Purus in massa tempor nec feugiat nisl. Metus aliquam eleifend mi in nulla
-				posuere sollicitudin aliquam. Volutpat maecenas volutpat blandit aliquam etiam erat velit
-				scelerisque. Pharetra magna ac placerat vestibulum lectus mauris.
+				<span class="font-bold">Nope</span>! This is a focused 30-day program designed to help you
+				make massive progress on your goals. By the end of the month, you’ll have results--plus
+				clarity and momentum going forward.
 			</p>
-			<ol>
-				<li>asdf asdf asdf asdf asdf asdf</li>
-				<li>asdf asdf asdf asdf asdf asdf</li>
-				<li>asdf asdf asdf asdf asdf asdf</li>
-			</ol>
 			<p>
-				Tempor commodo ullamcorper a lacus vestibulum sed arcu non odio. Pretium nibh ipsum
-				consequat nisl vel pretium. Sapien pellentesque habitant morbi tristique senectus et netus.
-				Facilisis sed odio morbi quis commodo odio aenean sed adipiscing. Nulla porttitor massa id
-				neque aliquam. Sapien faucibus et molestie ac. <a href="/" class="link"
-					>I'm a link, beotch.</a
+				<i
+					>However, if you make any friends within the group, you should totally keep in touch after
+					the program 😎</i
 				>
-				Leo in vitae turpis massa. Mattis vulputate enim nulla aliquet porttitor lacus. Mattis molestie
-				a iaculis at erat pellentesque adipiscing commodo elit. Eget velit aliquet sagittis id consectetur.
-				Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Viverra orci sagittis eu
-				volutpat. Sagittis orci a scelerisque purus semper eget duis at.
 			</p>
+			<h2>Are refunds available?</h2>
 			<p>
-				Ac placerat vestibulum lectus mauris ultrices eros. Massa tincidunt nunc pulvinar sapien et
-				ligula ullamcorper malesuada proin. Morbi enim nunc faucibus a pellentesque sit. Gravida
-				rutrum quisque non tellus orci ac.
+				<span class="font-bold">No.</span> There are no refunds, period, under any circumstances.
+				You're either committed to going hard and growing and <i>working,</i> or you're not.
 			</p>
-			<h2>Oh look, a subheader!</h2>
-			<p>
-				Morbi enim nunc faucibus a pellentesque sit amet porttitor eget. Cursus turpis massa
-				tincidunt dui. Mus mauris vitae ultricies leo integer. Ipsum nunc aliquet bibendum enim
-				facilisis gravida. Pharetra diam sit amet nisl suscipit. Ornare massa eget egestas purus.
-				Faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Sit amet luctus
-				venenatis lectus magna fringilla urna. Mattis pellentesque id nibh tortor id aliquet lectus.
-				A cras semper auctor neque vitae tempus quam pellentesque. Lorem sed risus ultricies
-				tristique nulla aliquet enim. Feugiat in ante metus dictum.
-			</p>
-			<img
-				src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-				alt="dogs"
-			/>
-			<p>
-				Pretium lectus quam id leo in vitae turpis massa sed. Nullam non nisi est sit amet facilisis
-				magna etiam tempor. Neque ornare aenean euismod elementum nisi. Natoque penatibus et magnis
-				dis parturient montes nascetur ridiculus mus. Eget duis at tellus at urna condimentum. Vitae
-				elementum curabitur vitae nunc sed. Eget mi proin sed libero. Scelerisque viverra mauris in
-				aliquam. Massa vitae tortor condimentum lacinia quis vel eros donec. Vitae tempus quam
-				pellentesque nec nam aliquam sem et tortor. Nunc lobortis mattis aliquam faucibus. Tellus
-				elementum sagittis vitae et leo duis ut diam quam. Suspendisse faucibus interdum posuere
-				lorem ipsum dolor. Sociis natoque penatibus et magnis dis parturient. Quis viverra nibh cras
-				pulvinar mattis nunc. Sit amet est placerat in egestas erat imperdiet. Donec et odio
-				pellentesque diam volutpat. Tellus id interdum velit laoreet id donec ultrices tincidunt. Mi
-				ipsum faucibus vitae aliquet nec. Convallis posuere morbi leo urna molestie at elementum eu
-				facilisis.
-			</p>
+		</div>
+	</div>
+
+	<!-- who's it for -->
+	<div class="text-xl py-4 md:py-8 space-y-4">
+		<div class="bg-success text-neutral p-8">
+			<div class="mx-5 md:w-1/2 md:mx-auto prose">
+				<h2 class="text-2xl font-semibold mb-4">This program is for you if:</h2>
+				<ul class="list-disc list-inside mb-8">
+					<li>You’re ready to tackle a big goal but need clarity on the best way forward.</li>
+					<li>You want to feel motivated and proud of your work.</li>
+					<li>You’re open to being pushed (just a little) to do your best work.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="bg-error text-error-content p-8">
+			<div class="mx-5 md:w-1/2 md:mx-auto prose">
+				<h2 class="text-2xl font-semibold mb-4">This program is NOT for you if:</h2>
+				<ul class="list-disc list-inside mb-8">
+					<li>The idea of regular accountability feels annoying or overwhelming.</li>
+					<li>
+						You’re looking for a casual, hands-off program. This is hands-on and results-driven!
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
@@ -374,87 +339,5 @@
 </div>
 
 <div class="bg-neutral text-neutral-content p-8">
-	<h2 class="text-2xl font-semibold mb-4">Here’s what the month will look like:</h2>
-	<ol class="list-decimal list-inside mb-8">
-		<li class="mb-4">
-			<strong>Set a Stretch Goal Before the Month Starts</strong>
-			<p>
-				Your goal can be anything blog- or business-related: write consistently, publish a set
-				number of posts, level up your marketing, create a product, or master Pinterest. The only
-				rules? It must be well-defined, actionable, and achievable (but ambitious!).
-			</p>
-			<p>I’ll work with you to nail down your goal before the program starts.</p>
-		</li>
-		<li class="mb-4">
-			<strong>Weekly Live Zoom Calls</strong>
-			<p>
-				Every week, we’ll meet on Zoom to check in as a group. We’ll celebrate wins, provide
-				accountability, and share strategies to keep you on track.
-			</p>
-			<p>
-				Calls will be scheduled in the evenings (Eastern Time) based on group availability, and
-				replays will be available.
-			</p>
-		</li>
-		<li>
-			<strong>Personalized Text Check-Ins</strong>
-			<p>
-				Throughout the month, I’ll check in with you via text to help you stay on track and
-				motivated. Think of it as having a coach in your pocket—keeping you accountable and giving
-				you a little nudge when needed.
-			</p>
-		</li>
-	</ol>
-
-	<h2 class="text-2xl font-semibold mb-4">This program is for you if:</h2>
-	<ul class="list-disc list-inside mb-8">
-		<li>You’re ready to tackle a big goal but need clarity on the best way forward.</li>
-		<li>You want to feel motivated and proud of your work.</li>
-		<li>You’re open to being pushed (just a little) to do your best work.</li>
-	</ul>
-
-	<h2 class="text-2xl font-semibold mb-4">This program is NOT for you if:</h2>
-	<ul class="list-disc list-inside mb-8">
-		<li>The idea of regular accountability feels annoying or overwhelming.</li>
-		<li>You’re looking for a casual, hands-off program. This is hands-on and results-driven!</li>
-	</ul>
-
 	<h2 class="text-2xl font-semibold mb-4">FAQ:</h2>
-	<div class="mb-8">
-		<p class="font-semibold">How much does it cost?</p>
-		<p>The program costs $99 for the entire month. Limited to 10 participants.</p>
-	</div>
-	<div class="mb-8">
-		<p class="font-semibold">What kinds of goals can I set?</p>
-		<p>You can choose any goal that’s specific, actionable, and measurable. For example:</p>
-		<ul class="list-disc list-inside">
-			<li>“I want to publish 8 blog posts this month.”</li>
-			<li>“I want to create and launch a lead magnet.”</li>
-			<li>“I want to spend 15 hours this month improving my Pinterest strategy.”</li>
-		</ul>
-	</div>
-	<div class="mb-8">
-		<p class="font-semibold">When do the Zoom calls happen?</p>
-		<p>
-			We’ll determine the best time for the group, but they’ll generally be held in the evenings,
-			Eastern Time. Replays will be available if you can’t make it live.
-		</p>
-	</div>
-	<div class="mb-8">
-		<p class="font-semibold">Is this an ongoing mastermind?</p>
-		<p>
-			Nope! This is a focused 30-day program designed to help you make massive progress on your
-			goals. By the end of the month, you’ll have clarity, momentum, and results.
-		</p>
-	</div>
-	<div>
-		<p class="font-semibold">Are refunds available?</p>
-		<p>No. This program is for people ready to commit fully to their goals.</p>
-	</div>
-
-	<div class="mt-8 text-center">
-		<a href="/" class="bg-primary text-primary-content px-6 py-3 rounded font-bold text-lg"
-			>Apply Now</a
-		>
-	</div>
 </div>
