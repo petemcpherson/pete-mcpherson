@@ -63,31 +63,39 @@
 
 <div>
 	<!-- jumbotron -->
-	<div class=" py-8 lg:py-24 text-center">
+	<div class="py-8 lg:py-24 text-center">
 		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
-			<h1 class=" mb-4 md:mb-8 font-black text-2xl lg:text-3xl">Most Productive Month Ever</h1>
-			<p class="leading-loose mb-4 md:mb-8 font-black text-3xl lg:text-5xl">
+			<h1 class=" mb-8 md:mb-12 font-black text-xl lg:text-3xl text-primary">
+				Most Productive Month Ever
+			</h1>
+			<p class="md:leading-loose mb-8 md:mb-12 font-black text-3xl lg:text-5xl">
 				A 30-day accountability program with weekly Zoom calls and personal text check-ins with Pete
 				McPherson.
 			</p>
 
 			<h2 class="mb-4 md:mb-8 text-lg text-primary italic">
-				We’re going to set a stretch goal for your business or creative project, and crush it
-				together.
+				We’ll set a stretch goal for your business or creative project, and crush it together.
 			</h2>
 
 			<div class="flex justify-center">
-				<a href={buyLink} class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a>
+				<a
+					href={buyLink}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a
+				>
 			</div>
 		</div>
 	</div>
 	<!-- </div> -->
 
 	<!-- Countdown Timer -->
-	<div class="bg-accent text-accent-content text-xl py-4 md:py-8 text-center space-y-4">
-		<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
+	<div class="bg-accent text-accent-content text-xl p-4 md:p-8 text-center space-y-4">
+		<div class="py-12 md:py-24">
+			<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
 
-		{countdown}
+			{countdown}
+		</div>
 	</div>
 
 	<!-- copy 1 -->
@@ -102,7 +110,7 @@
 			<div class="p-3 md:p-6 prose text-neutral-content text-lg">
 				<!-- copy -->
 				<p class="mb-4">Have you ever made it to the end of your day and thought:</p>
-				<ul class="list-disc list-inside mb-8">
+				<ul class="mb-8">
 					<li>“UGH. I could’ve done more. Why didn’t I?”</li>
 					<li>
 						“I wish I had more motivation this week. I don’t have much to show for my effort.”
@@ -209,39 +217,35 @@
 					Pete texts you
 				</p>
 				<p class="text-lg md:text-xl">
-					Throughout the month, I’ll check in with you via text to help you stay on track and
-					motivated. You can choose daily, 2x weekly, or weekly texts.
+					Throughout the month, I’ll check in with you via text (or WhatsApp) to help you stay on
+					track and motivated. You can choose how often I bug you 😉
 				</p>
 				<p class="text-accent font-bold text-lg md:text-xl">
-					Think of it as having a coach in your pocket—keeping you accountable and giving you a
-					little nudge when needed.
+					I'll keep you accountable--and give you a little nudge when needed.
 				</p>
 			</div>
 		</div>
 		<div class="h-6 md:h-12"></div>
 
 		<div class="flex justify-center">
-			<a href={buyLink} class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a>
+			<a
+				href={buyLink}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a
+			>
 		</div>
 	</div>
 
 	<!-- divider -->
-	<div class="flex flex-col w-full">
-		<!-- <div class="divider">Default Divider</div> -->
-		<!-- <div class="divider divider-neutral">Neutral Divider</div> -->
+	<div class="flex flex-col w-full h-16 md:h-24">
 		<div class="divider divider-primary">QUESTIONSSSSS</div>
-		<!-- <div class="divider divider-secondary">Secondary Divider</div> -->
-		<!-- <div class="divider divider-accent">Accent</div> -->
-		<!-- <div class="divider divider-success">Success</div>
-	<div class="divider divider-warning">Warning</div>
-	<div class="divider divider-info">Info</div>
-	<div class="divider divider-error">Error</div> -->
 	</div>
 
 	<!-- text -->
 
 	<div class="py-4 lg:py-12">
-		<div class="mx-5 md:w-1/2 md:mx-auto prose">
+		<div class="mx-5 md:w-1/2 md:mx-auto prose-lg">
 			<h2>How much does it cost?</h2>
 			<p>The program costs $99 for the entire month.</p>
 
@@ -284,21 +288,21 @@
 	</div>
 
 	<!-- who's it for -->
-	<div class="text-xl py-4 md:py-8 space-y-4">
-		<div class="bg-success text-neutral p-8">
-			<div class="mx-5 md:w-1/2 md:mx-auto prose">
-				<h2 class="text-2xl font-semibold mb-4">This program is for you if:</h2>
-				<ul class="list-disc list-inside mb-8">
+	<div>
+		<div class="bg-success text-success-content p-8">
+			<div class="mx-5 md:w-1/2 md:mx-auto prose-xl">
+				<h2 class="text-2xl font-semibold mb-4">✅ This program is for you if:</h2>
+				<ul class="mb-8">
 					<li>You’re ready to tackle a big goal but need clarity on the best way forward.</li>
 					<li>You want to feel motivated and proud of your work.</li>
 					<li>You’re open to being pushed (just a little) to do your best work.</li>
 				</ul>
 			</div>
 		</div>
-		<div class="bg-error text-error-content p-8">
+		<div class="bg-warning p-8">
 			<div class="mx-5 md:w-1/2 md:mx-auto prose">
-				<h2 class="text-2xl font-semibold mb-4">This program is NOT for you if:</h2>
-				<ul class="list-disc list-inside mb-8">
+				<h2 class="text-2xl font-semibold mb-4">❌ This program is NOT for you if:</h2>
+				<ul class="mb-8">
 					<li>The idea of regular accountability feels annoying or overwhelming.</li>
 					<li>
 						You’re looking for a casual, hands-off program. This is hands-on and results-driven!
