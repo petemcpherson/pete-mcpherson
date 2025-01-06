@@ -251,11 +251,9 @@
 
 			<h2>What kinds of goals can I set?</h2>
 			<p>You can choose any goal that’s specific, actionable, and measurable. For example:</p>
-			<ul>
-				<li>“I want to HIT PUBLISH on my 1st YouTube vid.”</li>
-				<li>“I want to get 3 months ahead on emails”</li>
-				<li>“I want to start a new blog and have the 1st post LIVE”</li>
-			</ul>
+			<p>“I want to HIT PUBLISH on my 1st YouTube vid.”</p>
+			<p>“I want to get 3 months ahead on emails”</p>
+			<p>“I want to start a new blog and have the 1st post LIVE”</p>
 
 			<h2>When do the Zoom calls happen?</h2>
 			<p>
@@ -290,24 +288,22 @@
 	<!-- who's it for -->
 	<div>
 		<div class="bg-success text-success-content p-8">
-			<div class="mx-5 md:w-1/2 md:mx-auto prose-xl">
-				<h2 class="text-2xl font-semibold mb-4">✅ This program is for you if:</h2>
-				<ul class="mb-8">
-					<li>You’re ready to tackle a big goal but need clarity on the best way forward.</li>
-					<li>You want to feel motivated and proud of your work.</li>
-					<li>You’re open to being pushed (just a little) to do your best work.</li>
-				</ul>
+			<div class="mx-2 md:w-1/2 md:mx-auto prose-xl">
+				<h2 class="text-2xl font-semibold mb-4">✅ This program IS for you if:</h2>
+				<p>You’re ready to tackle BIG things in 2025, and want to start things off RIGHT.</p>
+				<p>You want a little bit of accountability.</p>
+				<p>You’re open to being pushed (just a little) to do your best work and stay MOTIVATED.</p>
 			</div>
 		</div>
-		<div class="bg-warning p-8">
-			<div class="mx-5 md:w-1/2 md:mx-auto prose">
-				<h2 class="text-2xl font-semibold mb-4">❌ This program is NOT for you if:</h2>
-				<ul class="mb-8">
-					<li>The idea of regular accountability feels annoying or overwhelming.</li>
-					<li>
-						You’re looking for a casual, hands-off program. This is hands-on and results-driven!
-					</li>
-				</ul>
+		<div class="bg-error text-error-content p-8">
+			<div class="mx-2 md:w-1/2 md:mx-auto prose-xl">
+				<h2 class="text-2xl font-semibold mb-4">✋ This program is NOT for you if:</h2>
+				<p>The idea of regular accountability feels annoying or overwhelming.</p>
+				<p>
+					The idea of Pete messaging you every few days feels like too much. (It's GOING to feel a
+					little uncomfortable by design!!)
+				</p>
+				<p>You’re looking for a casual, hands-off program. This is hands-on and results-driven!</p>
 			</div>
 		</div>
 	</div>
@@ -315,14 +311,12 @@
 	<!-- CTA  -->
 	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
 		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose text-center">
-			<h1 class="my-10 font-black text-3xl lg:text-7xl">Oh look, a CTA section.</h1>
-			<p class="mb-3">
-				You give me your email, I'll <span class="text-secondary">sell you things.</span>
-			</p>
+			<h1 class="my-10 font-black text-3xl lg:text-7xl">1 Month SPRINT. Let's do this.</h1>
+			<p class="mb-3">$99 one-time payment. No refunds.</p>
 
 			<!-- email form that submits a function (at the top of this file) -->
 			<!-- you could use that and fire off a Zapier webhook, or just send an email to your ESP -->
-			<form class="my-8">
+			<!-- <form class="my-8">
 				<div class="flex flex-col md:flex-row md:flex-wrap gap-2">
 					<input
 						type="email"
@@ -334,14 +328,25 @@
 						Sign me up!
 					</button>
 				</div>
-			</form>
+			</form> -->
+
 			<div class="flex justify-center">
-				<a href="/" class="my-4 md:my-8 btn btn-lg btn-secondary">BUY NOW WITH A BUTTON</a>
+				<a
+					href={buyLink}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now</a
+				>
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="bg-neutral text-neutral-content p-8">
-	<h2 class="text-2xl font-semibold mb-4">FAQ:</h2>
+	<!-- Countdown Timer -->
+	<div class="bg-accent text-accent-content text-xl p-4 md:p-8 text-center space-y-4">
+		<div class="py-12 md:py-24">
+			<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
+
+			{countdown}
+		</div>
+	</div>
 </div>

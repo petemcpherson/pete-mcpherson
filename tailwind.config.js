@@ -38,14 +38,14 @@ export default {
       "nord",
       "sunset",
       {
-      night: {
-        ...require('daisyui/src/theming/themes')['night'],
-        // primary: '#F471B5',
-        primary: '#05B6D3',
-        neutral: '#153B50',
-        "base-100": '#111'
-       }
-   }  ,
+        night: {
+          ...require('daisyui/src/theming/themes')['night'],
+          // primary: '#F471B5',
+          primary: '#05B6D3',
+          neutral: '#153B50',
+          "base-100": '#111'
+        }
+      },
     ],
   },
 
