@@ -1,19 +1,43 @@
 <script>
 	/** @type {{ data: import('./$types').PageData }} */
-	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
-	import Head from '$lib/components/Head.svelte';
 
-	// Check if registration is closed and redirect to waitlist
-	if (browser) {
-		const closingDate = new Date('2025-01-12T23:59:00-05:00');
-		if (new Date() > closingDate) {
-			goto('/mpme/waitlist');
-		}
-	}
+	import Head from '$lib/components/Head.svelte';
 
 	let email = '';
 	let buyLink = 'https://buy.stripe.com/cN26qf6dO9HP2zK3cd';
+
+	// const handleSubmit = () => {
+	// 	alert(
+	// 		'You submitted the email: ' +
+	// 			email +
+	// 			'. This could totally go to a Zapier webhook and to your ESP--or you could just drop an embedded form here.'
+	// 	);
+	// };
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		console.log(email);
+
+		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
+
+		const res = await fetch('/api/zapier', {
+			method: 'POST',
+
+			headers: {
+				'Content-Type': 'application/json'
+			},
+
+			body: JSON.stringify({ email, zapierUrl })
+		});
+
+		if (res.ok) {
+			// goto('/thank-you-page-you-need-to-create');
+			alert('Thanks for subscribing!');
+		} else {
+			console.error('Failed to submit email');
+			alert('Failed to submit email');
+		}
+	};
 
 	let countdown;
 
@@ -52,24 +76,37 @@
 				We’ll set a stretch goal for your business or creative project, and crush it together.
 			</h2>
 
-			<div class="flex justify-center">
+			<!-- <div class="flex justify-center">
 				<a
 					href={buyLink}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a
 				>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- </div> -->
 
 	<!-- Countdown Timer -->
 	<div class="bg-accent text-accent-content text-xl p-4 md:p-8 text-center space-y-4">
-		<div class="py-12 md:py-24">
-			<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
-
-			{countdown}
+		<div class="py-12 md:py-24 mx-auto w-full md:w-1/2">
+			<p class="mb-2 md:mb-4 font-bold">
+				MPME is currently closed. Enter your email to be notified when it opens again ;)
+			</p>
+			<form class="my-8">
+				<div class="flex flex-col md:flex-row md:flex-wrap gap-2">
+					<input
+						type="email"
+						placeholder="Enter your email"
+						bind:value={email}
+						class="input input-bordered md:flex-auto"
+					/>
+					<button type="submit" class="btn md:flex-initial" on:click={handleSubmit}>
+						Sign me up!
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -201,15 +238,6 @@
 			</div>
 		</div>
 		<div class="h-6 md:h-12"></div>
-
-		<div class="flex justify-center">
-			<a
-				href={buyLink}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now - only $99</a
-			>
-		</div>
 	</div>
 
 	<!-- divider -->
@@ -304,24 +332,6 @@
 					</button>
 				</div>
 			</form> -->
-
-			<div class="flex justify-center">
-				<a
-					href={buyLink}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="my-4 md:my-8 btn btn-lg btn-primary">Sign Up Now</a
-				>
-			</div>
-		</div>
-	</div>
-
-	<!-- Countdown Timer -->
-	<div class="bg-accent text-accent-content text-xl p-4 md:p-8 text-center space-y-4">
-		<div class="py-12 md:py-24">
-			<p class="mb-2 md:mb-4 font-bold">MPME runs from Jan 13, 2025 to Feb 14, 2025</p>
-
-			{countdown}
 		</div>
 	</div>
 </div>
