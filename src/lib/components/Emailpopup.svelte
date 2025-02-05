@@ -5,6 +5,8 @@
 	const handleSubmit = async () => {
 		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
 
+		console.log('popup zap email', email);
+
 		const res = await fetch('/api/zapier', {
 			method: 'POST',
 			headers: {
@@ -44,7 +46,7 @@
 				id="email"
 				bind:value={email}
 				placeholder="your@email.com"
-				class="input input-bordered w-full"
+				class="input input-bordered w-full text-neutral-content"
 				required
 			/>
 
