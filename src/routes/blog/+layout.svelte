@@ -1,8 +1,10 @@
 <script>
 	import Post_meta from '$lib/components/Post_meta.svelte';
 	import { page } from '$app/stores';
+	import Emailpopup from '$lib/components/Emailpopup.svelte';
 	// Check if we're on the blog index page
 	$: isBlogIndex = $page.url.pathname === '/blog' || $page.url.pathname === '/blog/';
+	// let email = '';
 </script>
 
 {#if isBlogIndex}
@@ -27,6 +29,8 @@
 		</main>
 	</div>
 {/if}
+
+<Emailpopup />
 
 <style>
 	:global(.sticky-note) {
