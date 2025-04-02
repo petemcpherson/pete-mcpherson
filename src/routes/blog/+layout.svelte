@@ -2,13 +2,20 @@
 	import Post_meta from '$lib/components/Post_meta.svelte';
 	import { page } from '$app/stores';
 	import Emailpopup from '$lib/components/Emailpopup.svelte';
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('svelte').Snippet} [children]
+	 */
+
+	/** @type {Props} */
+	let { children } = $props();
 	// Check if we're on the blog index page
-	$: isBlogIndex = $page.url.pathname === '/blog' || $page.url.pathname === '/blog/';
+	let isBlogIndex = $derived($page.url.pathname === '/blog' || $page.url.pathname === '/blog/');
 	// let email = '';
 </script>
 
 {#if isBlogIndex}
-	<slot />
+	{@render children?.()}
 {:else}
 	<div class="bg-base-100 min-h-screen">
 		<main class="container mx-auto px-4 py-8">
@@ -23,7 +30,7 @@
 				<div class="prose prose-lg max-w-none">
 					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{$page.data.post?.title}</h1>
 
-					<slot />
+					{@render children?.()}
 				</div>
 			</article>
 		</main>

@@ -3,15 +3,28 @@
 	// you can optionally import a share image here for the entire site?
 	import socialImage from '$lib/assets/images/socialImage.png';
 
-	export let title = 'Pete McPherson';
-	export let description = config.description;
-	export let author = config.author;
-	export let url = config.siteUrl;
-	export let domain = config.domain;
 	// export let rtl = false;
 	// let titleFromUrl = url.split('/').pop().replace('-', ' ');
-	// export let img = `${url}/og?message=${rtl ? titleFromUrl : title}`;
-	export let img = socialImage;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [title]
+	 * @property {any} [description]
+	 * @property {any} [author]
+	 * @property {any} [url]
+	 * @property {any} [domain]
+	 * @property {any} [img] - export let img = `${url}/og?message=${rtl ? titleFromUrl : title}`;
+	 */
+
+	/** @type {Props} */
+	let {
+		title = 'Pete McPherson',
+		description = config.description,
+		author = config.author,
+		url = config.siteUrl,
+		domain = config.domain,
+		img = socialImage
+	} = $props();
 </script>
 
 <svelte:head>

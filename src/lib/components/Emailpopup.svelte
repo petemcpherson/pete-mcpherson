@@ -1,6 +1,8 @@
 <script>
-	let email = '';
-	let modal;
+	import { preventDefault } from 'svelte/legacy';
+
+	let email = $state('');
+	let modal = $state();
 
 	const handleSubmit = async () => {
 		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
@@ -26,7 +28,7 @@
 	};
 </script>
 
-<button class="underline fixed bottom-4 left-4" on:click={() => modal.showModal()}>
+<button class="underline fixed bottom-4 left-4" onclick={() => modal.showModal()}>
 	weekly roundup 👋
 </button>
 
@@ -37,7 +39,7 @@
 		</h3>
 		<p class="py-4">No salesy stuff. No spam.</p>
 
-		<form on:submit|preventDefault={handleSubmit} class="form-control w-full">
+		<form onsubmit={preventDefault(handleSubmit)} class="form-control w-full">
 			<label class="label" for="email">
 				<span class="label-text text-primary-content">Email address</span>
 			</label>
@@ -51,7 +53,7 @@
 			/>
 
 			<div class="modal-action">
-				<button type="button" class="btn btn-outline" on:click={() => modal.close()}
+				<button type="button" class="btn btn-outline" onclick={() => modal.close()}
 					>no thanks</button
 				>
 				<button type="submit" class="btn">I'm in!</button>

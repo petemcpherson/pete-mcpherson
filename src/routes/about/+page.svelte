@@ -1,7 +1,7 @@
 <script>
 	import Head from '$lib/components/Head.svelte';
 
-	let email = '';
+	let email = $state('');
 	// zapier requires a premium zapier plan
 	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
 
@@ -149,7 +149,7 @@
 					bind:value={email}
 					class="input input-bordered text-neutral-content md:flex-auto"
 				/>
-				<button type="submit" class="btn btn-secondary md:flex-initial" on:click={handleSubmit}>
+				<button type="submit" class="btn btn-secondary md:flex-initial" onclick={handleSubmit}>
 					Sign me up!
 				</button>
 			</div>

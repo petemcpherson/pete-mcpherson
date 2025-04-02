@@ -1,18 +1,20 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { analytics } from '$lib/config';
 
 	let id = analytics.id;
 
-	$: {
+	run(() => {
 		if (typeof gtag !== 'undefined') {
 			gtag('config', id, {
 				page_title: document.title,
 				page_path: $page.url.pathname
 			});
 		}
-	}
+	});
 </script>
 
 <svelte:head>

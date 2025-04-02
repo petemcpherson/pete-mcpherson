@@ -1,9 +1,15 @@
 <script>
 	import pete_avatar from '$lib/assets/images/pete_avatar.png';
 
-	export let author = 'Pete McPherson';
-	export let updated = '';
-	export let tags = [];
+	/**
+	 * @typedef {Object} Props
+	 * @property {string} [author]
+	 * @property {string} [updated]
+	 * @property {any} [tags]
+	 */
+
+	/** @type {Props} */
+	let { author = 'Pete McPherson', updated = '', tags = [] } = $props();
 </script>
 
 <div

@@ -1,6 +1,6 @@
 <script>
 	import Head from '$lib/components/Head.svelte';
-	export let data;
+	let { data } = $props();
 
 	const post = data.post;
 	const title = post.title;

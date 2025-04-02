@@ -15,7 +15,7 @@
 	let email = '';
 	let buyLink = 'https://buy.stripe.com/cN26qf6dO9HP2zK3cd';
 
-	let countdown;
+	let countdown = $state();
 
 	const calculateCountdown = () => {
 		const endDate = new Date('2025-01-12T23:59:00-05:00');

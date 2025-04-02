@@ -3,7 +3,7 @@
 	import roasting from '$lib/assets/images/roasting/roasting.gif';
 	import roasting_equipment from '$lib/assets/images/roasting/roasting_equipment.png';
 	import canisters from '$lib/assets/images/roasting/canisters.jpg';
-	export let data;
+	let { data } = $props();
 
 	const post = data.post;
 	const title = post.title;

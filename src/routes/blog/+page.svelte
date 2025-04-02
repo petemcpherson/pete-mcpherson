@@ -1,6 +1,12 @@
 <script>
-	/** @type {import('./$types').PageData} */
-	export let data;
+	
+	/**
+	 * @typedef {Object} Props
+	 * @property {import('./$types').PageData} data
+	 */
+
+	/** @type {Props} */
+	let { data } = $props();
 
 	// Sort posts by created date in descending order (newest first)
 	const posts = data.posts.sort((a, b) => {

@@ -3,7 +3,7 @@
 
 	import Head from '$lib/components/Head.svelte';
 
-	let email = '';
+	let email = $state('');
 	let buyLink = 'https://buy.stripe.com/cN26qf6dO9HP2zK3cd';
 
 	// const handleSubmit = () => {
@@ -102,7 +102,7 @@
 						bind:value={email}
 						class="input input-bordered md:flex-auto"
 					/>
-					<button type="submit" class="btn md:flex-initial" on:click={handleSubmit}>
+					<button type="submit" class="btn md:flex-initial" onclick={handleSubmit}>
 						Sign me up!
 					</button>
 				</div>

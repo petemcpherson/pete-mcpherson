@@ -5,13 +5,13 @@
 	import mins from '$lib/assets/images/fincon24/mins.png';
 	import fincon2024_takeaways from '$lib/assets/images/fincon24/fincon2024_takeaways.jpg';
 
-	export let data;
+	let { data } = $props();
 
 	const post = data.post;
 	const title = post.title;
 	const description = post.description;
 	const img = fincon2024_takeaways;
-	let email;
+	let email = $state();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -265,7 +265,7 @@
 						bind:value={email}
 						class="input input-bordered md:flex-auto"
 					/>
-					<button type="submit" class="btn md:flex-initial" on:click={handleSubmit}>
+					<button type="submit" class="btn md:flex-initial" onclick={handleSubmit}>
 						Sign me up!
 					</button>
 				</div>

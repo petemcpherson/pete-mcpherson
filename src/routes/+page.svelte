@@ -3,7 +3,7 @@
 	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
 	import Head from '$lib/components/Head.svelte';
 
-	let email = '';
+	let email = $state('');
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -253,7 +253,7 @@
 						bind:value={email}
 						class="input input-bordered md:flex-auto"
 					/>
-					<button type="submit" class="btn md:flex-initial" on:click={handleSubmit}>
+					<button type="submit" class="btn md:flex-initial" onclick={handleSubmit}>
 						Sign me up!
 					</button>
 				</div>

@@ -1,7 +1,8 @@
 <script>
-	/** @type {import('./$types').LayoutData} */
 	import '../app.css';
 	import Analytics from '$lib/components/Analytics.svelte';
+
+	let { children } = $props();
 </script>
 
 <div class="navbar bg-base-100">
@@ -73,7 +74,7 @@
 		<!-- <a href="/" class="btn btn-primary">I'm a button</a> -->
 	</div>
 </div>
-<slot />
+{@render children()}
 
 <!-- fixed message -->
 <div class="fixed bottom-3 right-3 p-2 border border-dotted bg-neutral text-neutral-content">
