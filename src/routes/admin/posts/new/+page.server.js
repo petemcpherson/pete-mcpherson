@@ -1,4 +1,4 @@
-import { adminDB } from '$lib/server/admin';
+import { adminDB, adminStorage } from '$lib/server/admin';
 import { fail, redirect } from '@sveltejs/kit';
 
 function formatSlugForId(slug) {
@@ -6,6 +6,11 @@ function formatSlugForId(slug) {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-|-$/g, '');
+}
+
+// Generate a unique ID based on timestamp
+function generateId() {
+    return Date.now().toString(36) + Math.random().toString(36).substring(2);
 }
 
 /** @type {import('./$types').PageServerLoad} */
@@ -44,6 +49,7 @@ export const actions = {
         const category = formData.get('category');
         const status = formData.get('status');
         const oldPostId = formData.get('id');
+        const featuredImageFile = formData.get('featuredImage');
 
         if (!title || !body || !category) {
             return fail(400, {
@@ -67,6 +73,46 @@ export const actions = {
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
+
+            // Handle featured image upload if provided
+            if (featuredImageFile && featuredImageFile instanceof File && featuredImageFile.size > 0) {
+                console.log('Starting image upload process...');
+                
+                const imageId = generateId();
+                const fileExtension = featuredImageFile.name.split('.').pop();
+                const filePath = `posts/${imageId}.${fileExtension}`;
+                
+                console.log('Getting storage bucket...');
+                const bucket = adminStorage.bucket();
+                console.log('Bucket name:', bucket.name);
+                
+                const file = bucket.file(filePath);
+                
+                console.log('Converting file to buffer...');
+                const buffer = Buffer.from(await featuredImageFile.arrayBuffer());
+                
+                console.log('Uploading file to Firebase Storage...');
+                try {
+                    // Upload the file
+                    await file.save(buffer, {
+                        metadata: {
+                            contentType: featuredImageFile.type
+                        }
+                    });
+                    console.log('File successfully uploaded to Firebase Storage');
+                    
+                    // Make the file publicly accessible
+                    await file.makePublic();
+                    
+                    // Get the public URL
+                    const publicUrl = `https://storage.googleapis.com/${bucket.name}/${filePath}`;
+                    postData.featuredImage = publicUrl;
+                    console.log('Generated image URL:', publicUrl);
+                } catch (uploadError) {
+                    console.error('Error during file upload:', uploadError);
+                    throw uploadError;
+                }
+            }
 
             const documentId = formatSlugForId(slug);
 
@@ -101,7 +147,8 @@ export const actions = {
             return {
                 success: true,
                 message: 'Post saved successfully',
-                id: documentId // Return the formatted slug as the ID
+                id: documentId, // Return the formatted slug as the ID
+                featuredImage: postData.featuredImage
             };
         } catch (error) {
             if (error instanceof Response) throw error;
@@ -121,6 +168,7 @@ export const actions = {
         let slug = formData.get('slug');
         const category = formData.get('category');
         const oldPostId = formData.get('id');
+        const featuredImageFile = formData.get('featuredImage');
 
         try {
             // If slug is empty, generate it from title
@@ -137,6 +185,46 @@ export const actions = {
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
+
+            // Handle featured image upload if provided
+            if (featuredImageFile && featuredImageFile instanceof File && featuredImageFile.size > 0) {
+                console.log('Starting image upload process...');
+                
+                const imageId = generateId();
+                const fileExtension = featuredImageFile.name.split('.').pop();
+                const filePath = `posts/${imageId}.${fileExtension}`;
+                
+                console.log('Getting storage bucket...');
+                const bucket = adminStorage.bucket();
+                console.log('Bucket name:', bucket.name);
+                
+                const file = bucket.file(filePath);
+                
+                console.log('Converting file to buffer...');
+                const buffer = Buffer.from(await featuredImageFile.arrayBuffer());
+                
+                console.log('Uploading file to Firebase Storage...');
+                try {
+                    // Upload the file
+                    await file.save(buffer, {
+                        metadata: {
+                            contentType: featuredImageFile.type
+                        }
+                    });
+                    console.log('File successfully uploaded to Firebase Storage');
+                    
+                    // Make the file publicly accessible
+                    await file.makePublic();
+                    
+                    // Get the public URL
+                    const publicUrl = `https://storage.googleapis.com/${bucket.name}/${filePath}`;
+                    postData.featuredImage = publicUrl;
+                    console.log('Generated image URL:', publicUrl);
+                } catch (uploadError) {
+                    console.error('Error during file upload:', uploadError);
+                    throw uploadError;
+                }
+            }
 
             const documentId = formatSlugForId(slug);
 
@@ -167,7 +255,8 @@ export const actions = {
             return {
                 success: true,
                 message: 'Draft saved',
-                id: documentId // Return the formatted slug as the ID
+                id: documentId, // Return the formatted slug as the ID
+                featuredImage: postData.featuredImage
             };
         } catch (error) {
             console.error('Error saving draft:', error);

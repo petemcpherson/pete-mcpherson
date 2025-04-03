@@ -9,6 +9,9 @@
 	let category = $state(data.post?.category || data.form?.category || '');
 	let status = $state(data.post?.status || 'draft');
 	let postId = $state(data.post?.id || '');
+	let featuredImage = $state(data.post?.featuredImage || '');
+	let imageFile = $state(null);
+	let imagePreview = $state('');
 	let submitting = $state(false);
 	let message = $state('');
 	let messageType = $state('');
@@ -36,6 +39,16 @@
 		return '';
 	}
 
+	// Handle image file selection
+	function handleImageChange(event) {
+		const file = event.target.files[0];
+		if (file) {
+			imageFile = file;
+			// Create a preview URL
+			imagePreview = URL.createObjectURL(file);
+		}
+	}
+
 	// Auto-save draft every 30 seconds if there are changes
 	// let autoSaveInterval;
 	// $effect(() => {
@@ -53,6 +66,7 @@
 		formData.set('category', category);
 		formData.set('status', 'draft');
 		if (postId) formData.set('id', postId);
+		if (imageFile) formData.set('featuredImage', imageFile);
 
 		try {
 			const response = await fetch('?/saveDraft', {
@@ -66,6 +80,7 @@
 				message = 'Draft saved';
 				messageType = 'success';
 				if (!postId) postId = result.id;
+				if (result.featuredImage) featuredImage = result.featuredImage;
 				setTimeout(() => {
 					message = '';
 				}, 3000);
@@ -84,6 +99,7 @@
 			message = result.data.message;
 			messageType = 'success';
 			if (!postId) postId = result.data.id;
+			if (result.data.featuredImage) featuredImage = result.data.featuredImage;
 		} else if (result.type === 'failure') {
 			message = result.data.error;
 			messageType = 'error';
@@ -123,7 +139,13 @@
 				</div>
 			{/if}
 
-			<form method="POST" action="?/save" use:enhance={handleSubmit} class="space-y-6">
+			<form
+				method="POST"
+				action="?/save"
+				use:enhance={handleSubmit}
+				class="space-y-6"
+				id="post-form"
+			>
 				<input type="hidden" name="id" value={postId} />
 				<input type="hidden" name="status" value={status} />
 
@@ -240,6 +262,37 @@
 									<!-- Categories will be populated later -->
 								</select>
 							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Featured Image Card -->
+				<div class="card bg-base-200">
+					<div class="card-body">
+						<h2 class="card-title">Featured Image</h2>
+						<div class="space-y-4">
+							<div class="form-control">
+								<label class="label">
+									<span class="label-text">Upload Image</span>
+								</label>
+								<input
+									type="file"
+									accept="image/*"
+									class="file-input file-input-bordered w-full"
+									onchange={handleImageChange}
+									name="featuredImage"
+								/>
+							</div>
+
+							{#if imagePreview || featuredImage}
+								<div class="mt-2">
+									<img
+										src={imagePreview || featuredImage}
+										alt="Featured image preview"
+										class="w-full h-40 object-cover rounded-md"
+									/>
+								</div>
+							{/if}
 						</div>
 					</div>
 				</div>
