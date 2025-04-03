@@ -1,10 +1,6 @@
 <script>
-	import { Editor } from '@tiptap/core';
-	import StarterKit from '@tiptap/starter-kit';
-	import Image from '@tiptap/extension-image';
-	import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 	import { enhance } from '$app/forms';
-	import { onMount, onDestroy } from 'svelte';
+	import Tiptap from '$lib/components/Tiptap.svelte';
 	/** @type {{ data: import('./$types').PageData, form: { error?: string; success?: string; message?: string } }} */
 	let { data } = $props();
 
@@ -22,8 +18,6 @@
 	let messageType = $state('');
 	let lastSaved = $state(null);
 	let uploading = $state(false);
-
-	let editor = $state(null);
 
 	// Format slug for preview (spaces for display, hyphens for ID)
 	function formatSlugForPreview(slug) {
@@ -136,84 +130,9 @@
 		}
 	}
 
-	onMount(() => {
-		editor = new Editor({
-			element: document.querySelector('#editor'),
-			extensions: [
-				StarterKit,
-				Image.configure({
-					HTMLAttributes: {
-						class: 'rounded-lg max-w-full h-auto'
-					},
-					// Optional: add custom upload handling
-					uploadImage: async (file) => {
-						const url = await handleImageUpload(file);
-						return url;
-					}
-				})
-			],
-			content: body,
-			onUpdate: ({ editor }) => {
-				body = editor.getHTML();
-			},
-			editorProps: {
-				handleDrop: (view, event, slice, moved) => {
-					if (!moved && event.dataTransfer?.files?.length) {
-						const files = Array.from(event.dataTransfer.files);
-						const images = files.filter((file) => file.type.startsWith('image'));
-
-						if (images.length) {
-							event.preventDefault();
-
-							images.forEach(async (image) => {
-								const url = await handleImageUpload(image);
-								if (url) {
-									const { schema } = view.state;
-									const node = schema.nodes.image.create({ src: url });
-									const transaction = view.state.tr.replaceSelectionWith(node);
-									view.dispatch(transaction);
-								}
-							});
-
-							return true;
-						}
-					}
-					return false;
-				},
-				handlePaste: (view, event) => {
-					const items = Array.from(event.clipboardData?.items || []);
-					const images = items.filter((item) => item.type.startsWith('image'));
-
-					if (images.length) {
-						event.preventDefault();
-
-						images.forEach((item) => {
-							const file = item.getAsFile();
-							if (file) {
-								handleImageUpload(file).then((url) => {
-									if (url) {
-										const { schema } = view.state;
-										const node = schema.nodes.image.create({ src: url });
-										const transaction = view.state.tr.replaceSelectionWith(node);
-										view.dispatch(transaction);
-									}
-								});
-							}
-						});
-
-						return true;
-					}
-					return false;
-				}
-			}
-		});
-	});
-
-	onDestroy(() => {
-		if (editor) {
-			editor.destroy();
-		}
-	});
+	function handleEditorUpdate(html) {
+		body = html;
+	}
 </script>
 
 <div class="container mx-auto p-4">
@@ -296,21 +215,7 @@
 				</div>
 
 				<div class="form-control">
-					<div id="editor-container">
-						{#if editor}
-							<div class="editor-toolbar mb-2">
-								<button
-									type="button"
-									class="btn btn-sm"
-									onclick={() => editor.chain().focus().toggleBold().run()}
-									class:active={editor.isActive('bold')}
-								>
-									Bold
-								</button>
-							</div>
-						{/if}
-						<div id="editor" class="prose min-h-[500px] p-4 border rounded-lg bg-white"></div>
-					</div>
+					<Tiptap content={body} onUpdate={handleEditorUpdate} />
 					<input type="hidden" name="body" value={body} />
 				</div>
 			</form>
