@@ -11,6 +11,8 @@
 	let editor = $state(null);
 	let uploading = $state(false);
 	let uploadProgress = $state(0);
+	let showSource = $state(false);
+	let sourceContent = $state('');
 
 	async function handleImageUpload(file) {
 		uploading = true;
@@ -59,6 +61,103 @@
 			}
 		};
 		input.click();
+	}
+
+	function toggleSource() {
+		if (showSource) {
+			// Store the source content before switching
+			const newContent = sourceContent;
+			showSource = false;
+
+			// Wait for the DOM to update
+			setTimeout(() => {
+				if (editor) {
+					// Destroy the old editor
+					editor.destroy();
+
+					// Create a new editor with the source content
+					editor = new Editor({
+						element: document.querySelector('#editor'),
+						extensions: [
+							StarterKit,
+							Image.configure({
+								HTMLAttributes: {
+									class: 'rounded-lg max-w-full h-auto'
+								},
+								uploadImage: async (file) => {
+									const url = await handleImageUpload(file);
+									return url;
+								}
+							})
+						],
+						content: newContent,
+						onUpdate: ({ editor }) => {
+							if (onUpdate) {
+								onUpdate(editor.getHTML());
+							}
+						},
+						editorProps: {
+							handleDrop: (view, event, slice, moved) => {
+								if (!moved && event.dataTransfer?.files?.length) {
+									const files = Array.from(event.dataTransfer.files);
+									const images = files.filter((file) => file.type.startsWith('image'));
+
+									if (images.length) {
+										event.preventDefault();
+
+										images.forEach(async (image) => {
+											const url = await handleImageUpload(image);
+											if (url) {
+												insertImage(url);
+											}
+										});
+
+										return true;
+									}
+								}
+								return false;
+							},
+							handlePaste: (view, event) => {
+								const items = Array.from(event.clipboardData?.items || []);
+								const images = items.filter((item) => item.type.startsWith('image'));
+
+								if (images.length) {
+									event.preventDefault();
+
+									images.forEach((item) => {
+										const file = item.getAsFile();
+										if (file) {
+											handleImageUpload(file).then((url) => {
+												if (url) {
+													insertImage(url);
+												}
+											});
+										}
+									});
+
+									return true;
+								}
+								return false;
+							}
+						}
+					});
+
+					// Focus the editor
+					editor.commands.focus();
+
+					// Update parent component
+					if (onUpdate) {
+						onUpdate(newContent);
+					}
+				}
+			}, 0);
+		} else {
+			// Store current editor content
+			if (editor) {
+				sourceContent = editor.getHTML();
+			}
+			showSource = true;
+		}
 	}
 
 	onMount(() => {
@@ -180,9 +279,20 @@
 				Ordered List
 			</button>
 			<button type="button" class="btn btn-sm" onclick={openImageUploadDialog}> Image </button>
+			<button type="button" class="btn btn-sm" onclick={toggleSource} class:active={showSource}>
+				Source
+			</button>
 		</div>
 	{/if}
-	<div id="editor" class="prose prose-sm sm:prose-base lg:prose-lg m-5 focus:outline-none"></div>
+	{#if showSource}
+		<textarea
+			bind:value={sourceContent}
+			class="w-full h-[500px] p-4 border rounded-lg bg-white font-mono text-sm"
+			placeholder="Enter HTML content..."
+		></textarea>
+	{:else}
+		<div id="editor" class="prose prose-sm sm:prose-base lg:prose-lg m-5 focus:outline-none"></div>
+	{/if}
 </div>
 
 {#if uploading}
