@@ -3,17 +3,62 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Image from '@tiptap/extension-image';
+	import { app } from '$lib/firebase';
 	import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 	const { content = '', onUpdate } = $props();
 
 	let editor = $state(null);
+	let uploading = $state(false);
+	let uploadProgress = $state(0);
 
 	async function handleImageUpload(file) {
-		const storage = getStorage();
-		const storageRef = ref(storage, `posts/${Date.now()}-${file.name}`);
-		await uploadBytes(storageRef, file);
-		return await getDownloadURL(storageRef);
+		uploading = true;
+		uploadProgress = 0;
+
+		try {
+			const storage = getStorage(app);
+			const timestamp = Date.now();
+			const fileName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
+			const storageRef = ref(storage, `blog-images/${timestamp}_${fileName}`);
+
+			// Create upload task
+			const uploadTask = uploadBytes(storageRef, file);
+
+			// Get download URL after upload completes
+			const snapshot = await uploadTask;
+			const imageUrl = await getDownloadURL(snapshot.ref);
+
+			uploading = false;
+			uploadProgress = 100;
+			return imageUrl;
+		} catch (error) {
+			console.error('Error uploading image:', error);
+			uploading = false;
+			return null;
+		}
+	}
+
+	function insertImage(url) {
+		if (editor && url) {
+			editor.chain().focus().setImage({ src: url }).run();
+		}
+	}
+
+	function openImageUploadDialog() {
+		const input = document.createElement('input');
+		input.type = 'file';
+		input.accept = 'image/*';
+		input.onchange = async (event) => {
+			const file = event.target.files[0];
+			if (file) {
+				const url = await handleImageUpload(file);
+				if (url) {
+					insertImage(url);
+				}
+			}
+		};
+		input.click();
 	}
 
 	onMount(() => {
@@ -49,10 +94,7 @@
 							images.forEach(async (image) => {
 								const url = await handleImageUpload(image);
 								if (url) {
-									const { schema } = view.state;
-									const node = schema.nodes.image.create({ src: url });
-									const transaction = view.state.tr.replaceSelectionWith(node);
-									view.dispatch(transaction);
+									insertImage(url);
 								}
 							});
 
@@ -73,10 +115,7 @@
 							if (file) {
 								handleImageUpload(file).then((url) => {
 									if (url) {
-										const { schema } = view.state;
-										const node = schema.nodes.image.create({ src: url });
-										const transaction = view.state.tr.replaceSelectionWith(node);
-										view.dispatch(transaction);
+										insertImage(url);
 									}
 								});
 							}
@@ -140,12 +179,20 @@
 			>
 				Ordered List
 			</button>
+			<button type="button" class="btn btn-sm" onclick={openImageUploadDialog}> Image </button>
 		</div>
 	{/if}
-	<div id="editor" class=" prose prose-sm sm:prose-base lg:prose-lg m-5 focus:outline-none"></div>
+	<div id="editor" class="prose prose-sm sm:prose-base lg:prose-lg m-5 focus:outline-none"></div>
 </div>
 
-<!-- <style>
+{#if uploading}
+	<div class="image-upload-progress">
+		<div class="loading loading-spinner"></div>
+		<p>Uploading image... {uploadProgress}%</p>
+	</div>
+{/if}
+
+<style>
 	.editor-toolbar {
 		display: flex;
 		gap: 0.5rem;
@@ -171,4 +218,18 @@
 	.editor-toolbar button:hover {
 		background-color: #f1f5f9;
 	}
-</style> -->
+
+	.image-upload-progress {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		background-color: rgba(0, 0, 0, 0.7);
+		color: white;
+		padding: 10px 20px;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		z-index: 1000;
+	}
+</style>
