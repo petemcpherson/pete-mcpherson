@@ -1,13 +1,13 @@
 <script>
 	import { enhance } from '$app/forms';
 	import Tiptap from '$lib/components/Tiptap.svelte';
+	import TagSelector from '$lib/components/TagSelector.svelte';
 	/** @type {{ data: import('./$types').PageData, form: { error?: string; success?: string; message?: string } }} */
 	let { data } = $props();
 
 	let title = $state(data.post?.title || data.form?.title || '');
 	let body = $state(data.post?.body || data.form?.body || '');
 	let slug = $state(data.post?.slug || data.form?.slug || '');
-	let category = $state(data.post?.category || data.form?.category || '');
 	let status = $state(data.post?.status || 'draft');
 	let postId = $state(data.post?.id || '');
 	let featuredImage = $state(data.post?.featuredImage || '');
@@ -18,6 +18,10 @@
 	let messageType = $state('');
 	let lastSaved = $state(null);
 	let uploading = $state(false);
+	let tags = $state(data.tags || []);
+	let selectedTags = $state(data.post?.tags || []);
+
+	// console.log(tags);
 
 	// Format slug for preview (spaces for display, hyphens for ID)
 	function formatSlugForPreview(slug) {
@@ -60,13 +64,18 @@
 	// 	return () => clearInterval(autoSaveInterval);
 	// });
 
+	// Handle tag selection updates
+	function handleTagUpdate(event) {
+		selectedTags = event.detail.selectedTags;
+	}
+
 	async function saveDraft() {
 		const formData = new FormData();
 		formData.set('title', title);
 		formData.set('body', body);
 		formData.set('slug', slug);
-		formData.set('category', category);
 		formData.set('status', 'draft');
+		formData.set('tags', JSON.stringify(selectedTags));
 		if (postId) formData.set('id', postId);
 		if (imageFile) formData.set('featuredImage', imageFile);
 
@@ -170,6 +179,7 @@
 			>
 				<input type="hidden" name="id" value={postId} />
 				<input type="hidden" name="status" value={status} />
+				<input type="hidden" name="tags" value={JSON.stringify(selectedTags)} />
 
 				<div class="form-control">
 					<input
@@ -201,16 +211,6 @@
 								</div>
 							{/if}
 						</div>
-						<select
-							id="category"
-							name="category"
-							bind:value={category}
-							class="select select-bordered w-48"
-							required
-						>
-							<option value="">Select Category</option>
-							<!-- Categories will be populated later -->
-						</select>
 					</div>
 				</div>
 
@@ -221,7 +221,7 @@
 			</form>
 		</div>
 
-		<!-- Actions Panel -->
+		<!-- Actions Panel - 2nd column -->
 		<div class="w-80 lg:border-l lg:pl-8">
 			<div class="sticky top-4 space-y-6">
 				<div class="card bg-base-200">
@@ -231,7 +231,7 @@
 							<button
 								type="button"
 								class="btn btn-outline w-full"
-								onclick={saveDraft}
+								on:click={saveDraft}
 								disabled={submitting}
 							>
 								Save Draft
@@ -242,7 +242,7 @@
 								form="post-form"
 								class="btn btn-primary w-full"
 								disabled={submitting}
-								onclick={handlePublish}
+								on:click={handlePublish}
 							>
 								{#if submitting}
 									<span class="loading loading-spinner"></span>
@@ -271,12 +271,9 @@
 
 							<div class="form-control">
 								<label class="label">
-									<span class="label-text">Category</span>
+									<span class="label-text">Tags</span>
 								</label>
-								<select class="select select-bordered w-full" bind:value={category}>
-									<option value="">Select Category</option>
-									<!-- Categories will be populated later -->
-								</select>
+								<TagSelector bind:tags bind:selectedTags />
 							</div>
 						</div>
 					</div>
@@ -295,7 +292,7 @@
 									type="file"
 									accept="image/*"
 									class="file-input file-input-bordered w-full"
-									onchange={handleImageChange}
+									on:change={handleImageChange}
 									name="featuredImage"
 								/>
 							</div>

@@ -16,27 +16,44 @@ function generateId() {
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {
     const postId = url.searchParams.get('edit');
+    let post = null;
     
     if (postId) {
         try {
             const postDoc = await adminDB.collection('posts').doc(postId).get();
             if (postDoc.exists) {
                 const postData = postDoc.data();
-                return {
-                    post: { 
-                        id: postDoc.id, 
-                        ...postData,
-                        created: postData.created?.toDate?.()?.toISOString(),
-                        updated: postData.updated?.toDate?.()?.toISOString()
-                    }
+                post = { 
+                    id: postDoc.id, 
+                    ...postData,
+                    created: postData.created?.toDate?.()?.toISOString(),
+                    updated: postData.updated?.toDate?.()?.toISOString()
                 };
             }
         } catch (error) {
             console.error('Error loading post:', error);
         }
     }
+
+    // Load tags from Firestore
+    let tags = [];
+    try {
+        const tagsSnapshot = await adminDB.collection('tags')
+            .orderBy('name', 'asc')
+            .get();
+        
+        tags = tagsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+    } catch (error) {
+        console.error('Error loading tags:', error);
+    }
     
-    return {};
+    return {
+        post,
+        tags
+    };
 }
 
 /** @type {import('./$types').Actions} */
@@ -46,15 +63,15 @@ export const actions = {
         const title = formData.get('title');
         const body = formData.get('body');
         let slug = formData.get('slug');
-        const category = formData.get('category');
         const status = formData.get('status');
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
+        const tags = JSON.parse(formData.get('tags') || '[]');
 
-        if (!title || !body || !category) {
+        if (!title || !body) {
             return fail(400, {
-                error: 'Title, body, and category are required',
-                title, body, category
+                error: 'Title and body are required',
+                title, body
             });
         }
 
@@ -68,8 +85,8 @@ export const actions = {
                 title,
                 body,
                 slug, // Keep original slug with spaces
-                category,
                 status,
+                tags,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
@@ -156,7 +173,7 @@ export const actions = {
             console.error('Error saving post:', error);
             return fail(500, {
                 error: 'Failed to save post',
-                title, body, slug, category
+                title, body, slug
             });
         }
     },
@@ -166,9 +183,9 @@ export const actions = {
         const title = formData.get('title');
         const body = formData.get('body');
         let slug = formData.get('slug');
-        const category = formData.get('category');
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
+        const tags = JSON.parse(formData.get('tags') || '[]');
 
         try {
             // If slug is empty, generate it from title
@@ -180,8 +197,8 @@ export const actions = {
                 title,
                 body,
                 slug, // Keep original slug with spaces
-                category,
                 status: 'draft',
+                tags,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
@@ -254,14 +271,15 @@ export const actions = {
 
             return {
                 success: true,
-                message: 'Draft saved',
-                id: documentId, // Return the formatted slug as the ID
+                message: 'Draft saved successfully',
+                id: documentId,
                 featuredImage: postData.featuredImage
             };
         } catch (error) {
             console.error('Error saving draft:', error);
             return fail(500, {
-                error: 'Failed to save draft'
+                error: 'Failed to save draft',
+                title, body, slug
             });
         }
     }
