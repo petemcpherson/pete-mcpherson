@@ -70,11 +70,12 @@
 	}
 
 	async function saveDraft() {
+		updateStatus('Saving...');
 		const formData = new FormData();
 		formData.set('title', title);
 		formData.set('body', body);
 		formData.set('slug', slug);
-		formData.set('status', 'draft');
+		formData.set('status', status);
 		formData.set('tags', JSON.stringify(selectedTags));
 		if (postId) formData.set('id', postId);
 		if (imageFile) formData.set('featuredImage', imageFile);
@@ -88,17 +89,36 @@
 
 			if (result.success) {
 				lastSaved = new Date();
-				message = 'Draft saved';
+				message = status === 'draft' ? 'Draft saved successfully' : 'Post saved successfully';
 				messageType = 'success';
 				if (!postId) postId = result.id;
 				if (result.featuredImage) featuredImage = result.featuredImage;
 				setTimeout(() => {
 					message = '';
-				}, 3000);
+				}, 2000);
 			}
 		} catch (error) {
 			console.error('Error saving draft:', error);
+			message = 'Error saving post';
+			messageType = 'error';
+			setTimeout(() => {
+				message = '';
+			}, 2000);
 		}
+	}
+
+	function updateStatus(messageText, type = 'success') {
+		message = messageText;
+		messageType = type;
+		setTimeout(() => {
+			message = '';
+		}, 2000);
+	}
+
+	async function handleStatusChange(event) {
+		const newStatus = event.target.value;
+		status = newStatus;
+		updateStatus(`Post status changed to ${newStatus}`);
 	}
 
 	async function handleSubmit({ result }) {
@@ -107,20 +127,15 @@
 		messageType = '';
 
 		if (result.type === 'success') {
-			message = result.data.message;
-			messageType = 'success';
+			updateStatus(status === 'draft' ? 'Draft saved successfully' : 'Post saved successfully');
 			if (!postId) postId = result.data.id;
 			if (result.data.featuredImage) featuredImage = result.data.featuredImage;
+			lastSaved = new Date();
 		} else if (result.type === 'failure') {
-			message = result.data.error;
-			messageType = 'error';
+			updateStatus(result.data.error || 'Error saving post', 'error');
 		}
 
 		submitting = false;
-	}
-
-	function handlePublish() {
-		status = 'published';
 	}
 
 	// Function to handle image uploads to Firebase
@@ -163,12 +178,6 @@
 					{/if}
 				</div>
 			</div>
-
-			{#if message}
-				<div class="alert {messageType === 'error' ? 'alert-error' : 'alert-success'} mb-6">
-					<span>{message}</span>
-				</div>
-			{/if}
 
 			<form
 				method="POST"
@@ -224,6 +233,15 @@
 		<!-- Actions Panel - 2nd column -->
 		<div class="w-80 lg:border-l lg:pl-8">
 			<div class="sticky top-4 space-y-6">
+				<!-- status message -->
+				<div class="h-6 p-2 flex items-center justify-center text-sm">
+					{#if message}
+						<span
+							class=" font-bold font-lg {messageType === 'success' ? 'text-success' : 'text-error'}"
+							>{message}</span
+						>
+					{/if}
+				</div>
 				<div class="card bg-base-200">
 					<div class="card-body">
 						<h2 class="card-title">Post Actions</h2>
@@ -231,25 +249,13 @@
 							<button
 								type="button"
 								class="btn btn-outline w-full"
-								on:click={saveDraft}
 								disabled={submitting}
+								on:click={() => {
+									updateStatus('Saving...');
+									saveDraft();
+								}}
 							>
-								Save Draft
-							</button>
-
-							<button
-								type="submit"
-								form="post-form"
-								class="btn btn-primary w-full"
-								disabled={submitting}
-								on:click={handlePublish}
-							>
-								{#if submitting}
-									<span class="loading loading-spinner"></span>
-									Publishing...
-								{:else}
-									Publish
-								{/if}
+								{status === 'draft' ? 'Save Draft' : 'Save Post'}
 							</button>
 						</div>
 					</div>
@@ -263,7 +269,12 @@
 								<label class="label">
 									<span class="label-text">Status</span>
 								</label>
-								<select class="select select-bordered w-full" bind:value={status}>
+								<select
+									class="select select-bordered w-full"
+									bind:value={status}
+									on:change={handleStatusChange}
+									disabled={submitting}
+								>
 									<option value="draft">Draft</option>
 									<option value="published">Published</option>
 								</select>

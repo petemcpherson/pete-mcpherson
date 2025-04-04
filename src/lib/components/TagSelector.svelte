@@ -5,7 +5,7 @@
 	/** @type {{ tags: Array<{ id: string, name: string }>, selectedTags?: string[] }} */
 	let { tags = $bindable([]), selectedTags = $bindable([]) } = $props();
 
-	console.log('Initial selected tags:', selectedTags);
+	// console.log('Initial selected tags:', selectedTags);
 
 	let newTagName = $state('');
 	let submitting = $state(false);

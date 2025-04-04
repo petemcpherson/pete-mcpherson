@@ -84,7 +84,7 @@ export const actions = {
             const postData = {
                 title,
                 body,
-                slug, // Keep original slug with spaces
+                slug: formatSlugForId(slug), // Format slug with hyphens before saving
                 status,
                 tags,
                 updated: new Date(),
@@ -157,9 +157,9 @@ export const actions = {
                 }
             }
 
-            if (status === 'published') {
-                throw redirect(303, '/admin/posts');
-            }
+            // if (status === 'published') {
+            //     throw redirect(303, '/admin/posts');
+            // }
 
             return {
                 success: true,
@@ -183,6 +183,7 @@ export const actions = {
         const title = formData.get('title');
         const body = formData.get('body');
         let slug = formData.get('slug');
+        const status = formData.get('status');
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
@@ -196,8 +197,8 @@ export const actions = {
             const postData = {
                 title,
                 body,
-                slug, // Keep original slug with spaces
-                status: 'draft',
+                slug: formatSlugForId(slug), // Format slug with hyphens before saving
+                status,
                 tags,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
