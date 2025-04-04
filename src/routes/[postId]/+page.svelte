@@ -2,6 +2,7 @@
 	import Head from '$lib/components/Head.svelte';
 	import Post_meta from '$lib/components/Post_meta.svelte';
 	import Emailpopup from '$lib/components/Emailpopup.svelte';
+	import { config } from '$lib/config';
 	/** @type {{ data: import('./$types').PageData }} */
 	let { data } = $props();
 
@@ -9,10 +10,13 @@
 	console.log(post);
 	const title = post.title;
 	const description = post.description;
-	const featuredImage = post.featuredImage;
+	// Ensure featuredImage is a complete URL
+	const featuredImage = post.featuredImage
+		? new URL(post.featuredImage, config.siteUrl).toString()
+		: undefined;
 </script>
 
-<Head {title} {description} {featuredImage} />
+<Head {title} {description} img={featuredImage} />
 
 <div class="bg-base-100 min-h-screen">
 	<main class="container mx-auto px-4 py-8">
