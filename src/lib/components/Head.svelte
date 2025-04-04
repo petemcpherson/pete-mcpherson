@@ -5,7 +5,7 @@
 
 	// export let rtl = false;
 	// let titleFromUrl = url.split('/').pop().replace('-', ' ');
-	
+
 	/**
 	 * @typedef {Object} Props
 	 * @property {string} [title]
@@ -13,7 +13,7 @@
 	 * @property {any} [author]
 	 * @property {any} [url]
 	 * @property {any} [domain]
-	 * @property {any} [img] - export let img = `${url}/og?message=${rtl ? titleFromUrl : title}`;
+	 * @property {any} [img] - The featured image URL for the post, falls back to default social image
 	 */
 
 	/** @type {Props} */
@@ -25,6 +25,9 @@
 		domain = config.domain,
 		img = socialImage
 	} = $props();
+
+	// Use the provided image URL or fall back to the default social image
+	const ogImage = img || socialImage;
 </script>
 
 <svelte:head>
@@ -37,7 +40,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={img} />
+	<meta property="og:image" content={ogImage} />
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />
@@ -45,5 +48,5 @@
 	<meta property="twitter:url" content={url} />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:image" content={img} />
+	<meta name="twitter:image" content={ogImage} />
 </svelte:head>
