@@ -299,7 +299,7 @@
 						bind:value={email}
 						class="input input-bordered md:flex-auto"
 					/>
-					<button type="submit" class="btn btn-secondary md:flex-initial" on:click={handleSubmit}>
+					<button type="submit" class="btn btn-secondary md:flex-initial" onclick={handleSubmit}>
 						Sign me up!
 					</button>
 				</div>

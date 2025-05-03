@@ -250,7 +250,7 @@
 								type="button"
 								class="btn btn-outline w-full"
 								disabled={submitting}
-								on:click={() => {
+								onclick={() => {
 									updateStatus('Saving...');
 									saveDraft();
 								}}
@@ -272,7 +272,7 @@
 								<select
 									class="select select-bordered w-full"
 									bind:value={status}
-									on:change={handleStatusChange}
+									onchange={handleStatusChange}
 									disabled={submitting}
 								>
 									<option value="draft">Draft</option>
@@ -303,7 +303,7 @@
 									type="file"
 									accept="image/*"
 									class="file-input file-input-bordered w-full"
-									on:change={handleImageChange}
+									onchange={handleImageChange}
 									name="featuredImage"
 								/>
 							</div>

@@ -56,7 +56,7 @@
 			<button
 				type="button"
 				class="btn btn-sm {selectedTags.includes(tag.id) ? 'btn-primary' : 'btn-outline'}"
-				on:click={() => toggleTag(tag.id)}
+				onclick={() => toggleTag(tag.id)}
 			>
 				{tag.name}
 			</button>
@@ -69,12 +69,12 @@
 			bind:value={newTagName}
 			placeholder="Add new tag..."
 			class="input input-bordered input-sm flex-1"
-			on:keydown={(e) => e.key === 'Enter' && addTag()}
+			onkeydown={(e) => e.key === 'Enter' && addTag()}
 		/>
 		<button
 			type="button"
 			class="btn btn-primary btn-sm"
-			on:click={addTag}
+			onclick={addTag}
 			disabled={submitting || !newTagName.trim()}
 		>
 			{#if submitting}
