@@ -19,14 +19,10 @@
 			<div class="flex-none">
 				<ul class="menu menu-horizontal px-1">
 					<li>
-						<a
-							href="/admin/posts"
-							class={currentPath.startsWith('/admin/posts')
-								? 'bg-neutral text-neutral-content'
-								: ''}
-						>
-							Posts
-						</a>
+						<a href="/admin/posts"> Posts </a>
+					</li>
+					<li>
+						<a href="/admin/tags"> Tags </a>
 					</li>
 				</ul>
 			</div>

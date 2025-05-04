@@ -27,9 +27,12 @@
 				name: newTagName.trim()
 			};
 
+			// Store the trimmed name before clearing it
+			const trimmedName = newTagName.trim();
+
 			await setDoc(doc(db, 'tags', tagId), tagData);
+			tags = [...tags, { id: tagId, name: trimmedName }];
 			newTagName = '';
-			await loadTags();
 		} catch (error) {
 			console.error('Error adding tag:', error);
 		}
