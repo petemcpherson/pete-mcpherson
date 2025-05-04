@@ -1,6 +1,28 @@
 import { adminDB } from '$lib/server/admin';
 import { error } from '@sveltejs/kit';
 
+async function getCategoryHierarchy(categoryId) {
+    if (!categoryId) return [];
+    
+    const hierarchy = [];
+    let currentCategoryId = categoryId;
+    
+    while (currentCategoryId) {
+        const categoryDoc = await adminDB.collection('categories').doc(currentCategoryId).get();
+        if (!categoryDoc.exists) break;
+        
+        const categoryData = categoryDoc.data();
+        hierarchy.unshift({
+            id: categoryDoc.id,
+            name: categoryData.name
+        });
+        
+        currentCategoryId = categoryData.parentId;
+    }
+    
+    return hierarchy;
+}
+
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, url }) {
     const postId = params.postId;
@@ -25,8 +47,12 @@ export async function load({ params, url }) {
             throw error(404, 'Post not found');
         }
 
+        // Get category hierarchy
+        const categoryHierarchy = await getCategoryHierarchy(post.categoryId);
+
         return {
-            post
+            post,
+            categoryHierarchy
         };
     } catch (err) {
         console.error('Error loading post:', err);

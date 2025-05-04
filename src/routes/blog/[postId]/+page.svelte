@@ -7,6 +7,7 @@
 	let { data } = $props();
 
 	const post = data.post;
+	const categoryHierarchy = data.categoryHierarchy;
 	console.log(post);
 	const title = post.title;
 	const description = post.description;
@@ -40,7 +41,14 @@
 			</div>
 		{/if}
 		<header class="max-w-3xl mx-auto md:prose md:prose-lg my-8 md:my-12">
-			<Post_meta author={post.author} updated={post.updated} tags={post.tags} />
+			<Post_meta
+				author={post.author}
+				updated={post.updated}
+				tags={post.tags}
+				category={post.categoryId}
+				title={post.title}
+				{categoryHierarchy}
+			/>
 		</header>
 		<article class="max-w-3xl mx-auto">
 			<div class="prose prose-lg max-w-none">
