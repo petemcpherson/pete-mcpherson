@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import Tiptap from '$lib/components/Tiptap.svelte';
 	import TagSelector from '$lib/components/TagSelector.svelte';
+	import CategorySelector from '$lib/components/CategorySelector.svelte';
 	/** @type {{ data: import('./$types').PageData, form: { error?: string; success?: string; message?: string } }} */
 	let { data } = $props();
 
@@ -22,11 +23,13 @@
 	let uploading = $state(false);
 	let tags = $state(data.tags || []);
 	let selectedTags = $state(data.post?.tags || []);
+	let selectedCategoryId = $state(data.post?.categoryId || '');
 	let initialTitle = $state(title);
 	let initialBody = $state(body);
 	let initialSlug = $state(slug);
 	let initialStatus = $state(status);
 	let initialTags = $state([...selectedTags]);
+	let initialCategoryId = $state(selectedCategoryId);
 	let initialDescription = $state(description);
 	let initialCreated = $state(created);
 
@@ -40,22 +43,8 @@
 			description !== initialDescription ||
 			created !== initialCreated ||
 			JSON.stringify(selectedTags) !== JSON.stringify(initialTags) ||
+			selectedCategoryId !== initialCategoryId ||
 			imageFile !== null;
-
-		// console.log('Recalculating hasUnsavedChanges:', {
-		// 	title,
-		// 	initialTitle,
-		// 	body: body?.slice(0, 50),
-		// 	initialBody: initialBody?.slice(0, 50),
-		// 	slug,
-		// 	initialSlug,
-		// 	status,
-		// 	initialStatus,
-		// 	selectedTags,
-		// 	initialTags,
-		// 	imageFile,
-		// 	isChanged
-		// });
 
 		return isChanged;
 	});
@@ -107,7 +96,6 @@
 	}
 
 	async function saveDraft() {
-		// console.log('Starting saveDraft...');
 		updateStatus('Saving...');
 		const formData = new FormData();
 		formData.set('title', title);
@@ -115,32 +103,21 @@
 		formData.set('slug', slug);
 		formData.set('status', status);
 		formData.set('tags', JSON.stringify(selectedTags));
+		formData.set('categoryId', selectedCategoryId);
 		formData.set('description', description);
 		if (postId) formData.set('id', postId);
 		if (imageFile) formData.set('featuredImage', imageFile);
 		if (created) formData.set('created', created);
 
 		try {
-			// console.log('Sending request to server...');
 			const response = await fetch('?/saveDraft', {
 				method: 'POST',
 				body: formData
 			});
 
-			// console.log('Got response:', response);
 			const result = await response.json();
-			// console.log('Parsed result:', result);
 
 			if (response.ok && !result.error) {
-				// console.log('Save successful, updating initial values...');
-				// console.log('Before update:', {
-				// 	initialTitle,
-				// 	initialBody: initialBody?.slice(0, 50),
-				// 	initialSlug,
-				// 	initialStatus,
-				// 	initialTags
-				// });
-
 				lastSaved = new Date();
 				// Update initial values after successful save
 				initialTitle = title;
@@ -148,18 +125,10 @@
 				initialSlug = slug;
 				initialStatus = status;
 				initialTags = [...selectedTags];
+				initialCategoryId = selectedCategoryId;
 				initialDescription = description;
 				initialCreated = created;
 				imageFile = null;
-
-				// console.log('After update:', {
-				// 	initialTitle,
-				// 	initialBody: initialBody?.slice(0, 50),
-				// 	initialSlug,
-				// 	initialStatus,
-				// 	initialTags,
-				// 	hasUnsavedChanges
-				// });
 
 				message = status === 'draft' ? 'Draft saved successfully' : 'Post saved successfully';
 				messageType = 'success';
@@ -383,7 +352,10 @@
 								<label class="label" for="post-tags">
 									<span class="label-text">Tags</span>
 								</label>
-								<TagSelector bind:tags bind:selectedTags id="post-tags" />
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+									<TagSelector {tags} {selectedTags} on:update={handleTagUpdate} />
+									<CategorySelector categories={data.categories} bind:selectedCategoryId />
+								</div>
 							</div>
 						</div>
 					</div>

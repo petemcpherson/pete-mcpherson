@@ -49,10 +49,46 @@ export async function load({ url }) {
     } catch (error) {
         console.error('Error loading tags:', error);
     }
+
+    // Load categories from Firestore
+    let categories = [];
+    try {
+        const categoriesSnapshot = await adminDB.collection('categories').get();
+        const allCategories = categoriesSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+
+        // Organize categories into hierarchy
+        categories = allCategories.filter(cat => !cat.parentId);
+        const subCategories = allCategories.filter(cat => cat.parentId);
+
+        // Add children to their parents
+        categories.forEach(root => {
+            root.children = subCategories.filter(sub => sub.parentId === root.id);
+            
+            // Add children to subcategories (third level)
+            root.children?.forEach(subCat => {
+                subCat.children = subCategories.filter(sub => sub.parentId === subCat.id);
+            });
+        });
+
+        // Sort categories at all levels alphabetically
+        categories.sort((a, b) => a.name.localeCompare(b.name));
+        categories.forEach(root => {
+            root.children?.sort((a, b) => a.name.localeCompare(b.name));
+            root.children?.forEach(subCat => {
+                subCat.children?.sort((a, b) => a.name.localeCompare(b.name));
+            });
+        });
+    } catch (error) {
+        console.error('Error loading categories:', error);
+    }
     
     return {
         post,
-        tags
+        tags,
+        categories
     };
 }
 
@@ -67,6 +103,7 @@ export const actions = {
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
+        const categoryId = formData.get('categoryId');
         const description = formData.get('description');
         const created = formData.get('created');
 
@@ -86,9 +123,10 @@ export const actions = {
             const postData = {
                 title,
                 body,
-                slug: formatSlugForId(slug), // Format slug with hyphens before saving
+                slug: formatSlugForId(slug),
                 status,
                 tags,
+                categoryId,
                 description,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
@@ -198,21 +236,18 @@ export const actions = {
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
+        const categoryId = formData.get('categoryId');
         const description = formData.get('description');
         const created = formData.get('created');
 
         try {
-            // If slug is empty, generate it from title
-            if (!slug) {
-                slug = title;
-            }
-
             const postData = {
-                title,
-                body,
-                slug: formatSlugForId(slug), // Format slug with hyphens before saving
-                status,
+                title: title || 'Untitled Draft',
+                body: body || '',
+                slug: formatSlugForId(slug || title || 'untitled-draft'),
+                status: status || 'draft',
                 tags,
+                categoryId,
                 description,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
@@ -266,31 +301,22 @@ export const actions = {
                 }
             }
 
-            const documentId = formatSlugForId(slug);
-
-            // If this is a new post or the slug hasn't changed, just create/update normally
-            if (!oldPostId || oldPostId === documentId) {
-                if (!oldPostId) {
-                    postData.created = new Date();
-                }
-                await adminDB.collection('posts').doc(documentId).set(postData, { merge: true });
+            // Generate document ID - use existing ID, slug, or generate a new one
+            let documentId;
+            if (oldPostId) {
+                documentId = oldPostId;
             } else {
-                // If the slug has changed, we need to:
-                // 1. Create a new document with the new slug as ID
-                // 2. Copy all data to the new document
-                // 3. Delete the old document
-                const oldDoc = await adminDB.collection('posts').doc(oldPostId).get();
-                if (oldDoc.exists) {
-                    const oldData = oldDoc.data();
-                    postData.created = oldData.created; // Preserve original creation date
-                    
-                    // Create new document with new slug
-                    await adminDB.collection('posts').doc(documentId).set(postData);
-                    
-                    // Delete old document
-                    await adminDB.collection('posts').doc(oldPostId).delete();
-                }
+                // If we have a slug, use it, otherwise generate from title or use timestamp
+                documentId = formatSlugForId(slug || title || `draft-${Date.now()}`);
             }
+
+            // Ensure we have a valid document ID
+            if (!documentId) {
+                documentId = `draft-${Date.now()}`;
+            }
+
+            // Save the document
+            await adminDB.collection('posts').doc(documentId).set(postData, { merge: true });
 
             return {
                 success: true,
