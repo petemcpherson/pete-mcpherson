@@ -24,14 +24,14 @@
 	let tags = $state(data.tags || []);
 	let selectedTags = $state(data.post?.tags || []);
 	let selectedCategoryId = $state(data.post?.categoryId || '');
-	let initialTitle = $state(title);
-	let initialBody = $state(body);
-	let initialSlug = $state(slug);
-	let initialStatus = $state(status);
-	let initialTags = $state([...selectedTags]);
-	let initialCategoryId = $state(selectedCategoryId);
-	let initialDescription = $state(description);
-	let initialCreated = $state(created);
+	let initialTitle = $state(data.post?.title || data.form?.title || '');
+	let initialBody = $state(data.post?.body || data.form?.body || '');
+	let initialSlug = $state(data.post?.slug || data.form?.slug || '');
+	let initialStatus = $state(data.post?.status || 'draft');
+	let initialTags = $state(data.post?.tags || []);
+	let initialCategoryId = $state(data.post?.categoryId || '');
+	let initialDescription = $state(data.post?.description || data.form?.description || '');
+	let initialCreated = $state(data.post?.created ? data.post.created.slice(0, 16) : '');
 
 	// Replace the function and effect with a derived value
 	let hasUnsavedChanges = $derived.by(() => {
@@ -343,11 +343,13 @@
 						</select>
 					</div>
 
-					<div class="form-control">
-						<label class="label" for="post-tags">
-							<span class="label-text">Tags</span>
-						</label>
-						<TagSelector {tags} {selectedTags} on:update={handleTagUpdate} />
+					<div class="space-y-4">
+						<div class="flex flex-col gap-4">
+							<div>
+								<label for="tags" class="label">Tags</label>
+								<TagSelector {tags} {selectedTags} on:tagsUpdate={handleTagUpdate} />
+							</div>
+						</div>
 					</div>
 					<CategorySelector categories={data.categories} bind:selectedCategoryId />
 					<!-- Description  -->

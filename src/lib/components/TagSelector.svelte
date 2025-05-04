@@ -1,9 +1,12 @@
 <script>
 	import { db } from '$lib/firebase';
 	import { doc, setDoc, getDoc, addDoc, collection } from 'firebase/firestore';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	/** @type {{ tags: Array<{ id: string, name: string }>, selectedTags?: string[] }} */
-	let { tags = $bindable([]), selectedTags = $bindable([]) } = $props();
+	let { tags = [], selectedTags = [] } = $props();
 
 	// console.log('Initial selected tags:', selectedTags);
 
@@ -50,6 +53,7 @@
 		}
 
 		console.log('Selected tags after toggle:', selectedTags);
+		dispatch('tagsUpdate', { selectedTags });
 	}
 </script>
 
