@@ -12,6 +12,7 @@
 	let postId = $state(data.post?.id || '');
 	let featuredImage = $state(data.post?.featuredImage || '');
 	let description = $state(data.post?.description || data.form?.description || '');
+	let created = $state(data.post?.created ? data.post.created.slice(0, 16) : '');
 	let imageFile = $state(null);
 	let imagePreview = $state('');
 	let submitting = $state(false);
@@ -27,6 +28,7 @@
 	let initialStatus = $state(status);
 	let initialTags = $state([...selectedTags]);
 	let initialDescription = $state(description);
+	let initialCreated = $state(created);
 
 	// Replace the function and effect with a derived value
 	let hasUnsavedChanges = $derived.by(() => {
@@ -36,6 +38,7 @@
 			slug !== initialSlug ||
 			status !== initialStatus ||
 			description !== initialDescription ||
+			created !== initialCreated ||
 			JSON.stringify(selectedTags) !== JSON.stringify(initialTags) ||
 			imageFile !== null;
 
@@ -115,6 +118,7 @@
 		formData.set('description', description);
 		if (postId) formData.set('id', postId);
 		if (imageFile) formData.set('featuredImage', imageFile);
+		if (created) formData.set('created', created);
 
 		try {
 			// console.log('Sending request to server...');
@@ -145,6 +149,7 @@
 				initialStatus = status;
 				initialTags = [...selectedTags];
 				initialDescription = description;
+				initialCreated = created;
 				imageFile = null;
 
 				// console.log('After update:', {
@@ -436,6 +441,27 @@
 								<label class="label">
 									<span class="label-text-alt">{description.length}/160 characters</span>
 								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Created Date Card -->
+				<div class="card bg-base-200">
+					<div class="card-body">
+						<h2 class="card-title">Created Date</h2>
+						<div class="space-y-4">
+							<div class="form-control">
+								<label class="label" for="post-created">
+									<span class="label-text">Post creation date and time</span>
+								</label>
+								<input
+									type="datetime-local"
+									id="post-created"
+									name="created"
+									bind:value={created}
+									class="input input-bordered"
+								/>
 							</div>
 						</div>
 					</div>

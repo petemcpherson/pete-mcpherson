@@ -68,6 +68,7 @@ export const actions = {
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
         const description = formData.get('description');
+        const created = formData.get('created');
 
         if (!title || !body) {
             return fail(400, {
@@ -92,6 +93,14 @@ export const actions = {
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
+
+            // If created date is provided, use it, otherwise set it for new posts
+            if (created) {
+                postData.created = new Date(created);
+            } else if (!oldPostId) {
+                // Only set created date for new posts if not provided
+                postData.created = new Date();
+            }
 
             // Handle featured image upload if provided
             if (featuredImageFile && featuredImageFile instanceof File && featuredImageFile.size > 0) {
@@ -190,6 +199,7 @@ export const actions = {
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
         const description = formData.get('description');
+        const created = formData.get('created');
 
         try {
             // If slug is empty, generate it from title
@@ -207,6 +217,14 @@ export const actions = {
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
+
+            // If created date is provided, use it, otherwise set it for new posts
+            if (created) {
+                postData.created = new Date(created);
+            } else if (!oldPostId) {
+                // Only set created date for new posts if not provided
+                postData.created = new Date();
+            }
 
             // Handle featured image upload if provided
             if (featuredImageFile && featuredImageFile instanceof File && featuredImageFile.size > 0) {
