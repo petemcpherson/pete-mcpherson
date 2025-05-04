@@ -11,6 +11,7 @@
 	let status = $state(data.post?.status || 'draft');
 	let postId = $state(data.post?.id || '');
 	let featuredImage = $state(data.post?.featuredImage || '');
+	let description = $state(data.post?.description || data.form?.description || '');
 	let imageFile = $state(null);
 	let imagePreview = $state('');
 	let submitting = $state(false);
@@ -20,8 +21,41 @@
 	let uploading = $state(false);
 	let tags = $state(data.tags || []);
 	let selectedTags = $state(data.post?.tags || []);
+	let initialTitle = $state(title);
+	let initialBody = $state(body);
+	let initialSlug = $state(slug);
+	let initialStatus = $state(status);
+	let initialTags = $state([...selectedTags]);
+	let initialDescription = $state(description);
 
-	// console.log(tags);
+	// Replace the function and effect with a derived value
+	let hasUnsavedChanges = $derived.by(() => {
+		const isChanged =
+			title !== initialTitle ||
+			body !== initialBody ||
+			slug !== initialSlug ||
+			status !== initialStatus ||
+			description !== initialDescription ||
+			JSON.stringify(selectedTags) !== JSON.stringify(initialTags) ||
+			imageFile !== null;
+
+		// console.log('Recalculating hasUnsavedChanges:', {
+		// 	title,
+		// 	initialTitle,
+		// 	body: body?.slice(0, 50),
+		// 	initialBody: initialBody?.slice(0, 50),
+		// 	slug,
+		// 	initialSlug,
+		// 	status,
+		// 	initialStatus,
+		// 	selectedTags,
+		// 	initialTags,
+		// 	imageFile,
+		// 	isChanged
+		// });
+
+		return isChanged;
+	});
 
 	// Format slug for preview (spaces for display, hyphens for ID)
 	function formatSlugForPreview(slug) {
@@ -70,6 +104,7 @@
 	}
 
 	async function saveDraft() {
+		// console.log('Starting saveDraft...');
 		updateStatus('Saving...');
 		const formData = new FormData();
 		formData.set('title', title);
@@ -77,18 +112,50 @@
 		formData.set('slug', slug);
 		formData.set('status', status);
 		formData.set('tags', JSON.stringify(selectedTags));
+		formData.set('description', description);
 		if (postId) formData.set('id', postId);
 		if (imageFile) formData.set('featuredImage', imageFile);
 
 		try {
+			// console.log('Sending request to server...');
 			const response = await fetch('?/saveDraft', {
 				method: 'POST',
 				body: formData
 			});
-			const result = await response.json();
 
-			if (result.success) {
+			// console.log('Got response:', response);
+			const result = await response.json();
+			// console.log('Parsed result:', result);
+
+			if (response.ok && !result.error) {
+				// console.log('Save successful, updating initial values...');
+				// console.log('Before update:', {
+				// 	initialTitle,
+				// 	initialBody: initialBody?.slice(0, 50),
+				// 	initialSlug,
+				// 	initialStatus,
+				// 	initialTags
+				// });
+
 				lastSaved = new Date();
+				// Update initial values after successful save
+				initialTitle = title;
+				initialBody = body;
+				initialSlug = slug;
+				initialStatus = status;
+				initialTags = [...selectedTags];
+				initialDescription = description;
+				imageFile = null;
+
+				// console.log('After update:', {
+				// 	initialTitle,
+				// 	initialBody: initialBody?.slice(0, 50),
+				// 	initialSlug,
+				// 	initialStatus,
+				// 	initialTags,
+				// 	hasUnsavedChanges
+				// });
+
 				message = status === 'draft' ? 'Draft saved successfully' : 'Post saved successfully';
 				messageType = 'success';
 				if (!postId) postId = result.id;
@@ -96,6 +163,9 @@
 				setTimeout(() => {
 					message = '';
 				}, 2000);
+			} else {
+				console.error('Server returned error:', result.error);
+				throw new Error(result.error || 'Failed to save');
 			}
 		} catch (error) {
 			console.error('Error saving draft:', error);
@@ -118,7 +188,9 @@
 	async function handleStatusChange(event) {
 		const newStatus = event.target.value;
 		status = newStatus;
-		updateStatus(`Post status changed to ${newStatus}`);
+		if (newStatus === 'published') {
+			updateStatus('Click "Publish Post" to confirm publication');
+		}
 	}
 
 	async function handleSubmit({ result }) {
@@ -232,14 +304,16 @@
 
 		<!-- Actions Panel - 2nd column -->
 		<div class="w-80 lg:border-l lg:pl-8">
-			<div class="sticky top-4 space-y-6">
+			<div class="sticky top-4 space-y-6 max-h-[calc(100vh-2rem)] overflow-y-auto pr-4">
 				<!-- status message -->
 				<div class="h-6 p-2 flex items-center justify-center text-sm">
 					{#if message}
 						<span
-							class=" font-bold font-lg {messageType === 'success' ? 'text-success' : 'text-error'}"
+							class="font-bold font-lg {messageType === 'success' ? 'text-success' : 'text-error'}"
 							>{message}</span
 						>
+					{:else if hasUnsavedChanges}
+						<span class="font-bold text-2xl text-warning">Unsaved changes</span>
 					{/if}
 				</div>
 				<div class="card bg-base-200">
@@ -248,15 +322,34 @@
 						<div class="space-y-4">
 							<button
 								type="button"
-								class="btn btn-outline w-full"
+								class="btn btn-outline w-full {hasUnsavedChanges ? 'btn-primary' : ''}"
 								disabled={submitting}
 								onclick={() => {
 									updateStatus('Saving...');
 									saveDraft();
 								}}
 							>
-								{status === 'draft' ? 'Save Draft' : 'Save Post'}
+								{#if status === 'published'}
+									Update Post
+								{:else}
+									Save Draft
+								{/if}
 							</button>
+
+							{#if postId}
+								<button
+									type="button"
+									class="btn btn-outline btn-info w-full"
+									disabled={submitting}
+									onclick={() => {
+										saveDraft().then(() => {
+											window.open(`/blog/${postId}?preview=true`, '_blank');
+										});
+									}}
+								>
+									Preview Post
+								</button>
+							{/if}
 						</div>
 					</div>
 				</div>
@@ -266,25 +359,26 @@
 						<h2 class="card-title">Post Settings</h2>
 						<div class="space-y-4">
 							<div class="form-control">
-								<label class="label">
+								<label class="label" for="post-status">
 									<span class="label-text">Status</span>
 								</label>
 								<select
+									id="post-status"
 									class="select select-bordered w-full"
 									bind:value={status}
 									onchange={handleStatusChange}
 									disabled={submitting}
 								>
 									<option value="draft">Draft</option>
-									<option value="published">Published</option>
+									<option value="published" class="text-success">Published</option>
 								</select>
 							</div>
 
 							<div class="form-control">
-								<label class="label">
+								<label class="label" for="post-tags">
 									<span class="label-text">Tags</span>
 								</label>
-								<TagSelector bind:tags bind:selectedTags />
+								<TagSelector bind:tags bind:selectedTags id="post-tags" />
 							</div>
 						</div>
 					</div>
@@ -296,11 +390,12 @@
 						<h2 class="card-title">Featured Image</h2>
 						<div class="space-y-4">
 							<div class="form-control">
-								<label class="label">
+								<label class="label" for="featured-image">
 									<span class="label-text">Upload Image</span>
 								</label>
 								<input
 									type="file"
+									id="featured-image"
 									accept="image/*"
 									class="file-input file-input-bordered w-full"
 									onchange={handleImageChange}
@@ -312,11 +407,36 @@
 								<div class="mt-2">
 									<img
 										src={imagePreview || featuredImage}
-										alt="Featured image preview"
+										alt="Post preview"
 										class="w-full h-40 object-cover rounded-md"
 									/>
 								</div>
 							{/if}
+						</div>
+					</div>
+				</div>
+
+				<!-- Description Card -->
+				<div class="card bg-base-200">
+					<div class="card-body">
+						<h2 class="card-title">Post Description</h2>
+						<div class="space-y-4">
+							<div class="form-control">
+								<label class="label" for="post-description">
+									<span class="label-text">Short description for SEO and previews</span>
+								</label>
+								<textarea
+									id="post-description"
+									name="description"
+									bind:value={description}
+									class="textarea textarea-bordered h-24"
+									placeholder="Enter a brief description of your post..."
+									maxlength="160"
+								></textarea>
+								<label class="label">
+									<span class="label-text-alt">{description.length}/160 characters</span>
+								</label>
+							</div>
 						</div>
 					</div>
 				</div>

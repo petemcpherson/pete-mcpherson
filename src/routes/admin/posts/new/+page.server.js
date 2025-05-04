@@ -67,11 +67,12 @@ export const actions = {
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
+        const description = formData.get('description');
 
         if (!title || !body) {
             return fail(400, {
                 error: 'Title and body are required',
-                title, body
+                title, body, description
             });
         }
 
@@ -87,6 +88,7 @@ export const actions = {
                 slug: formatSlugForId(slug), // Format slug with hyphens before saving
                 status,
                 tags,
+                description,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };
@@ -187,6 +189,7 @@ export const actions = {
         const oldPostId = formData.get('id');
         const featuredImageFile = formData.get('featuredImage');
         const tags = JSON.parse(formData.get('tags') || '[]');
+        const description = formData.get('description');
 
         try {
             // If slug is empty, generate it from title
@@ -200,6 +203,7 @@ export const actions = {
                 slug: formatSlugForId(slug), // Format slug with hyphens before saving
                 status,
                 tags,
+                description,
                 updated: new Date(),
                 author: locals.userData?.name || 'Pete McPherson'
             };

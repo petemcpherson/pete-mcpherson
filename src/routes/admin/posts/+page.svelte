@@ -60,7 +60,7 @@
 				<thead>
 					<tr>
 						<th>Title</th>
-						<th>Category</th>
+						<th>Tags</th>
 						<th>Status</th>
 						<th>Last Updated</th>
 						<th>Actions</th>
@@ -72,7 +72,17 @@
 							<td>
 								<div class="font-medium">{post.title}</div>
 							</td>
-							<td>{post.category}</td>
+							<td>
+								{#if post.tags && post.tags.length > 0}
+									<div class="flex flex-wrap gap-1">
+										{#each post.tags as tag}
+											<span class="badge badge-sm badge-primary">{tag}</span>
+										{/each}
+									</div>
+								{:else}
+									<span class="text-gray-400">No tags</span>
+								{/if}
+							</td>
 							<td>
 								<span class="badge badge-{post.status === 'published' ? 'success' : 'warning'}">
 									{post.status}
@@ -82,7 +92,9 @@
 							<td>
 								<div class="flex gap-2">
 									<a href="/admin/posts/new?edit={post.id}" class="btn btn-sm btn-ghost"> Edit </a>
-									<a href="/{post.slug}" class="btn btn-sm btn-ghost" target="_blank"> View </a>
+									<a href="/blog/{post.slug}" class="btn btn-sm btn-ghost" target="_blank">
+										View
+									</a>
 									<form method="POST" action="?/delete" use:enhance={handleDelete} class="inline">
 										<input type="hidden" name="id" value={post.id} />
 										<button

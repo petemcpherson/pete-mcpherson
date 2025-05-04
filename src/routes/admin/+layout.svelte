@@ -28,26 +28,6 @@
 							Posts
 						</a>
 					</li>
-					<li>
-						<a
-							href="/admin/categories"
-							class={currentPath.startsWith('/admin/categories')
-								? 'bg-neutral text-neutral-content'
-								: ''}
-						>
-							Categories
-						</a>
-					</li>
-					<li>
-						<a
-							href="/admin/settings"
-							class={currentPath.startsWith('/admin/settings')
-								? 'bg-neutral text-neutral-content'
-								: ''}
-						>
-							Settings
-						</a>
-					</li>
 				</ul>
 			</div>
 		</div>

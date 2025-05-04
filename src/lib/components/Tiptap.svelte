@@ -3,6 +3,7 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Image from '@tiptap/extension-image';
+	import Link from '@tiptap/extension-link';
 	import { app } from '$lib/firebase';
 	import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -13,6 +14,8 @@
 	let uploadProgress = $state(0);
 	let showSource = $state(false);
 	let sourceContent = $state('');
+	let linkUrl = $state('');
+	let showLinkInput = $state(false);
 
 	async function handleImageUpload(file) {
 		uploading = true;
@@ -88,6 +91,12 @@
 									const url = await handleImageUpload(file);
 									return url;
 								}
+							}),
+							Link.configure({
+								openOnClick: false,
+								HTMLAttributes: {
+									class: 'text-primary underline'
+								}
 							})
 						],
 						content: newContent,
@@ -160,6 +169,27 @@
 		}
 	}
 
+	function setLink() {
+		if (!linkUrl) {
+			editor.chain().focus().unsetLink().run();
+			showLinkInput = false;
+			return;
+		}
+
+		// Add https:// if no protocol is specified
+		const url = /^https?:\/\//.test(linkUrl) ? linkUrl : `https://${linkUrl}`;
+
+		editor.chain().focus().setLink({ href: url }).run();
+		linkUrl = '';
+		showLinkInput = false;
+	}
+
+	function unsetLink() {
+		editor.chain().focus().unsetLink().run();
+		linkUrl = '';
+		showLinkInput = false;
+	}
+
 	onMount(() => {
 		editor = new Editor({
 			element: document.querySelector('#editor'),
@@ -172,6 +202,12 @@
 					uploadImage: async (file) => {
 						const url = await handleImageUpload(file);
 						return url;
+					}
+				}),
+				Link.configure({
+					openOnClick: false,
+					HTMLAttributes: {
+						class: 'text-primary underline'
 					}
 				})
 			],
@@ -282,6 +318,29 @@
 			<button type="button" class="btn btn-sm" onclick={toggleSource} class:active={showSource}>
 				Source
 			</button>
+			<button
+				type="button"
+				class="btn btn-sm"
+				onclick={() => (showLinkInput = !showLinkInput)}
+				class:active={editor.isActive('link')}
+			>
+				Link
+			</button>
+			{#if showLinkInput}
+				<div class="flex gap-2 items-center">
+					<input
+						type="text"
+						bind:value={linkUrl}
+						placeholder="Enter URL..."
+						class="input input-bordered input-sm"
+						onkeydown={(e) => e.key === 'Enter' && setLink()}
+					/>
+					<button type="button" class="btn btn-sm btn-primary" onclick={setLink}>Add</button>
+					{#if editor.isActive('link')}
+						<button type="button" class="btn btn-sm btn-error" onclick={unsetLink}>Remove</button>
+					{/if}
+				</div>
+			{/if}
 		</div>
 	{/if}
 	{#if showSource}
@@ -305,6 +364,7 @@
 <style>
 	.editor-toolbar {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0.5rem;
 		padding: 0.5rem;
 		border: 1px solid #e2e8f0;
