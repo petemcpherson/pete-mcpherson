@@ -205,14 +205,14 @@
 	}
 </script>
 
-<div class="container mx-auto p-4">
+<div class="m-4 md:m-8 p-4">
 	<div class="flex flex-col lg:flex-row gap-8">
 		<!-- Editor Panel -->
 		<div class="flex-1">
 			<div class="flex items-center justify-between mb-8">
-				<h1 class="text-4xl font-bold">
+				<!-- <h1 class="text-4xl font-bold">
 					{title || 'Untitled Post'}
-				</h1>
+				</h1> -->
 				<div class="flex items-center gap-4">
 					{#if lastSaved}
 						<span class="text-sm text-gray-500">
@@ -277,7 +277,7 @@
 		</div>
 
 		<!-- Actions Panel - 2nd column -->
-		<div class="w-80 lg:border-l lg:pl-8">
+		<div class="w-1/4 lg:border-l lg:pl-8">
 			<div class="sticky top-4 space-y-6 max-h-[calc(100vh-2rem)] overflow-y-auto pr-4">
 				<!-- status message -->
 				<div class="h-6 p-2 flex items-center justify-center text-sm">
@@ -290,156 +290,130 @@
 						<span class="font-bold text-2xl text-warning">Unsaved changes</span>
 					{/if}
 				</div>
-				<div class="card bg-base-200">
-					<div class="card-body">
-						<h2 class="card-title">Post Actions</h2>
-						<div class="space-y-4">
-							<button
-								type="button"
-								class="btn btn-outline w-full {hasUnsavedChanges ? 'btn-primary' : ''}"
-								disabled={submitting}
-								onclick={() => {
-									updateStatus('Saving...');
-									saveDraft();
-								}}
-							>
-								{#if status === 'published'}
-									Update Post
-								{:else}
-									Save Draft
-								{/if}
-							</button>
 
-							{#if postId}
-								<button
-									type="button"
-									class="btn btn-outline btn-info w-full"
-									disabled={submitting}
-									onclick={() => {
-										saveDraft().then(() => {
-											window.open(`/blog/${postId}?preview=true`, '_blank');
-										});
-									}}
-								>
-									Preview Post
-								</button>
-							{/if}
-						</div>
-					</div>
+				<h2 class="text-2xl font-bold">Post Actions</h2>
+				<div class="space-y-4">
+					<button
+						type="button"
+						class="btn btn-outline w-full {hasUnsavedChanges ? 'btn-primary' : ''}"
+						disabled={submitting}
+						onclick={() => {
+							updateStatus('Saving...');
+							saveDraft();
+						}}
+					>
+						{#if status === 'published'}
+							Update Post
+						{:else}
+							Save Draft
+						{/if}
+					</button>
+
+					{#if postId}
+						<button
+							type="button"
+							class="btn btn-outline btn-info w-full"
+							disabled={submitting}
+							onclick={() => {
+								saveDraft().then(() => {
+									window.open(`/blog/${postId}?preview=true`, '_blank');
+								});
+							}}
+						>
+							Preview Post
+						</button>
+					{/if}
 				</div>
 
-				<div class="card bg-base-200">
-					<div class="card-body">
-						<h2 class="card-title">Post Settings</h2>
-						<div class="space-y-4">
-							<div class="form-control">
-								<label class="label" for="post-status">
-									<span class="label-text">Status</span>
-								</label>
-								<select
-									id="post-status"
-									class="select select-bordered w-full"
-									bind:value={status}
-									onchange={handleStatusChange}
-									disabled={submitting}
-								>
-									<option value="draft">Draft</option>
-									<option value="published" class="text-success">Published</option>
-								</select>
-							</div>
+				<h2 class="text-2xl font-bold">Post Settings</h2>
+				<div class="space-y-4">
+					<div class="form-control">
+						<label class="label" for="post-status">
+							<span class="label-text">Status</span>
+						</label>
+						<select
+							id="post-status"
+							class="select select-bordered w-full"
+							bind:value={status}
+							onchange={handleStatusChange}
+							disabled={submitting}
+						>
+							<option value="draft">Draft</option>
+							<option value="published" class="text-success">Published</option>
+						</select>
+					</div>
 
-							<div class="form-control">
-								<label class="label" for="post-tags">
-									<span class="label-text">Tags</span>
-								</label>
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-									<TagSelector {tags} {selectedTags} on:update={handleTagUpdate} />
-									<CategorySelector categories={data.categories} bind:selectedCategoryId />
-								</div>
-							</div>
-						</div>
+					<div class="form-control">
+						<label class="label" for="post-tags">
+							<span class="label-text">Tags</span>
+						</label>
+						<TagSelector {tags} {selectedTags} on:update={handleTagUpdate} />
+					</div>
+					<CategorySelector categories={data.categories} bind:selectedCategoryId />
+					<!-- Description  -->
+
+					<div class="form-control">
+						<label class="label" for="post-description">
+							<span class="label-text">Short description for SEO and previews</span>
+						</label>
+						<textarea
+							id="post-description"
+							name="description"
+							bind:value={description}
+							class="textarea textarea-bordered h-24"
+							placeholder="Enter a brief description of your post..."
+							maxlength="160"
+						></textarea>
+						<label class="label" for="post-description">
+							<span class="label-text-alt">{description.length}/160 characters</span>
+						</label>
 					</div>
 				</div>
 
 				<!-- Featured Image Card -->
-				<div class="card bg-base-200">
-					<div class="card-body">
-						<h2 class="card-title">Featured Image</h2>
-						<div class="space-y-4">
-							<div class="form-control">
-								<label class="label" for="featured-image">
-									<span class="label-text">Upload Image</span>
-								</label>
-								<input
-									type="file"
-									id="featured-image"
-									accept="image/*"
-									class="file-input file-input-bordered w-full"
-									onchange={handleImageChange}
-									name="featuredImage"
-								/>
-							</div>
 
-							{#if imagePreview || featuredImage}
-								<div class="mt-2">
-									<img
-										src={imagePreview || featuredImage}
-										alt="Post preview"
-										class="w-full h-40 object-cover rounded-md"
-									/>
-								</div>
-							{/if}
-						</div>
+				<div class="space-y-4">
+					<div class="form-control">
+						<label class="label" for="featured-image">
+							<span class="label-text">Featured Image</span>
+						</label>
+						<input
+							type="file"
+							id="featured-image"
+							accept="image/*"
+							class="file-input file-input-bordered w-full"
+							onchange={handleImageChange}
+							name="featuredImage"
+						/>
 					</div>
-				</div>
 
-				<!-- Description Card -->
-				<div class="card bg-base-200">
-					<div class="card-body">
-						<h2 class="card-title">Post Description</h2>
-						<div class="space-y-4">
-							<div class="form-control">
-								<label class="label" for="post-description">
-									<span class="label-text">Short description for SEO and previews</span>
-								</label>
-								<textarea
-									id="post-description"
-									name="description"
-									bind:value={description}
-									class="textarea textarea-bordered h-24"
-									placeholder="Enter a brief description of your post..."
-									maxlength="160"
-								></textarea>
-								<label class="label">
-									<span class="label-text-alt">{description.length}/160 characters</span>
-								</label>
-							</div>
+					{#if imagePreview || featuredImage}
+						<div class="mt-2">
+							<img
+								src={imagePreview || featuredImage}
+								alt="Post preview"
+								class="w-full h-40 object-cover rounded-md"
+							/>
 						</div>
-					</div>
+					{/if}
 				</div>
 
 				<!-- Created Date Card -->
-				<div class="card bg-base-200">
-					<div class="card-body">
-						<h2 class="card-title">Created Date</h2>
-						<div class="space-y-4">
-							<div class="form-control">
-								<label class="label" for="post-created">
-									<span class="label-text">Post creation date and time</span>
-								</label>
-								<input
-									type="datetime-local"
-									id="post-created"
-									name="created"
-									bind:value={created}
-									class="input input-bordered"
-								/>
-							</div>
-						</div>
-					</div>
+
+				<div class="form-control">
+					<label class="label" for="post-created">
+						<span class="label-text">Publish Date</span>
+					</label>
+					<input
+						type="datetime-local"
+						id="post-created"
+						name="created"
+						bind:value={created}
+						class="input input-bordered"
+					/>
 				</div>
 
-				{#if postId}
+				<!-- {#if postId}
 					<div class="card bg-base-200">
 						<div class="card-body">
 							<h2 class="card-title">Post Info</h2>
@@ -454,7 +428,7 @@
 							</div>
 						</div>
 					</div>
-				{/if}
+				{/if} -->
 			</div>
 		</div>
 	</div>

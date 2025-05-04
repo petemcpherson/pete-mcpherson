@@ -61,6 +61,7 @@
 					<tr>
 						<th>Title</th>
 						<th>Tags</th>
+						<th>Category</th>
 						<th>Status</th>
 						<th>Last Updated</th>
 						<th>Actions</th>
@@ -81,6 +82,13 @@
 									</div>
 								{:else}
 									<span class="text-gray-400">No tags</span>
+								{/if}
+							</td>
+							<td>
+								{#if post.category}
+									<span class="badge badge-sm badge-secondary">{post.category.name}</span>
+								{:else}
+									<span class="text-gray-400">No category</span>
 								{/if}
 							</td>
 							<td>

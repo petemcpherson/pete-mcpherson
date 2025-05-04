@@ -33,7 +33,5 @@
 	</div>
 
 	<!-- Main Content -->
-	<main class="container mx-auto">
-		{@render props.children()}
-	</main>
+	{@render props.children()}
 </div>

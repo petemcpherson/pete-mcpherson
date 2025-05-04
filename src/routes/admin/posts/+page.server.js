@@ -5,11 +5,27 @@ import { fail } from '@sveltejs/kit';
 export async function load() {
     try {
         const postsSnapshot = await adminDB.collection('posts').get();
-        const posts = postsSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data(),
-            created: doc.data().created?.toDate?.()?.toISOString(),
-            updated: doc.data().updated?.toDate?.()?.toISOString()
+        const posts = await Promise.all(postsSnapshot.docs.map(async doc => {
+            const data = doc.data();
+            const postData = {
+                id: doc.id,
+                ...data,
+                created: data.created?.toDate?.()?.toISOString(),
+                updated: data.updated?.toDate?.()?.toISOString()
+            };
+
+            // If the post has a categoryId, fetch the category details
+            if (data.categoryId) {
+                const categoryDoc = await adminDB.collection('categories').doc(data.categoryId).get();
+                if (categoryDoc.exists) {
+                    postData.category = {
+                        id: categoryDoc.id,
+                        name: categoryDoc.data().name
+                    };
+                }
+            }
+
+            return postData;
         }));
 
         // Sort posts by updated date, most recent first
