@@ -24,6 +24,9 @@
 					<li>
 						<a href="/admin/tags"> Tags </a>
 					</li>
+					<li>
+						<a href="/admin/categories"> Categories </a>
+					</li>
 				</ul>
 			</div>
 		</div>
