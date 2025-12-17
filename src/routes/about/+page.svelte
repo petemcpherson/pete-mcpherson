@@ -2,26 +2,35 @@
 	import Head from '$lib/components/Head.svelte';
 
 	let email = $state('');
-	// zapier requires a premium zapier plan
-	let zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
 
 	const handleSubmit = async () => {
-		const res = await fetch('/api/zapier', {
-			method: 'POST',
-
-			headers: {
-				'Content-Type': 'application/json'
-			},
-
-			body: JSON.stringify({ email, zapierUrl })
-		});
+		let res;
+		try {
+			res = await fetch('https://sendy-optin.pete-85b.workers.dev/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, listId: 'vRfjCXivzFqd8OwKQM7CPQ' })
+			});
+		} catch (e) {
+			console.error('Opt-in request failed', e);
+			alert('Failed to submit email. Please try again.');
+			return;
+		}
 
 		if (res.ok) {
 			// goto('/thank-you-page-you-need-to-create');
 			alert('Ur in! Check your email for confirmation!');
 		} else {
-			console.error('Failed to submit email');
-			alert('Failed to submit email');
+			const bodyText = await res.text().catch(() => '');
+			let message = 'Failed to submit email. Please try again.';
+			try {
+				const parsed = JSON.parse(bodyText);
+				message = parsed?.message || message;
+			} catch {
+				message = bodyText || message;
+			}
+			console.error('Failed to submit email', { status: res.status, body: bodyText });
+			alert(message);
 		}
 	};
 </script>

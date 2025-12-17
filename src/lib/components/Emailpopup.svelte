@@ -5,25 +5,34 @@
 	let modal = $state();
 
 	const handleSubmit = async () => {
-		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
-
-		console.log('popup zap email', email);
-
-		const res = await fetch('/api/zapier', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ email, zapierUrl })
-		});
+		let res;
+		try {
+			res = await fetch('https://sendy-optin.pete-85b.workers.dev/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, listId: 'vRfjCXivzFqd8OwKQM7CPQ' })
+			});
+		} catch (e) {
+			console.error('Opt-in request failed', e);
+			alert('Failed to submit email. Please try again.');
+			return;
+		}
 
 		if (res.ok) {
 			alert('Thanks for subscribing!');
 			modal.close();
 			email = '';
 		} else {
-			console.error('Failed to submit email');
-			alert('Failed to submit email');
+			const bodyText = await res.text().catch(() => '');
+			let message = 'Failed to submit email. Please try again.';
+			try {
+				const parsed = JSON.parse(bodyText);
+				message = parsed?.message || message;
+			} catch {
+				message = bodyText || message;
+			}
+			console.error('Failed to submit email', { status: res.status, body: bodyText });
+			alert(message);
 		}
 	};
 </script>

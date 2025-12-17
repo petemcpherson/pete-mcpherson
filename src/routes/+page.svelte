@@ -7,26 +7,33 @@
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(email);
 
-		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
-
-		const res = await fetch('/api/zapier', {
-			method: 'POST',
-
-			headers: {
-				'Content-Type': 'application/json'
-			},
-
-			body: JSON.stringify({ email, zapierUrl })
-		});
+		let res;
+		try {
+			res = await fetch('https://sendy-optin.pete-85b.workers.dev/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, listId: 'vRfjCXivzFqd8OwKQM7CPQ' })
+			});
+		} catch (e) {
+			console.error('Opt-in request failed', e);
+			alert('Failed to submit email. Please try again.');
+			return;
+		}
 
 		if (res.ok) {
-			// goto('/thank-you-page-you-need-to-create');
 			alert('Thanks for subscribing!');
 		} else {
-			console.error('Failed to submit email');
-			alert('Failed to submit email');
+			const bodyText = await res.text().catch(() => '');
+			let message = 'Failed to submit email. Please try again.';
+			try {
+				const parsed = JSON.parse(bodyText);
+				message = parsed?.message || message;
+			} catch {
+				message = bodyText || message;
+			}
+			console.error('Failed to submit email', { status: res.status, body: bodyText });
+			alert(message);
 		}
 	};
 
@@ -70,7 +77,12 @@
 			<!-- social icons -->
 			<div class="flex gap-4 mt-8">
 				<!-- twitter -->
-				<a href="https://twitter.com/doyouevenblog/" target="_blank" rel="noreferrer noopener">
+				<a
+					href="https://twitter.com/doyouevenblog/"
+					target="_blank"
+					rel="noreferrer noopener"
+					aria-label="Pete on Twitter"
+				>
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -81,7 +93,12 @@
 					>
 				</a>
 				<!-- instagram -->
-				<a href="https://www.instagram.com/bloggerpete" target="_blank" rel="noreferrer noopener">
+				<a
+					href="https://www.instagram.com/bloggerpete"
+					target="_blank"
+					rel="noreferrer noopener"
+					aria-label="Pete on Instagram"
+				>
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -94,7 +111,12 @@
 					>
 				</a>
 				<!-- github -->
-				<a href="https://github.com/petemcpherson" target="_blank" rel="noreferrer noopener">
+				<a
+					href="https://github.com/petemcpherson"
+					target="_blank"
+					rel="noreferrer noopener"
+					aria-label="Pete on GitHub"
+				>
 					<svg
 						viewBox="0 0 24 24"
 						aria-hidden="true"
@@ -111,6 +133,7 @@
 					href="https://www.linkedin.com/in/petemcpherson/"
 					target="_blank"
 					rel="noreferrer noopener"
+					aria-label="Pete on LinkedIn"
 				>
 					<svg
 						viewBox="0 0 24 24"

@@ -1,0 +1,167 @@
+<!-- List Gadget Timer Display -->
+<!-- Place this where you want the timer to appear -->
+<div class="lg-timer" data-timer-id="irJmV9P76atu" style="text-align: center; margin: 20px 0;"></div>
+<script>
+(function() {
+  'use strict';
+
+  var container = document.currentScript.previousElementSibling;
+  var timerId = container.getAttribute('data-timer-id');
+  var config = window.ListGadgetTimers && window.ListGadgetTimers[timerId];
+
+  // Check if tracking script initialized properly
+  if (!config) {
+    container.innerHTML = '<p>Tracking script not loaded. Add tracking script to page head, then visit with ?email parameter.</p>';
+    return;
+  }
+
+  // Check if in clearing mode (triggered by ?clear_lg_timer parameter)
+  if (config.clearing && config.pendingClear) {
+    container.innerHTML = '<p>Clearing tracking data...</p>';
+
+    // Confirm with user
+    var confirmed = confirm('Clear your tracking data?\n\nThis will remove:\n- Your tracking cookie\n- Your local storage data\n- Your subscriber record\n\nThis only affects you, not other visitors.');
+
+    if (!confirmed) {
+      container.innerHTML = '<p>Clear cancelled. Redirecting...</p>';
+      window.location.href = window.location.pathname + (config.email ? '?email=' + config.email : '');
+      return;
+    }
+
+    container.innerHTML = '<p>Clearing...</p>';
+
+    // Helper function to delete cookie
+    function deleteCookie(name) {
+      document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax';
+    }
+
+    // Clear local data
+    deleteCookie(config.cookieName);
+    try {
+      localStorage.removeItem(config.storageKey);
+    } catch (e) {
+      console.log('[ListGadget] localStorage clear failed');
+    }
+
+    // Function to finish clearing and close window
+    var finishClear = function() {
+      console.log('[ListGadget] Tracking cleared successfully');
+      container.innerHTML = '<p>Tracking cleared! You can close this window.</p>';
+
+      // Try to close window
+      setTimeout(function() {
+        window.close();
+      }, 1000);
+    };
+
+    // Delete subscriber record from server (if exists)
+    if (config.currentEmail) {
+      var deleteUrl = config.apiDomain + '/api/timers/' + config.userId + '/' + config.timerId + '/subscribers/' + encodeURIComponent(config.currentEmail);
+      console.log('[ListGadget] Deleting subscriber:', config.currentEmail);
+
+      fetch(deleteUrl, { method: 'DELETE' })
+        .then(function(res) { return res.json(); })
+        .then(finishClear)
+        .catch(function(err) {
+          console.log('[ListGadget] Delete failed, clearing local anyway:', err.message || err);
+          finishClear();
+        });
+    } else {
+      console.log('[ListGadget] No subscriber email to delete');
+      finishClear();
+    }
+    return;
+  }
+
+  // Check timer status and display countdown
+  var retryCount = 0;
+  var maxRetries = 5;
+
+  function checkTimerStatus() {
+    var apiUrl = config.apiDomain + '/api/timers/' + config.userId + '/' + config.timerId + '/status?email=' + encodeURIComponent(config.email);
+
+    // NEW: Add migration parameter if detected
+    if (config.migrateFrom) {
+      apiUrl += '&migrate_from=' + encodeURIComponent(config.migrateFrom);
+    }
+
+    fetch(apiUrl)
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('API returned status ' + response.status);
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        // Reset retry count on success
+        retryCount = 0;
+
+        // NEW: Update cookies after successful migration
+        if (config.migrateFrom && !data.error) {
+          console.log('[ListGadget] Migration successful - updating cookies');
+
+          // Helper to update cookie
+          function setCookie(name, value, days) {
+            var expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+          }
+
+          function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax';
+          }
+
+          setCookie('lg_timer_' + config.timerId, config.email, 30);
+          deleteCookie('lg_anon_' + config.timerId);
+
+          try {
+            localStorage.setItem('lg_timer_' + config.timerId, config.email);
+          } catch (e) {}
+
+          config.migrateFrom = null; // Clear flag
+        }
+
+        if (data.error) {
+          console.error('[ListGadget] API error:', data.error);
+          container.innerHTML = '<p>Timer Error: ' + data.error + '</p>';
+          return;
+        }
+
+        if (data.isExpired) {
+          // Timer expired - redirect to expired page
+          console.log('[ListGadget] Timer expired, redirecting to:', data.expiredRedirectUrl);
+          window.location.href = data.expiredRedirectUrl;
+          return;
+        }
+
+        // Show countdown GIF (include migration param if needed)
+        var gifUrl = config.gifDomain + '/g/timers/' + config.userId + '/' + config.timerId + '.gif?email=' + encodeURIComponent(config.email);
+        if (config.migrateFrom) {
+          gifUrl += '&migrate_from=' + encodeURIComponent(config.migrateFrom);
+        }
+        container.innerHTML = '<img src="' + gifUrl + '" alt="Countdown Timer" style="max-width: 100%; height: auto;" />';
+
+        // Check again in 10 seconds
+        setTimeout(checkTimerStatus, 10000);
+      })
+      .catch(function(error) {
+        console.error('[ListGadget] Error checking timer status:', error);
+        retryCount++;
+
+        if (retryCount >= maxRetries) {
+          container.innerHTML = '<p>Connection Error: Unable to load timer after ' + maxRetries + ' attempts. Please refresh.</p>';
+          return;
+        }
+
+        // Show loading message while retrying
+        container.innerHTML = '<p>Loading timer... (Attempt ' + (retryCount + 1) + '/' + maxRetries + ')</p>';
+
+        // Retry in 30 seconds
+        setTimeout(checkTimerStatus, 30000);
+      });
+  }
+
+  // Start checking immediately
+  checkTimerStatus();
+})();
+</script>
+<!-- End List Gadget Display -->
