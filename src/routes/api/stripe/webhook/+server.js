@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { STRIPE_API_KEY, STRIPE_WEBHOOK_SECRET } from '$env/dynamic/private';
+import { STRIPE_API_KEY, STRIPE_WEBHOOK_SECRET } from '$env/static/private';
 
 const SENDY_LIST_ID = 'lsn9kpX13TM9tkeSU5HHTQ';
 const SENDY_OPTIN_URL = 'https://sendy-optin.pete-85b.workers.dev/';
