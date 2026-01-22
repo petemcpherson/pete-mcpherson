@@ -1,13 +1,13 @@
 import Stripe from 'stripe';
-import { STRIPE_API_KEY, STRIPE_WEBHOOK_SECRET } from '$env/static/private';
+import { STRIPE_SECRET_KEY, STRIPE_SIGNING_SECRET } from '$env/static/private';
 
 const SENDY_LIST_ID = 'lsn9kpX13TM9tkeSU5HHTQ';
 const SENDY_OPTIN_URL = 'https://sendy-optin.pete-85b.workers.dev/';
 
-const stripe = new Stripe(STRIPE_API_KEY, { apiVersion: '2017-01-27' });
+const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2017-01-27' });
 
 export const POST = async ({ request }) => {
-	if (!STRIPE_API_KEY || !STRIPE_WEBHOOK_SECRET) {
+	if (!STRIPE_SECRET_KEY || !STRIPE_SIGNING_SECRET) {
 		return new Response('Stripe env vars not set', { status: 500 });
 	}
 
@@ -19,7 +19,7 @@ export const POST = async ({ request }) => {
 	const payload = await request.text();
 	let event;
 	try {
-		event = stripe.webhooks.constructEvent(payload, signature, STRIPE_WEBHOOK_SECRET);
+		event = stripe.webhooks.constructEvent(payload, signature, STRIPE_SIGNING_SECRET);
 	} catch (error) {
 		console.error('Stripe webhook signature verification failed', error);
 		return new Response('Webhook signature verification failed', { status: 400 });
