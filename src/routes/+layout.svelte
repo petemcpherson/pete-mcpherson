@@ -28,7 +28,7 @@
 				<li><a href="/about">About</a></li>
 				<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
 				<li>
-					<a href="https://indiepa.ge/pete" target="_blank" rel="noreferrer noopener">Projects</a>
+					<a href="/projects" target="_blank" rel="noreferrer noopener">Projects</a>
 				</li>
 			</ul>
 		</div>
@@ -40,7 +40,7 @@
 			<li><a href="/about">About</a></li>
 			<!-- <li><a href="/salesy-mcsales-landing-page">LNDNG PGE</a></li> -->
 			<li>
-				<a href="https://indiepa.ge/pete" target="_blank" rel="noreferrer noopener">Projects</a>
+				<a href="/projects" target="_blank" rel="noreferrer noopener">Projects</a>
 			</li>
 		</ul>
 	</div>
