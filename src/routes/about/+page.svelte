@@ -1,6 +1,8 @@
 <script>
 	import Head from '$lib/components/Head.svelte';
-
+	import boom from '$lib/assets/images/pete-gifs/boom.gif';
+	import pete_drinks_espresso from '$lib/assets/images/pete_drinks_espresso.jpeg';
+	import socialImage from '$lib/assets/images/socialImage.png';
 	let email = $state('');
 
 	const handleSubmit = async () => {
@@ -46,7 +48,9 @@
 		<div class="max-w-5xl mx-auto">
 			<!-- Intro tag -->
 			<div class="inline-block mb-6">
-				<span class="bg-primary text-primary-content px-4 py-2 text-sm font-bold uppercase tracking-widest rotate-[-2deg] inline-block">
+				<span
+					class="bg-primary text-primary-content px-4 py-2 text-sm font-bold uppercase tracking-widest rotate-[-2deg] inline-block"
+				>
 					Hey, I'm Pete
 				</span>
 			</div>
@@ -70,14 +74,11 @@
 
 			<!-- IMAGE PLACEHOLDER 1 -->
 			<div class="relative inline-block">
-				<div class="w-64 h-64 md:w-80 md:h-80 bg-base-200 border-4 border-dashed border-primary/50 rounded-2xl flex items-center justify-center rotate-3 hover:rotate-0 transition-transform duration-300">
-					<span class="text-base-content/40 text-center p-4">
-						[ Your photo here ]<br />
-						<span class="text-sm">Suggested: Fun headshot or action shot</span>
-					</span>
-				</div>
-				<!-- Decorative element -->
-				<div class="absolute -bottom-4 -right-4 w-20 h-20 bg-secondary rounded-xl -z-10"></div>
+				<img
+					src={pete_drinks_espresso}
+					alt="pete"
+					class="w-full md:w-1/2 rounded-2xl rotate-3 hover:rotate-0 transition-transform duration-300"
+				/>
 			</div>
 		</div>
 	</div>
@@ -93,7 +94,8 @@
 
 			<div class="space-y-8 text-lg leading-relaxed">
 				<p class="text-xl md:text-2xl font-medium">
-					I never really knew what I wanted to be when I grew up. I wanted to be <em>everything!</em>
+					I never really knew what I wanted to be when I grew up. I wanted to be <em>everything!</em
+					>
 				</p>
 
 				<div class="bg-base-100 p-6 md:p-8 rounded-2xl border-l-4 border-primary">
@@ -102,24 +104,20 @@
 					</p>
 				</div>
 
-				<p>So I struggled. I was good at a lot of things and chose to pursue music until I realized I didn't actually want to do it as a living. Three years into my college degree, no less...</p>
-
-				<!-- GIF PLACEHOLDER 1 -->
-				<div class="my-12 flex justify-center">
-					<div class="w-full max-w-md h-48 bg-base-300 border-4 border-dashed border-secondary/50 rounded-xl flex items-center justify-center">
-						<span class="text-base-content/40 text-center p-4">
-							[ GIF placeholder ]<br />
-							<span class="text-sm">Suggested: Funny reaction or relatable moment</span>
-						</span>
-					</div>
-				</div>
-
 				<p>
-					I was told by my parents, teachers, counselors, and just about everybody else that all I needed in life was to <span class="font-bold">"get a job."</span>
+					So I struggled. I was good at a lot of things and chose to pursue music until I realized I
+					didn't actually want to do it as a living. Three years into my college degree, no less...
 				</p>
 
 				<p>
-					So after graduating with a degree in sociology from the University of Georgia, I decided to go a completely different route and get my master's in accounting to become a highly paid accountant.
+					I was told by my parents, teachers, counselors, and just about everybody else that all I
+					needed in life was to <span class="font-bold">"get a job."</span>
+				</p>
+
+				<p>
+					So after graduating with a degree in sociology from the University of Georgia, I decided
+					to go a completely different route and get my master's in accounting to become a highly
+					paid accountant.
 				</p>
 
 				<div class="text-center py-8">
@@ -132,6 +130,14 @@
 					<span class="bg-error text-error-content px-2 py-1 font-bold">HATED</span>
 					basically every second of it.
 				</p>
+				<!-- GIF PLACEHOLDER 1 -->
+				<div class="my-12 flex justify-center">
+					<img
+						src={boom}
+						alt="boom"
+						class="w-full rounded-2xl border-4 border-white/40 shadow-2xl transform hover:scale-105 transition-transform"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -146,27 +152,22 @@
 					So I <span class="text-error">quit.</span>
 				</h2>
 				<p class="text-lg mb-6">
-					I decided to leave a really fantastic career and pursue a job at a startup that would allow me to develop my entrepreneurial muscle.
+					I decided to leave a really fantastic career and pursue a job at a startup that would
+					allow me to develop my entrepreneurial muscle.
 				</p>
 				<p class="text-lg mb-6">
-					After selling our house and moving across the state, my family of three and a half (my wife was expecting our 2nd child)... I started my job...
+					After selling our house and moving across the state, my family of three and a half (my
+					wife was expecting our 2nd child)... I started my job...
 				</p>
 
-				<div class="bg-success/20 border-2 border-success p-6 rounded-xl inline-block rotate-[-1deg]">
-					<p class="text-xl font-bold">...and got laid off after <span class="text-success">ONE paycheck.</span></p>
+				<div
+					class="bg-success/20 border-2 border-success p-6 rounded-xl inline-block rotate-[-1deg]"
+				>
+					<p class="text-xl font-bold">
+						...and got laid off after <span class="text-success">ONE paycheck.</span>
+					</p>
 					<p class="text-base-content/60 mt-2 italic">womp womp.</p>
 				</div>
-			</div>
-
-			<!-- IMAGE PLACEHOLDER 2 -->
-			<div class="relative">
-				<div class="w-full h-80 bg-base-200 border-4 border-dashed border-primary/50 rounded-2xl flex items-center justify-center -rotate-2 hover:rotate-0 transition-transform duration-300">
-					<span class="text-base-content/40 text-center p-4">
-						[ Image placeholder ]<br />
-						<span class="text-sm">Suggested: Photo from early entrepreneur days</span>
-					</span>
-				</div>
-				<div class="absolute -top-4 -left-4 w-16 h-16 bg-primary rounded-full -z-10"></div>
 			</div>
 		</div>
 	</div>
@@ -184,13 +185,13 @@
 		<p class="text-lg opacity-80 mb-4">
 			Thankfully, I was smart enough to record and publish these sessions, and the (award-winning)
 		</p>
-		<p class="text-3xl md:text-4xl font-black">
-			Do You Even Blog Podcast
-		</p>
+		<p class="text-3xl md:text-4xl font-black">Do You Even Blog Podcast</p>
 		<p class="text-lg opacity-80 mt-4">was born.</p>
 
 		<div class="mt-12 inline-block bg-primary-content/10 px-6 py-3 rounded-full">
-			<p class="text-lg font-semibold">That was May 2017, and I've been going strong ever since ;)</p>
+			<p class="text-lg font-semibold">
+				That was May 2017, and I've been going strong ever since ;)
+			</p>
 		</div>
 	</div>
 </section>
@@ -204,47 +205,54 @@
 
 		<!-- GIF PLACEHOLDER 2 -->
 		<div class="flex justify-center mb-16">
-			<div class="w-full max-w-lg h-56 bg-base-200 border-4 border-dashed border-primary/50 rounded-2xl flex items-center justify-center rotate-1">
-				<span class="text-base-content/40 text-center p-4">
-					[ GIF placeholder ]<br />
-					<span class="text-sm">Suggested: Celebratory or "look at all this" energy</span>
-				</span>
-			</div>
+			<img src={socialImage} alt="social image" class="w-full max-w-lg rounded-2xl rotate-1" />
 		</div>
 
 		<!-- Achievement cards -->
 		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-primary transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-primary transition-colors"
+			>
 				<div class="text-4xl mb-3">🎤</div>
 				<h3 class="text-xl font-bold mb-2">Keynote Speaker</h3>
 				<p class="text-base-content/70">Given keynote speeches at conferences</p>
 			</div>
 
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-secondary transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-secondary transition-colors"
+			>
 				<div class="text-4xl mb-3">📱</div>
 				<h3 class="text-xl font-bold mb-2">4+ Apps Built</h3>
 				<p class="text-base-content/70">$50k+ grossed. I'm not even a developer.</p>
 			</div>
 
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-accent transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-accent transition-colors"
+			>
 				<div class="text-4xl mb-3">🎙️</div>
 				<h3 class="text-xl font-bold mb-2">2M+ Downloads</h3>
 				<p class="text-base-content/70">DYEB podcast (plus another podcast!)</p>
 			</div>
 
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-success transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-success transition-colors"
+			>
 				<div class="text-4xl mb-3">📺</div>
 				<h3 class="text-xl font-bold mb-2">3 YouTube Channels</h3>
 				<p class="text-base-content/70">Multiple content verticals</p>
 			</div>
 
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-warning transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-warning transition-colors"
+			>
 				<div class="text-4xl mb-3">🌐</div>
 				<h3 class="text-xl font-bold mb-2">Website Portfolio</h3>
 				<p class="text-base-content/70">Multiple smaller sites & blogs</p>
 			</div>
 
-			<div class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-error transition-colors">
+			<div
+				class="bg-base-200 p-6 rounded-2xl border-2 border-transparent hover:border-error transition-colors"
+			>
 				<div class="text-4xl mb-3">🤝</div>
 				<h3 class="text-xl font-bold mb-2">Brand Collaborations</h3>
 				<p class="text-base-content/70">Dozens of well-known brands in digital marketing</p>
@@ -257,7 +265,9 @@
 <section class="bg-base-200 py-20 lg:py-32">
 	<div class="max-w-4xl mx-auto px-6">
 		<div class="text-center mb-12">
-			<span class="bg-secondary text-secondary-content px-4 py-2 text-sm font-bold uppercase tracking-widest inline-block rotate-1">
+			<span
+				class="bg-secondary text-secondary-content px-4 py-2 text-sm font-bold uppercase tracking-widest inline-block rotate-1"
+			>
 				My "Purpose"
 			</span>
 		</div>
@@ -271,18 +281,21 @@
 				<p class="text-2xl md:text-4xl font-black text-center leading-snug">
 					I aim to make the internet <span class="text-primary">better.</span>
 					<br />
-					I want to make it more <span class="text-secondary">fun</span> and <span class="text-secondary">interesting.</span>
+					I want to make it more <span class="text-secondary">fun</span> and
+					<span class="text-secondary">interesting.</span>
 				</p>
 			</div>
 		</div>
 
 		<div class="mt-12 space-y-6 text-lg text-center">
 			<p>
-				These days I am mostly focused on growing my <strong>weekly roundup newsletter</strong> where I share interesting finds and cool tools from around the internet.
+				These days I am mostly focused on growing my <strong>weekly roundup newsletter</strong> where
+				I share interesting finds and cool tools from around the internet.
 			</p>
 			<p class="text-2xl font-bold text-primary">And building apps.</p>
 			<p class="text-base-content/70">
-				Web apps, mobile apps, you name it. I have an idea list a mile long and I am looking to see just how many useful and fun tools I can ship for people.
+				Web apps, mobile apps, you name it. I have an idea list a mile long and I am looking to see
+				just how many useful and fun tools I can ship for people.
 			</p>
 		</div>
 	</div>
@@ -299,7 +312,8 @@
 			<div class="bg-base-200 p-8 rounded-2xl border-b-4 border-primary">
 				<h3 class="text-2xl font-bold mb-4">Want cool stuff in your inbox?</h3>
 				<p class="text-base-content/70 mb-6">
-					Join my weekly newsletter for interesting finds and cool tools that'll make your life better.
+					Join my weekly newsletter for interesting finds and cool tools that'll make your life
+					better.
 				</p>
 				<span class="text-primary font-semibold">👇 Use the form below</span>
 			</div>
@@ -307,18 +321,19 @@
 			<div class="bg-base-200 p-8 rounded-2xl border-b-4 border-secondary">
 				<h3 class="text-2xl font-bold mb-4">Want to better your brand?</h3>
 				<p class="text-base-content/70 mb-6">
-					I'm a master at producing content and doing digital marketing that makes people follow you with fierce loyalty.
+					I'm a master at producing content and doing digital marketing that makes people follow you
+					with fierce loyalty.
 				</p>
-				<a href="mailto:pete@doyouevenblog.com" class="btn btn-secondary">
-					Let's chat
-				</a>
+				<a href="mailto:pete@doyouevenblog.com" class="btn btn-secondary"> Let's chat </a>
 			</div>
 		</div>
 	</div>
 </section>
 
 <!-- CTA SECTION -->
-<section class="bg-gradient-to-br from-neutral via-neutral to-base-300 py-16 lg:py-32 text-neutral-content">
+<section
+	class="bg-gradient-to-br from-neutral via-neutral to-base-300 py-16 lg:py-32 text-neutral-content"
+>
 	<div class="max-w-3xl mx-auto px-6 text-center">
 		<h2 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6">
 			Follow me.
@@ -327,7 +342,8 @@
 		</h2>
 
 		<p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl mx-auto">
-			This is NOT a sales funnel. It's a friendly, human email I send out weekly-ish, sharing cool stuff I find.
+			This is NOT a sales funnel. It's a friendly, human email I send out weekly-ish, sharing cool
+			stuff I find.
 		</p>
 
 		<form class="max-w-md mx-auto">
@@ -338,11 +354,7 @@
 					bind:value={email}
 					class="input input-bordered input-lg flex-1 text-neutral bg-neutral-content"
 				/>
-				<button
-					type="submit"
-					class="btn btn-primary btn-lg font-bold"
-					onclick={handleSubmit}
-				>
+				<button type="submit" class="btn btn-primary btn-lg font-bold" onclick={handleSubmit}>
 					I'm in!
 				</button>
 			</div>

@@ -16,7 +16,8 @@
 		keebNews: 'https://keebnews.com',
 		doYouEvenBlog: 'https://doyouevenblog.com',
 		fincon: 'https://finconexpo.com',
-		speakerLab: 'https://thespeakerlab.com'
+		speakerLab: 'https://thespeakerlab.com',
+		headlineHelp: 'https://headlinehelp.com'
 	});
 
 	const sections = [
@@ -46,6 +47,14 @@
 						'Designed scalable data structures for nested lists and collaboration.',
 						'Implemented offline caching for fast, reliable cross‑device use.'
 					]
+				},
+				{
+					name: 'Headline Help',
+					period: '2026–Present',
+					role: 'Founder & Full‑Stack Developer',
+					url: urls.headlineHelp,
+					tags: ['SvelteKit', 'Typescript', 'Bun'],
+					bullets: ['Algorithmic headline, title, & subject line analyzer.']
 				},
 				{
 					name: 'Topical Map AI',
