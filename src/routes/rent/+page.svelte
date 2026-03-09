@@ -25,11 +25,11 @@
 {/if}
 
 <!-- Hero -->
-<section class="max-w-5xl mx-auto px-8 pt-20 pb-16 lg:pt-28 lg:pb-24">
+<section class="w-full md:w-3/4 mx-auto px-8 pt-20 pb-16 lg:pt-28 lg:pb-24">
 	<div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center my-8 md:my-16">
 		<!-- Left: headline + image -->
 		<div>
-			<img src={camera} alt="Fujifilm X100VI" class="h-20 rounded opacity-70" />
+			<img src={camera} alt="Fujifilm X100VI" class="w-full rounded" />
 		</div>
 		<!-- Right: subhead + CTA -->
 		<div class="flex flex-col gap-8 justify-center text-xl">
@@ -42,6 +42,7 @@
 			<p>
 				You can rent me to help you out with your business, and I'll raise money for the camera. ;)
 			</p>
+			<p class="text-3xl">👇</p>
 		</div>
 	</div>
 </section>
@@ -110,7 +111,9 @@
 			</div>
 
 			<div>
-				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">You leave with:</p>
+				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">
+					You leave with:
+				</p>
 				<ul class="space-y-2 text-base leading-relaxed">
 					<li class="flex gap-2"><span class="text-base-content/30">—</span>clear next steps?</li>
 					<li class="flex gap-2"><span class="text-base-content/30">—</span>tactical fixes?</li>
@@ -151,7 +154,9 @@
 			</div>
 
 			<div>
-				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">What's included:</p>
+				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">
+					What's included:
+				</p>
 				<ul class="space-y-2 text-base leading-relaxed">
 					<li class="flex gap-2">
 						<span class="text-base-content/30">—</span>3-4 hours of workin for you!
@@ -164,7 +169,9 @@
 			</div>
 
 			<div>
-				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">We can:</p>
+				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">
+					We can:
+				</p>
 				<ul class="space-y-2 text-base leading-relaxed">
 					<li class="flex gap-2"><span class="text-base-content/30">—</span>build landing pages</li>
 					<li class="flex gap-2">
@@ -194,7 +201,9 @@
 		<div class="price-card featured">
 			<div>
 				<div class="flex items-center justify-between mb-4">
-					<span class="text-xs uppercase tracking-widest font-black text-base-content/40">Option 3</span>
+					<span class="text-xs uppercase tracking-widest font-black text-base-content/40"
+						>Option 3</span
+					>
 					<span class="badge badge-primary badge-sm">My favorite 😄</span>
 				</div>
 				<div class="flex items-baseline gap-2 mb-3">
@@ -225,7 +234,9 @@
 			</div>
 
 			<div>
-				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">What do you want?</p>
+				<p class="text-xs uppercase tracking-widest font-black text-base-content/40 mb-3">
+					What do you want?
+				</p>
 				<ul class="space-y-2 text-base leading-relaxed">
 					<li class="flex gap-2"><span class="text-base-content/30">—</span>iPhone app?</li>
 					<li class="flex gap-2">
