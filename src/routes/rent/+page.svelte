@@ -4,7 +4,9 @@
 	import camera from '$lib/assets/images/camera.png';
 
 	let modalOpen = $state(false);
-	let cameraProgress = $state(0); // percent toward camera goal (0–100)
+	const CAMERA_GOAL = 2300;
+	let totalRaised = $state(499); // total dollar amount raised
+	let cameraProgress = $derived(Math.min(100, Math.round((totalRaised / CAMERA_GOAL) * 100)));
 </script>
 
 <svelte:head>
@@ -70,7 +72,7 @@
 
 		<div class="progress-footer text-primary">
 			<span>$0</span>
-			<span class="progress-raised">${Math.round(cameraProgress * 23)} raised</span>
+			<span class="progress-raised">${Math.round(totalRaised).toLocaleString()} raised</span>
 			<span>$2,300</span>
 		</div>
 	</div>
