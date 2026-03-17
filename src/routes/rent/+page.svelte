@@ -5,7 +5,7 @@
 
 	let modalOpen = $state(false);
 	const CAMERA_GOAL = 2300;
-	let totalRaised = $state(598); // total dollar amount raised
+	let totalRaised = $state(797); // total dollar amount raised
 	let cameraProgress = $derived(Math.min(100, Math.round((totalRaised / CAMERA_GOAL) * 100)));
 </script>
 
