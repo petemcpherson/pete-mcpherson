@@ -1,4 +1,5 @@
 import { adminDB } from '$lib/server/admin';
+import { getAllFilePosts } from '$lib/content';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET() {
@@ -10,7 +11,7 @@ export async function GET() {
 			.where('status', '==', 'published')
 			.get();
 
-		const urls = postsSnapshot.docs
+		const firestoreUrls = postsSnapshot.docs
 			.map((doc) => {
 				const post = doc.data();
 				const lastmod = post.updated?.toDate?.()?.toISOString() || post.created?.toDate?.()?.toISOString();
@@ -25,6 +26,23 @@ export async function GET() {
         </url>`;
 			})
 			.join('');
+
+		const filePostUrls = getAllFilePosts()
+			.map(({ slug, metadata }) => {
+				const lastmod = metadata.date ? new Date(metadata.date).toISOString() : '';
+
+				return `
+        <url>
+          <loc>${baseUrl}/blog/${slug}</loc>
+          ${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}
+          <changefreq>monthly</changefreq>
+          <priority>0.7</priority>
+          ${metadata.featuredImage ? `<image:image><image:loc>${baseUrl}${metadata.featuredImage}</image:loc></image:image>` : ''}
+        </url>`;
+			})
+			.join('');
+
+		const urls = firestoreUrls + filePostUrls;
 
 		const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
