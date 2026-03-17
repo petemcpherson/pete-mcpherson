@@ -3,6 +3,7 @@ import { STRIPE_SECRET_KEY, STRIPE_SIGNING_SECRET } from '$env/static/private';
 
 const SENDY_LIST_ID = 'lsn9kpX13TM9tkeSU5HHTQ';
 const SENDY_OPTIN_URL = 'https://sendy-optin.pete-85b.workers.dev/';
+const SENDY_WEBHOOK_ENABLED = false;
 
 const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2017-01-27' });
 
@@ -39,6 +40,11 @@ export const POST = async ({ request }) => {
 	if (!email) {
 		console.warn('Stripe checkout session missing email', { sessionId: session.id });
 		return new Response('Missing customer email', { status: 200 });
+	}
+
+	if (!SENDY_WEBHOOK_ENABLED) {
+		console.info('Sendy webhook paused; skipping opt-in', { sessionId: session.id, email });
+		return new Response('Sendy paused', { status: 200 });
 	}
 
 	let sendyResponse;
