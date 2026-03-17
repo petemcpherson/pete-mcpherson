@@ -1,6 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import tailwindcss from '@tailwindcss/vite';
 import fs from 'fs';
 import path from 'path';
 
@@ -21,6 +22,7 @@ const contentImagesDevPlugin = {
 
 export default defineConfig({
 	plugins: [
+		tailwindcss(),
 		sveltekit(),
 		contentImagesDevPlugin,
 		viteStaticCopy({

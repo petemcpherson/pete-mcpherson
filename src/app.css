@@ -1,3 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro,
+    cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy,
+    wireframe, black, luxury, dracula, cmyk, autumn, business, acid, lemonade,
+    coffee, winter, dim, nord, sunset, night;
+}
+
+/* Sunset theme overrides */
+[data-theme="sunset"] {
+  --color-primary: #ccff00;
+  --color-base-content: #c4c4c4;
+}
+
+.prose {
+  --tw-prose-body: var(--color-base-content);
+  --tw-prose-headings: var(--color-base-content);
+  --tw-prose-bold: var(--color-base-content);
+
+  /* Base <p> size */
+  font-size: 1.25rem; /* default: 1rem */
+}
+
+/* Heading sizes (em = relative to .prose font-size above) */
+.prose h1 { font-size: 2.5em;  } /* default: 2.25em */
+.prose h2 { font-size: 2.75em;     } /* default: 1.5em  */
+.prose h3 { font-size: 1.5em; color: var(--color-primary); } /* default: 1.25em */
+.prose h4 { font-size: 1.25em; } /* default: 1em    */

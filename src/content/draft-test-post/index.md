@@ -25,7 +25,7 @@ and a direct line underneath it?
 * asdf
 * asdf this is too
 
-## here's a sub header lol
+## here's an H2 sub header lol
 
 and some text.
 
@@ -34,3 +34,7 @@ what am I missing?
 |------------|------------|------------|
 | Row 1 Col 1| Row 1 Col 2| Row 1 Col 3|
 | Row 2 Col 1| Row 2 Col 2| Row 2 Col 3|
+
+### Here's an H3 subsubheader ;)
+
+i love it.
