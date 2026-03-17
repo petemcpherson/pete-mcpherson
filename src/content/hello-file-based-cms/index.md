@@ -3,7 +3,7 @@ title: Hello, File-Based CMS
 date: 2026-03-17
 description: A test post written in plain Markdown to verify the file-based CMS is working alongside the existing system.
 tags: [meta, test]
-published: true
+published: false
 ---
 
 This post was written in **Markdown** in the IDE — no TipTap editor, no database, no admin UI.

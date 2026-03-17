@@ -28,7 +28,11 @@ export default defineConfig({
 			targets: [
 				{
 					src: 'src/content/**/*.{jpg,jpeg,png,gif,webp,svg,avif}',
-					dest: 'images'
+					dest: 'images',
+					rename: (_filename, _ext, fullPath) => {
+						const match = fullPath.match(/src\/content\/(.+)/);
+						return match ? match[1] : `${_filename}.${_ext}`;
+					}
 				}
 			]
 		})
