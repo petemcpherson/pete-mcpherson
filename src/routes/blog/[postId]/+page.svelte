@@ -3,25 +3,25 @@
 	import Post_meta from '$lib/components/Post_meta.svelte';
 	import Emailpopup from '$lib/components/Emailpopup.svelte';
 	import { config } from '$lib/config';
+
 	/** @type {{ data: import('./$types').PageData }} */
 	let { data } = $props();
 
-	const post = data.post;
-	const categoryHierarchy = data.categoryHierarchy;
-	console.log(post);
-	const title = post.title;
-	const description = post.description;
-	// Ensure featuredImage is a complete URL
-	const featuredImage = post.featuredImage
-		? new URL(post.featuredImage, config.siteUrl).toString()
-		: undefined;
+	const isFileBased = data.source === 'file';
+
+	// Normalize SEO fields regardless of source
+	const title = isFileBased ? data.metadata.title : data.post.title;
+	const description = isFileBased ? data.metadata.description : data.post.description;
+	const rawImage = isFileBased ? data.metadata.featuredImage : data.post.featuredImage;
+	const featuredImage = rawImage ? new URL(rawImage, config.siteUrl).toString() : undefined;
+	const featuredImageAlt = isFileBased ? (data.metadata.featuredImageAlt || title) : title;
 </script>
 
 <Head {title} {description} img={featuredImage} />
 
 <div class="bg-base-100 min-h-screen">
 	<main class="container mx-auto px-4 py-8">
-		{#if post.status === 'draft'}
+		{#if !isFileBased && data.post.status === 'draft'}
 			<div class="max-w-3xl mx-auto mb-8">
 				<div class="alert alert-info">
 					<svg
@@ -40,27 +40,42 @@
 				</div>
 			</div>
 		{/if}
-		<header class="max-w-3xl mx-auto md:prose md:prose-lg my-8 md:my-12">
-			<Post_meta
-				author={post.author}
-				updated={post.updated}
-				tags={post.tags}
-				category={post.categoryId}
-				title={post.title}
-				{categoryHierarchy}
-			/>
-		</header>
-		<article class="max-w-3xl mx-auto">
-			<div class="prose prose-lg max-w-none">
-				<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{post.title}</h1>
 
-				{#if featuredImage}
-					<img src={featuredImage} alt={post.title} class="w-full h-auto rounded-lg mb-8" />
-				{/if}
-
-				{@html post.body}
-			</div>
-		</article>
+		{#if isFileBased}
+			<article class="max-w-3xl mx-auto">
+				<div class="prose prose-lg max-w-none">
+					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{data.metadata.title}</h1>
+					{#if featuredImage}
+						<img
+							src={featuredImage}
+							alt={featuredImageAlt}
+							class="w-full h-auto rounded-lg mb-8"
+						/>
+					{/if}
+					<svelte:component this={data.content} />
+				</div>
+			</article>
+		{:else}
+			<header class="max-w-3xl mx-auto md:prose md:prose-lg my-8 md:my-12">
+				<Post_meta
+					author={data.post.author}
+					updated={data.post.updated}
+					tags={data.post.tags}
+					category={data.post.categoryId}
+					title={data.post.title}
+					categoryHierarchy={data.categoryHierarchy}
+				/>
+			</header>
+			<article class="max-w-3xl mx-auto">
+				<div class="prose prose-lg max-w-none">
+					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{data.post.title}</h1>
+					{#if featuredImage}
+						<img src={featuredImage} alt={data.post.title} class="w-full h-auto rounded-lg mb-8" />
+					{/if}
+					{@html data.post.body}
+				</div>
+			</article>
+		{/if}
 	</main>
 </div>
 
