@@ -13,7 +13,9 @@
 	const title = isFileBased ? data.metadata.title : data.post.title;
 	const description = isFileBased ? data.metadata.description : data.post.description;
 	const rawImage = isFileBased ? data.metadata.featuredImage : data.post.featuredImage;
+	// Absolute URL for OG/SEO meta tags; relative path for <img> so dev mode works
 	const featuredImage = rawImage ? new URL(rawImage, config.siteUrl).toString() : undefined;
+	const featuredImageSrc = rawImage ?? undefined;
 	const featuredImageAlt = isFileBased ? (data.metadata.featuredImageAlt || title) : title;
 </script>
 
@@ -45,9 +47,9 @@
 			<article class="max-w-3xl mx-auto">
 				<div class="prose prose-lg max-w-none">
 					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{data.metadata.title}</h1>
-					{#if featuredImage}
+					{#if featuredImageSrc}
 						<img
-							src={featuredImage}
+							src={featuredImageSrc}
 							alt={featuredImageAlt}
 							class="w-full h-auto rounded-lg mb-8"
 						/>
@@ -69,8 +71,8 @@
 			<article class="max-w-3xl mx-auto">
 				<div class="prose prose-lg max-w-none">
 					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{data.post.title}</h1>
-					{#if featuredImage}
-						<img src={featuredImage} alt={data.post.title} class="w-full h-auto rounded-lg mb-8" />
+					{#if featuredImageSrc}
+						<img src={featuredImageSrc} alt={data.post.title} class="w-full h-auto rounded-lg mb-8" />
 					{/if}
 					{@html data.post.body}
 				</div>
