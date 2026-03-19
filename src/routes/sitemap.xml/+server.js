@@ -29,7 +29,9 @@ export async function GET() {
 
 		const filePostUrls = getAllFilePosts()
 			.map(({ slug, metadata }) => {
-				const lastmod = metadata.date ? new Date(metadata.date).toISOString() : '';
+				const lastmod = metadata.updated || metadata.date
+					? new Date(metadata.updated ?? metadata.date).toISOString()
+					: '';
 
 				return `
         <url>

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* Callout block classes — generated dynamically in svelte.config.js so must be safelisted */
+@source inline("{bg,text}-{primary,secondary,accent,info,success,warning,error}{,-content} p-2 p-4 rounded-lg my-4");
 @plugin "daisyui" {
   themes: light, dark, cupcake, bumblebee, emerald, corporate, synthwave, retro,
     cyberpunk, valentine, halloween, garden, forest, aqua, lofi, pastel, fantasy,

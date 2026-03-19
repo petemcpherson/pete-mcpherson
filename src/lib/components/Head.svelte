@@ -14,6 +14,9 @@
 	 * @property {any} [url]
 	 * @property {any} [domain]
 	 * @property {any} [img] - The featured image URL for the post, falls back to default social image
+	 * @property {'website'|'article'} [type] - OG type; use 'article' for blog posts
+	 * @property {string} [datePublished] - ISO date string; article og tag + structured data
+	 * @property {string} [dateModified] - ISO date string; article og tag + structured data
 	 */
 
 	/** @type {Props} */
@@ -23,7 +26,10 @@
 		author = config.author,
 		url = config.siteUrl,
 		domain = config.domain,
-		img = socialImage
+		img = socialImage,
+		type = 'website',
+		datePublished = '',
+		dateModified = ''
 	} = $props();
 
 	// Use the provided image URL or fall back to the default social image
@@ -35,12 +41,20 @@
 	<meta name="description" content={description} />
 	<meta name="author" content={author} />
 
-	<!-- Facebook Meta Tags -->
+	<link rel="canonical" href={url} />
+
+	<!-- Facebook / Open Graph -->
 	<meta property="og:url" content={url} />
-	<meta property="og:type" content="website" />
+	<meta property="og:type" content={type} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={ogImage} />
+	{#if type === 'article' && datePublished}
+		<meta property="article:published_time" content={datePublished} />
+	{/if}
+	{#if type === 'article' && dateModified}
+		<meta property="article:modified_time" content={dateModified} />
+	{/if}
 
 	<!-- Twitter Meta Tags -->
 	<meta name="twitter:card" content="summary_large_image" />

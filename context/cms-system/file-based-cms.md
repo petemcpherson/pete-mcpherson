@@ -2,6 +2,65 @@
 
 ---
 
+## Additions / Changes
+
+> This section documents decisions and changes made after initial implementation. Add new entries here as the system evolves.
+
+### Callout blocks via `remark-directive` (2026-03-19)
+
+Added support for styled callout boxes in Markdown using fenced container directive syntax. No imports needed in `.md` files.
+
+**Syntax:**
+
+```md
+:::callout
+Default (primary) callout.
+:::
+
+:::warning
+Something to watch out for.
+:::
+```
+
+**Supported variants** (maps to DaisyUI semantic colors):
+
+| Directive name | Classes applied |
+| -------------- | ------------------------------ |
+| `:::callout` or `:::primary` | `bg-primary text-primary-content` |
+| `:::secondary` | `bg-secondary text-secondary-content` |
+| `:::accent` | `bg-accent text-accent-content` |
+| `:::info` | `bg-info text-info-content` |
+| `:::success` | `bg-success text-success-content` |
+| `:::warning` | `bg-warning text-warning-content` |
+| `:::error` | `bg-error text-error-content` |
+
+All variants also get `p-2 md:p-4 rounded-lg my-4`.
+
+**Implementation:** `remark-directive` + a custom `remarkCallout` plugin in `svelte.config.js`. The directive name itself is the variant selector — no attributes needed for common cases.
+
+---
+
+### `updated` frontmatter field (2026-03-19)
+
+Added an optional `updated` field alongside the existing `date` field in post frontmatter.
+
+**Behavior:**
+- `date` — original publish date; never changes; used for post sorting, RSS `<pubDate>`, and JSON-LD `datePublished`
+- `updated` — date of last significant content revision; optional; used for the displayed date, sitemap `<lastmod>`, and JSON-LD `dateModified`
+- When `updated` is absent, display and sitemap fall back to `date`
+
+**In `Post_meta`:** receives `updated ?? date` so the displayed date always reflects the most recent revision when available.
+
+**Frontmatter example:**
+```yaml
+date: 2025-06-01      # original publish date — never changes
+updated: 2026-03-19   # set this when you make meaningful content changes
+```
+
+**What counts as "updated":** factual corrections, new sections, significant rewrites. Not typo fixes or formatting tweaks.
+
+---
+
 ## ⚠️ Questions to Answer Before Creating an Implementation Plan
 
 Please fill in the answers below before handing this spec to Claude Code.

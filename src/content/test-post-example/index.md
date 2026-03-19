@@ -1,10 +1,11 @@
 ---
 title: Draft Test Post
 date: 2026-03-17
+updated: 2026-03-19
 description: This post has published false and should only appear in development, never in production.
 tags: [test, draft]
 published: false
-featuredImage: /images/draft-test-post/test_image.png                                                
+featuredImage: /images/draft-test-post/test_image.png
 featuredImageAlt: Descriptive alt text for the image
 ---
 

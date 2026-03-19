@@ -1,10 +1,11 @@
 ---
 title: Network Attached Storage (NAS), explained in 100 seconds.
 date: 2026-03-19
+updated: 2026-03-19
 description: What is a NAS (Network Attached Storage) and why do you need one? Learn how a home server can replace Dropbox, iCloud, and Google Drive — beginner-friendly guide.
 tags: [tech]
 published: true
-featuredImage: /images/nas/what_is_a_nas.jpeg                                              
+featuredImage: /images/nas/what_is_a_nas_2.png
 featuredImageAlt: What is network attached storage?
 ---
 
@@ -29,8 +30,6 @@ I pay for none of those now.
 Actually we still pay for Netflix because my wife won&#39;t let me cancel. Dadgum Call The Midwife.
 
 ENTER: ***The NAS.***
-
-![What is a NAS?](/images/nas/what_is_a_nas.jpeg)
 
 ## What&#39;s a NAS?
 
@@ -195,10 +194,12 @@ Things you&#39;ll likely learn about in this process...
 - Pete, do you have a cool way to see current hard drive prices-per-GB on ebay? [YES](https://unli.xyz/diskprices/us/).
 - [You didn&#39;t get this from me, and I definitely don&#39;t approve of it.](https://old.reddit.com/r/Piracy/wiki/megathread)
 
-> ## ⚠️ Accept Side Quest?
->
-> Get a NAS. A cool device that can replace cloud storage tools, expensive streaming platforms, and WAY more stuff.
->
-> *Reward:&nbsp;*🟡 20g
+:::callout
+## ⚠️ Accept Side Quest?
+
+Get a NAS. A cool device that can replace cloud storage tools, expensive streaming platforms, and WAY more stuff.
+
+*Reward:&nbsp;*🟡 20g
+:::
 
 lol I used to play World of Warcraft, and this makes me nostalgic.

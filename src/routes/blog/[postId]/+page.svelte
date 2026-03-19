@@ -17,9 +17,42 @@
 	const featuredImage = rawImage ? new URL(rawImage, config.siteUrl).toString() : undefined;
 	const featuredImageSrc = rawImage ?? undefined;
 	const featuredImageAlt = isFileBased ? (data.metadata.featuredImageAlt || title) : title;
+
+	// JSON-LD structured data
+	const datePublished = isFileBased
+		? data.metadata.date
+		: data.post.created;
+	const dateModified = isFileBased
+		? (data.metadata.updated ?? data.metadata.date)
+		: (data.post.updated ?? data.post.created);
+
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: title,
+		description,
+		...(featuredImage ? { image: featuredImage } : {}),
+		datePublished,
+		dateModified,
+		author: { '@type': 'Person', name: config.author },
+		url: `${config.siteUrl}/blog/${isFileBased ? data.slug : data.post.id}`
+	});
 </script>
 
-<Head {title} {description} img={featuredImage} />
+<Head
+	{title}
+	{description}
+	img={featuredImage}
+	url={`${config.siteUrl}/blog/${isFileBased ? data.slug : data.post.id}`}
+	type="article"
+	{datePublished}
+	{dateModified}
+/>
+
+<svelte:head>
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html `<script type="application/ld+json">${jsonLd}</script>`}
+</svelte:head>
 
 <div class="bg-base-100 min-h-screen">
 	<main class="container mx-auto px-4 py-8">
@@ -44,6 +77,13 @@
 		{/if}
 
 		{#if isFileBased}
+			<header class="max-w-3xl mx-auto md:prose md:prose-lg my-8 md:my-12">
+				<Post_meta
+					updated={data.metadata.updated ?? data.metadata.date}
+					tags={data.metadata.tags ?? []}
+					title={data.metadata.title}
+				/>
+			</header>
 			<article class="max-w-3xl mx-auto">
 				<div class="prose prose-lg max-w-none">
 					<h1 class="text-4xl md:text-6xl font-black mb-4 md:mb-8">{data.metadata.title}</h1>
