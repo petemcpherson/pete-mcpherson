@@ -5,7 +5,7 @@
 
 	let modalOpen = $state(false);
 	const CAMERA_GOAL = 2300;
-	let totalRaised = $state(797); // total dollar amount raised
+	let totalRaised = $state(896); // total dollar amount raised
 	let cameraProgress = $derived(Math.min(100, Math.round((totalRaised / CAMERA_GOAL) * 100)));
 </script>
 
@@ -457,9 +457,9 @@
 		border-radius: 6px;
 		background: linear-gradient(
 			90deg,
-			oklch(var(--p) / 0.7) 0%,
-			oklch(var(--p)) 40%,
-			oklch(var(--s)) 100%
+			var(--color-primary, #7c3aed) 0%,
+			var(--color-primary, #7c3aed) 40%,
+			var(--color-secondary, #06b6d4) 100%
 		);
 		background-size: 300% 100%;
 		animation: shimmer 3s ease-in-out infinite;
@@ -477,8 +477,8 @@
 		background: white;
 		border-radius: 999px;
 		box-shadow:
-			0 0 8px 4px oklch(var(--s)),
-			0 0 24px 8px oklch(var(--p) / 0.6);
+			0 0 8px 4px color-mix(in srgb, var(--color-secondary, #06b6d4) 70%, white 30%),
+			0 0 24px 8px color-mix(in srgb, var(--color-primary, #7c3aed) 60%, transparent);
 		animation: pulse-glow 1.8s ease-in-out infinite;
 	}
 
@@ -494,7 +494,7 @@
 
 	.progress-raised {
 		font-size: 0.95rem;
-		color: oklch(var(--p) / 1);
+		color: var(--color-primary, #7c3aed);
 		font-weight: 600;
 		letter-spacing: 0.02em;
 	}
@@ -516,14 +516,14 @@
 		100% {
 			opacity: 1;
 			box-shadow:
-				0 0 8px 4px oklch(var(--s)),
-				0 0 24px 8px oklch(var(--p) / 0.6);
+				0 0 8px 4px color-mix(in srgb, var(--color-secondary, #06b6d4) 70%, white 30%),
+				0 0 24px 8px color-mix(in srgb, var(--color-primary, #7c3aed) 60%, transparent);
 		}
 		50% {
 			opacity: 0.5;
 			box-shadow:
-				0 0 4px 2px oklch(var(--s) / 0.6),
-				0 0 12px 4px oklch(var(--p) / 0.3);
+				0 0 4px 2px color-mix(in srgb, var(--color-secondary, #06b6d4) 40%, white 60%),
+				0 0 12px 4px color-mix(in srgb, var(--color-primary, #7c3aed) 30%, transparent);
 		}
 	}
 	.price-card.featured {

@@ -87,25 +87,29 @@
 
 <!-- footer section -->
 
-<footer class="footer mt-10 p-10 bg-neutral text-neutral-content">
+<footer class="footer mt-10 p-10 bg-neutral text-neutral-content sm:footer-horizontal">
 	<div class=" flex lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 		<div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-left">
 			<h2>Pete McPherson</h2>
 			<!-- <img src={asdf IMAGENAME} alt="asdf IMAGE NAME" class="h-11" /> -->
 
 			<p class="mt-3 text-sm text-neutral-content/80">Yo! Thanks for visiting my page ;)</p>
-			<p class="mt-3 text-sm text-neutral-content/60">Copyright © 2024 - All rights reserved</p>
+			<p class="mt-3 text-sm text-neutral-content/60">Copyright © 2026 - All rights reserved</p>
 		</div>
 	</div>
 	<nav>
 		<h6 class="footer-title">Links</h6>
 		<a
 			class="link link-hover"
-			href="mailto:pete@doyouevenblog.com"
+			href="mailto:pete@petemcpherson.com"
 			target="_blank"
 			rel="noreferrer noopener">Email Me</a
 		>
 		<a class="link link-hover" href="/about" target="_blank" rel="noreferrer noopener">About</a>
+		<a class="link link-hover" href="/blog" target="_blank" rel="noreferrer noopener">Blog</a>
+		<a class="link link-hover" href="/projects" target="_blank" rel="noreferrer noopener"
+			>Projects</a
+		>
 		<!-- <button class="link link-hover" onclick="my_modal_1.showModal()">Pop-up!</button> -->
 		<!-- <dialog id="my_modal_1" class="modal">
 			<div class="modal-box text-neutral">
@@ -123,26 +127,36 @@
 	</nav>
 	<nav>
 		<h6 class="footer-title">Apps</h6>
-		<a class="link link-hover" href="https://fabb.ai/" target="_blank" rel="noferrer noopener"
-			>FABB.ai</a
+		<a
+			class="link link-hover"
+			href="https://bulletfinity.com/"
+			target="_blank"
+			rel="noferrer noopener"
+			><span class="font-black">Bulletfinity</span> - Infinite Bullet Note‑Taking</a
 		>
-		<a class="link link-hover" href="https://topicalmap.ai/" target="_blank" rel="noferrer noopener"
-			>TopicalMap.ai</a
+		<a class="link link-hover" href="https://peteclub.com/" target="_blank" rel="noferrer noopener"
+			><span class="font-black">Pete Club</span> - 1 membership. All my apps.</a
 		>
 		<a
 			class="link link-hover"
-			href="https://promptimizer.com/"
+			href="https://bananathumbs.peteclub.com/"
 			target="_blank"
-			rel="noferrer noopener">Promptimizer</a
+			rel="noferrer noopener"
+			><span class="font-black">Banana Thumbs</span> - AI YouTube thumbnails.</a
 		>
 		<a
 			class="link link-hover"
-			href="https://ez-site.pages.dev/"
+			href="https://quikevent.peteclub.com/"
 			target="_blank"
-			rel="noferrer noopener">EZ-SITE</a
+			rel="noferrer noopener"
+			><span class="font-black">Quik Event</span> - Lightning fast "add to cal" pages.</a
 		>
-		<a class="link link-hover" href="https://ezcour.se/" target="_blank" rel="noferrer noopener"
-			>EZ-COURSE</a
+		<a
+			class="link link-hover"
+			href="https://listgadget.com/"
+			target="_blank"
+			rel="noferrer noopener"
+			><span class="font-black">List Gadget</span> - Interactive newsletter widgets.</a
 		>
 	</nav>
 	<nav>
