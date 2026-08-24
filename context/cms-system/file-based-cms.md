@@ -11,6 +11,7 @@ This spec covers:
 - file-based markdown content in `src/content/`
 - the mdsvex/preprocessor setup used to compile and style markdown
 - blog listing/detail behavior for file posts
+- lazy runtime loading of compiled markdown components in blog detail routes
 - SEO/sitemap/image behavior for file posts
 
 This repo also contains Firestore-backed posts and an admin UI. That database layer is optional for projects that only need file-based content.
@@ -35,7 +36,7 @@ This repo also contains Firestore-backed posts and an admin UI. That database la
 
 ## 3. Frontmatter Schema
 
-### Required
+### Required (for correct rendering/SEO behavior)
 
 - `title: string`
 - `date: YYYY-MM-DD`
@@ -48,6 +49,11 @@ This repo also contains Firestore-backed posts and an admin UI. That database la
 - `published: boolean`
 - `featuredImage: string` (typically `/images/...`)
 - `featuredImageAlt: string`
+
+### Validation behavior
+
+- Frontmatter is not runtime-validated against a schema
+- Missing "required" keys can still compile, but may cause bad dates, missing meta, or broken cards/pages
 
 ### Date semantics
 
@@ -142,7 +148,7 @@ src/content/
 - Blog detail: `/blog/[postId]`
 - File-based detail example: `/blog/my-post`
 
-Note: the current route is single-segment `[postId]`, not a catch-all route. If you need deep nested slugs (like `guides/svelte/intro`), switch to `[...slug]` in your target project.
+Note: the current route is single-segment `[postId]`, not a catch-all route. The loader can derive nested slugs from folders, but `/blog/[postId]` cannot resolve multi-segment paths (like `guides/svelte/intro`) in the current app. If you need deep nested slugs, switch to `[...slug]`.
 
 ---
 
@@ -163,6 +169,14 @@ Implemented in `src/lib/content.js`.
 - returns `metadata` or `null`
 - returns `null` for unpublished posts in production
 
+### File component loading in detail route
+
+Implemented in `src/routes/blog/[postId]/+page.js`.
+
+- uses non-eager `import.meta.glob('/src/content/**/index.md')`
+- for file-based entries, loads `/src/content/${params.postId}/index.md` at runtime
+- returns `content: mod.default` (compiled mdsvex Svelte component) for `<svelte:component this={data.content} />`
+
 ---
 
 ## 7. Blog Route Behavior
@@ -173,6 +187,7 @@ Implemented in `src/lib/content.js`.
 - file-based posts are mapped from frontmatter:
   - `created <- metadata.date`
   - `title`, `description`, `tags`, `slug`, `featuredImage`
+  - `author <- null` (UI falls back to default author in `Post_meta`)
 - unified list sorted newest-first
 
 If you are building a pure file-based site in another project, remove Firestore reads and use only `getAllFilePosts()`.
@@ -190,6 +205,7 @@ For file posts, page rendering includes:
 - `Post_meta` with `updated={metadata.updated ?? metadata.date}`
 - featured image rendering when `featuredImage` is present
 - `<svelte:component this={data.content} />` for markdown body
+- no draft preview banner (that banner is Firestore-only)
 
 ---
 
