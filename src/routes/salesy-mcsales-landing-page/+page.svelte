@@ -18,16 +18,14 @@
 
 		console.log('firing function with email: ', email);
 
-		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37hwee8/';
-
-		const res = await fetch('/api/zapier', {
+		const res = await fetch('/api/subscribe', {
 			method: 'POST',
 
 			headers: {
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ email, zapierUrl })
+			body: JSON.stringify({ email, source: 'newsletter' })
 		});
 
 		if (res.ok) {

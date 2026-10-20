@@ -18,16 +18,14 @@
 		event.preventDefault();
 		console.log(email);
 
-		const zapierUrl = 'https://hooks.zapier.com/hooks/catch/1152094/37x1vsq/';
-
-		const res = await fetch('/api/zapier', {
+		const res = await fetch('/api/subscribe', {
 			method: 'POST',
 
 			headers: {
 				'Content-Type': 'application/json'
 			},
 
-			body: JSON.stringify({ email, zapierUrl })
+			body: JSON.stringify({ email, source: 'mpme-waitlist' })
 		});
 
 		if (res.ok) {

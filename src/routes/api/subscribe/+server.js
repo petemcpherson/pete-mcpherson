@@ -5,7 +5,8 @@ import { env } from '$env/dynamic/private';
 // Keeping this list server-side stops visitors from applying arbitrary tags.
 const SOURCE_TAGS = {
 	newsletter: ['optin - petemcpherson'],
-	sixfecta: ['optin - petemcpherson', 'sixfecta']
+	sixfecta: ['optin - petemcpherson', 'sixfecta'],
+	'mpme-waitlist': ['optin - petemcpherson', 'mpme-waitlist']
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
