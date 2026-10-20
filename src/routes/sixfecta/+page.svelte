@@ -12,12 +12,12 @@
 
 		let res;
 		try {
-			res = await fetch('https://sendy-optin.pete-85b.workers.dev/', {
+			res = await fetch('/api/subscribe', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ email, listId: 'raWezrknWwJ0hABpkZBj9w' })
+				body: JSON.stringify({ email, source: 'sixfecta' })
 			});
 		} catch (e) {
 			console.error('Opt-in request failed', e);

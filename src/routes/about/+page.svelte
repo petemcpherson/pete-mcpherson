@@ -8,10 +8,10 @@
 	const handleSubmit = async () => {
 		let res;
 		try {
-			res = await fetch('https://sendy-optin.pete-85b.workers.dev/', {
+			res = await fetch('/api/subscribe', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email, listId: 'vRfjCXivzFqd8OwKQM7CPQ' })
+				body: JSON.stringify({ email, source: 'newsletter' })
 			});
 		} catch (e) {
 			console.error('Opt-in request failed', e);
