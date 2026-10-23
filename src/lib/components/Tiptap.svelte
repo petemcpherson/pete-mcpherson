@@ -346,7 +346,7 @@
 	{#if showSource}
 		<textarea
 			bind:value={sourceContent}
-			class="w-full h-[500px] p-4 border rounded-lg bg-white font-mono text-sm"
+			class="w-full h-[500px] p-4 border rounded-lg bg-base-100 font-mono text-sm"
 			placeholder="Enter HTML content..."
 		></textarea>
 	{:else}
@@ -367,34 +367,34 @@
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		padding: 0.5rem;
-		border: 1px solid #e2e8f0;
+		border: 1px solid var(--color-base-300);
 		border-bottom: none;
 		border-radius: 0.5rem 0.5rem 0 0;
-		background-color: #f8fafc;
+		background-color: var(--color-base-200);
 	}
 
 	.editor-toolbar button {
 		padding: 0.25rem 0.5rem;
-		border: 1px solid #e2e8f0;
+		border: 1px solid var(--color-base-300);
 		border-radius: 0.25rem;
-		background-color: white;
+		background-color: var(--color-base-100);
 		cursor: pointer;
 	}
 
 	.editor-toolbar button.active {
-		background-color: #e2e8f0;
+		background-color: var(--color-base-300);
 	}
 
 	.editor-toolbar button:hover {
-		background-color: #f1f5f9;
+		background-color: var(--color-base-200);
 	}
 
 	.image-upload-progress {
 		position: fixed;
 		bottom: 20px;
 		right: 20px;
-		background-color: rgba(0, 0, 0, 0.7);
-		color: white;
+		background-color: var(--color-neutral);
+		color: var(--color-neutral-content);
 		padding: 10px 20px;
 		border-radius: 5px;
 		display: flex;

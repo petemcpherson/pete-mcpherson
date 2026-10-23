@@ -215,7 +215,7 @@
 				</h1> -->
 				<div class="flex items-center gap-4">
 					{#if lastSaved}
-						<span class="text-sm text-gray-500">
+						<span class="text-sm text-base-content/60">
 							Last saved: {lastSaved.toLocaleTimeString()}
 						</span>
 					{/if}
@@ -261,7 +261,7 @@
 								required
 							/>
 							{#if getSlugPreview()}
-								<div class="text-sm text-gray-500 mt-1">
+								<div class="text-sm text-base-content/60 mt-1">
 									{getSlugPreview()}
 								</div>
 							{/if}
@@ -456,7 +456,7 @@
 
 	/* Optional: Add a toolbar */
 	:global(.editor-toolbar) {
-		border-bottom: 1px solid #e2e8f0;
+		border-bottom: 1px solid var(--color-base-300);
 		padding: 0.5rem;
 		margin-bottom: 1rem;
 	}

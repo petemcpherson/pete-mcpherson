@@ -81,37 +81,37 @@
 
 <!-- STICKY BANNER AT TOP -->
 <div
-	class="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 py-3 text-center sticky top-0 z-50 shadow-lg"
+	class="bg-primary text-primary-content py-3 text-center sticky top-0 z-50 shadow-lg"
 >
 	<div class="flex flex-wrap items-center justify-center gap-2 lg:gap-3">
-		<p class="text-white font-bold text-sm lg:text-lg tracking-wide">
-			🗓️ Live Workshop = <span class="text-yellow-300">January 29th, 1:00pm ET</span>
+		<p class="text-primary-content font-bold text-sm lg:text-lg tracking-wide">
+			🗓️ Live Workshop = <span class="text-accent">January 29th, 1:00pm ET</span>
 		</p>
-		<span class="text-white font-bold text-xs lg:text-sm">|</span>
+		<span class="text-primary-content font-bold text-xs lg:text-sm">|</span>
 		<!-- Compact Countdown Timer -->
 		<div class="flex items-center gap-1.5 lg:gap-2">
 			<!-- Days -->
-			<div class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg px-2 py-1 shadow-md">
-				<span class="text-white font-black text-xs lg:text-sm">{days}</span>
-				<span class="text-white/90 font-bold text-[10px] lg:text-xs ml-0.5">d</span>
+			<div class="bg-accent text-accent-content border-2 border-neutral rounded-lg px-2 py-1">
+				<span class="text-accent-content font-black text-xs lg:text-sm">{days}</span>
+				<span class="text-accent-content/90 font-bold text-[10px] lg:text-xs ml-0.5">d</span>
 			</div>
-			<span class="text-white/70 text-xs">:</span>
+			<span class="text-primary-content/70 text-xs">:</span>
 			<!-- Hours -->
-			<div class="bg-gradient-to-br from-orange-500 to-red-500 rounded-lg px-2 py-1 shadow-md">
-				<span class="text-white font-black text-xs lg:text-sm">{hours}</span>
-				<span class="text-white/90 font-bold text-[10px] lg:text-xs ml-0.5">h</span>
+			<div class="bg-accent text-accent-content border-2 border-neutral rounded-lg px-2 py-1">
+				<span class="text-accent-content font-black text-xs lg:text-sm">{hours}</span>
+				<span class="text-accent-content/90 font-bold text-[10px] lg:text-xs ml-0.5">h</span>
 			</div>
-			<span class="text-white/70 text-xs">:</span>
+			<span class="text-primary-content/70 text-xs">:</span>
 			<!-- Minutes -->
-			<div class="bg-gradient-to-br from-red-500 to-pink-500 rounded-lg px-2 py-1 shadow-md">
-				<span class="text-white font-black text-xs lg:text-sm">{minutes}</span>
-				<span class="text-white/90 font-bold text-[10px] lg:text-xs ml-0.5">m</span>
+			<div class="bg-accent text-accent-content border-2 border-neutral rounded-lg px-2 py-1">
+				<span class="text-accent-content font-black text-xs lg:text-sm">{minutes}</span>
+				<span class="text-accent-content/90 font-bold text-[10px] lg:text-xs ml-0.5">m</span>
 			</div>
-			<span class="text-white/70 text-xs">:</span>
+			<span class="text-primary-content/70 text-xs">:</span>
 			<!-- Seconds -->
-			<div class="bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg px-2 py-1 shadow-md">
-				<span class="text-white font-black text-xs lg:text-sm">{seconds}</span>
-				<span class="text-white/90 font-bold text-[10px] lg:text-xs ml-0.5">s</span>
+			<div class="bg-accent text-accent-content border-2 border-neutral rounded-lg px-2 py-1">
+				<span class="text-accent-content font-black text-xs lg:text-sm">{seconds}</span>
+				<span class="text-accent-content/90 font-bold text-[10px] lg:text-xs ml-0.5">s</span>
 			</div>
 		</div>
 	</div>
@@ -119,25 +119,25 @@
 
 <!-- HERO SECTION - Above the Fold -->
 <section
-	class="relative overflow-hidden bg-gradient-to-br from-amber-400 via-orange-500 to-red-600 py-20 lg:py-32"
+	class="relative overflow-hidden bg-secondary text-secondary-content py-20 lg:py-32"
 >
 	<!-- Decorative background elements -->
 	<div class="absolute inset-0 opacity-20">
-		<div class="absolute top-10 left-10 w-32 h-32 border-8 border-black rotate-12"></div>
-		<div class="absolute bottom-20 right-20 w-48 h-48 border-8 border-black -rotate-6"></div>
-		<div class="absolute top-1/2 left-1/4 w-24 h-24 bg-yellow-300 rotate-45"></div>
-		<div class="absolute top-1/3 right-1/3 w-16 h-16 bg-white/30 rounded-full"></div>
+		<div class="absolute top-10 left-10 w-32 h-32 border-8 border-neutral rotate-12"></div>
+		<div class="absolute bottom-20 right-20 w-48 h-48 border-8 border-neutral -rotate-6"></div>
+		<div class="absolute top-1/2 left-1/4 w-24 h-24 bg-accent text-accent-content rotate-45"></div>
+		<div class="absolute top-1/3 right-1/3 w-16 h-16 bg-secondary-content/30 rounded-full"></div>
 	</div>
 
 	<div class="container mx-auto px-6 lg:px-12 relative z-10">
 		<div class="max-w-4xl mx-auto text-center">
 			<h1
-				class="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-tight drop-shadow-2xl"
+				class="text-4xl md:text-6xl lg:text-8xl font-black text-secondary-content leading-tight"
 			>
 				Let's find an extra hour a week for you...
 			</h1>
 
-			<p class="mt-8 text-xl lg:text-3xl text-white/90 font-medium max-w-2xl mx-auto">
+			<p class="mt-8 text-xl lg:text-3xl text-secondary-content/90 font-medium max-w-2xl mx-auto">
 				...by brainstorming how AI & automations can fit into your biz.
 			</p>
 
@@ -153,14 +153,14 @@
 				<img
 					src={productivity_intensifies}
 					alt="productivity intensifies"
-					class="w-full rounded-2xl border-4 border-white/30 shadow-2xl transform hover:scale-105 transition-transform"
+					class="w-full rounded-2xl border-4 border-secondary-content/30 shadow-pop transform hover:scale-105 transition-transform"
 				/>
 			</div>
 
 			<!-- Arrow pointing down -->
 			<div class="mt-16 animate-bounce">
 				<svg
-					class="w-12 h-12 lg:w-16 lg:h-16 mx-auto text-white"
+					class="w-12 h-12 lg:w-16 lg:h-16 mx-auto text-secondary-content"
 					fill="none"
 					stroke="currentColor"
 					viewBox="0 0 24 24"
@@ -178,26 +178,26 @@
 </section>
 
 <!-- PRODUCTIVITY STAGES SECTION -->
-<section class="bg-gray-950 py-16 lg:py-24 relative overflow-hidden">
+<section class="bg-neutral text-neutral-content py-16 lg:py-24 relative overflow-hidden">
 	<div class="container mx-auto px-6 lg:px-12 relative z-10">
 		<div class="max-w-4xl mx-auto">
 			<!-- Header -->
 			<div class="text-center mb-12 lg:mb-16">
-				<h2 class="text-4xl lg:text-6xl font-black text-white">The 3 Stages of AI Productivity</h2>
+				<h2 class="text-4xl lg:text-6xl font-black text-neutral-content">The 3 Stages of AI Productivity</h2>
 			</div>
 
 			<!-- The 3 Stages -->
 			<div class="space-y-6 lg:space-y-8">
 				<!-- Stage 1 -->
 				<div
-					class="bg-gray-800 p-6 lg:p-8 rounded-2xl transform hover:-rotate-1 transition-transform border-4 border-gray-700 shadow-xl"
+					class="bg-neutral-content/10 p-6 lg:p-8 rounded-2xl transform hover:-rotate-1 transition-transform border-4 border-neutral-content/20 shadow-key"
 				>
 					<div class="flex items-start gap-4">
 						<span
-							class="bg-yellow-400 text-black font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+							class="bg-accent text-accent-content font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
 							>1</span
 						>
-						<p class="text-white text-lg lg:text-2xl font-medium">
+						<p class="text-neutral-content text-lg lg:text-2xl font-medium">
 							I KNOW there are powerful tools out there that could give me superpowers
 						</p>
 					</div>
@@ -205,14 +205,14 @@
 
 				<!-- Stage 2 -->
 				<div
-					class="bg-gray-700 p-6 lg:p-8 rounded-2xl transform hover:rotate-1 transition-transform border-4 border-gray-600 shadow-xl"
+					class="bg-neutral-content/10 p-6 lg:p-8 rounded-2xl transform hover:rotate-1 transition-transform border-4 border-neutral-content/20 shadow-key"
 				>
 					<div class="flex items-start gap-4">
 						<span
-							class="bg-yellow-400 text-black font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+							class="bg-accent text-accent-content font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
 							>2</span
 						>
-						<p class="text-white text-lg lg:text-2xl font-medium">
+						<p class="text-neutral-content text-lg lg:text-2xl font-medium">
 							I can't really picture what those superpowers actually look like
 						</p>
 					</div>
@@ -220,14 +220,14 @@
 
 				<!-- Stage 3 -->
 				<div
-					class="bg-gray-600 p-6 lg:p-8 rounded-2xl transform hover:-rotate-1 transition-transform border-4 border-gray-500 shadow-xl"
+					class="bg-neutral-content/10 p-6 lg:p-8 rounded-2xl transform hover:-rotate-1 transition-transform border-4 border-neutral-content/20 shadow-key"
 				>
 					<div class="flex items-start gap-4">
 						<span
-							class="bg-yellow-400 text-black font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+							class="bg-accent text-accent-content font-black text-xl lg:text-2xl w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
 							>3</span
 						>
-						<p class="text-white text-lg lg:text-2xl font-medium">
+						<p class="text-neutral-content text-lg lg:text-2xl font-medium">
 							I'mma probably give up because this AI stuff is super overwhelming
 						</p>
 					</div>
@@ -236,14 +236,14 @@
 
 			<!-- Asterisk divider -->
 			<div class="text-center my-12">
-				<span class="text-6xl text-yellow-400">*</span>
+				<span class="text-6xl text-accent">*</span>
 			</div>
 
 			<!-- Question -->
 			<div class="text-center space-y-4">
-				<p class="text-2xl lg:text-3xl text-white font-bold">Which stage are you at right now?</p>
-				<p class="text-xl text-gray-400">(or maybe you feel like all three?)</p>
-				<p class="text-3xl lg:text-5xl font-black text-yellow-400 mt-8">
+				<p class="text-2xl lg:text-3xl text-neutral-content font-bold">Which stage are you at right now?</p>
+				<p class="text-xl text-neutral-content/70">(or maybe you feel like all three?)</p>
+				<p class="text-3xl lg:text-5xl font-black text-accent mt-8">
 					Doesn't matter. WE GOT YOU!
 				</p>
 			</div>
@@ -252,7 +252,7 @@
 </section>
 
 <!-- EXPLANATION SECTION -->
-<section class="bg-amber-50 py-16 lg:py-24 relative">
+<section class="bg-base-200 py-16 lg:py-24 relative">
 	<!-- Paper texture -->
 	<div
 		class="absolute inset-0 opacity-20"
@@ -260,32 +260,31 @@
 	></div>
 
 	<div class="container mx-auto px-6 lg:px-12 relative">
-		<div class="max-w-3xl mx-auto bg-white shadow-2xl p-8 lg:p-12 border-4 border-black">
+		<div class="max-w-3xl mx-auto bg-base-100 shadow-pop p-8 lg:p-12 border-4 border-neutral">
 			<!-- Content -->
 			<div
-				class="space-y-6 text-lg lg:text-xl text-gray-800"
-				style="font-family: 'Georgia', serif;"
+				class="space-y-6 text-lg lg:text-xl text-base-content font-serif"
 			>
 				<p>No, I'm not selling a new software tool to you. Or an expensive course.</p>
 				<p>
 					You just need a little time & space to kick around ideas in your own business and have <span
-						class="bg-yellow-300 px-1 font-bold">super smart people weigh in.</span
+						class="bg-primary text-primary-content px-1 font-bold">super smart people weigh in.</span
 					>
 				</p>
 
 				<!-- Bullet points styled as handwritten -->
-				<ul class="space-y-3 pl-4 border-l-4 border-orange-500 ml-4">
-					<li class="text-gray-700">What's goin on in your business?</li>
-					<li class="text-gray-700">What tools do you have available?</li>
-					<li class="text-gray-700">
+				<ul class="space-y-3 pl-4 border-l-4 border-secondary ml-4">
+					<li class="text-base-content/85">What's goin on in your business?</li>
+					<li class="text-base-content/85">What tools do you have available?</li>
+					<li class="text-base-content/85">
 						Which "automations & systems" are actually WORTH taking the time to build??
 					</li>
-					<li class="text-gray-700">What do I dooooooo ahhhhhhhh?</li>
+					<li class="text-base-content/85">What do I dooooooo ahhhhhhhh?</li>
 				</ul>
 
 				<p class="pt-4">It's NOT always easy (or worth it) to build systems. or use AI.</p>
 				<p>Which is why we put off trying.</p>
-				<p class="text-gray-600 italic">
+				<p class="text-base-content/70 italic">
 					(and if you're like me—then you feel guilty—like you <em>could be doing more</em>...)
 				</p>
 			</div>
@@ -295,34 +294,34 @@
 
 <!-- WORKSHOP DETAILS SECTION -->
 <section
-	class="bg-gradient-to-b from-indigo-900 to-purple-900 py-16 lg:py-24 relative overflow-hidden"
+	class="bg-primary text-primary-content py-16 lg:py-24 relative overflow-hidden"
 >
 	<!-- Decorative elements -->
 	<div
-		class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full opacity-10 -translate-x-1/2 -translate-y-1/2"
+		class="absolute top-0 left-0 w-64 h-64 bg-primary-content rounded-full opacity-10 -translate-x-1/2 -translate-y-1/2"
 	></div>
 	<div
-		class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full opacity-10 translate-x-1/2 translate-y-1/2"
+		class="absolute bottom-0 right-0 w-96 h-96 bg-primary-content rounded-full opacity-10 translate-x-1/2 translate-y-1/2"
 	></div>
 
 	<div class="container mx-auto px-6 lg:px-12 relative z-10">
 		<div class="text-center mb-12 lg:mb-16">
 			<span
-				class="bg-yellow-400 text-black font-black text-sm lg:text-base px-6 py-2 inline-block transform -rotate-2 mb-6"
+				class="bg-accent text-accent-content font-black text-sm lg:text-base px-6 py-2 inline-block transform -rotate-2 mb-6"
 			>
 				HERE'S THE PLAN
 			</span>
-			<h2 class="text-4xl lg:text-6xl font-black text-white">What we're doing in the workshop</h2>
+			<h2 class="text-4xl lg:text-6xl font-black text-primary-content">What we're doing in the workshop</h2>
 		</div>
 
 		<div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 			<!-- Pete teaches -->
 			<div
-				class="bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all hover:scale-105 text-center"
+				class="bg-primary-content/10 backdrop-blur-sm border-2 border-primary-content/20 rounded-2xl p-8 hover:bg-primary-content/20 transition-all hover:scale-105 text-center"
 			>
 				<span class="text-6xl">🎓</span>
-				<h3 class="text-2xl font-black text-white mt-6 mb-4">Pete teaches</h3>
-				<p class="text-gray-300">
+				<h3 class="text-2xl font-black text-primary-content mt-6 mb-4">Pete teaches</h3>
+				<p class="text-primary-content/70">
 					Pete will share some of the bleeding-edge tech tools <em>available</em>, as well as some
 					tips n' tricks for understanding what you NEED.
 				</p>
@@ -330,11 +329,11 @@
 
 			<!-- Silent brainstorming -->
 			<div
-				class="bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all hover:scale-105 text-center"
+				class="bg-primary-content/10 backdrop-blur-sm border-2 border-primary-content/20 rounded-2xl p-8 hover:bg-primary-content/20 transition-all hover:scale-105 text-center"
 			>
 				<span class="text-6xl">✍️</span>
-				<h3 class="text-2xl font-black text-white mt-6 mb-4">Silent brainstorming time</h3>
-				<p class="text-gray-300">
+				<h3 class="text-2xl font-black text-primary-content mt-6 mb-4">Silent brainstorming time</h3>
+				<p class="text-primary-content/70">
 					Pete will guide you with some prompts, and you'll be doing some pen-to-paper
 					brainstorming.
 				</p>
@@ -342,11 +341,11 @@
 
 			<!-- Group Mastermind -->
 			<div
-				class="bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-all hover:scale-105 text-center"
+				class="bg-primary-content/10 backdrop-blur-sm border-2 border-primary-content/20 rounded-2xl p-8 hover:bg-primary-content/20 transition-all hover:scale-105 text-center"
 			>
 				<span class="text-6xl">🧠</span>
-				<h3 class="text-2xl font-black text-white mt-6 mb-4">Group Brainstorm Mastermind</h3>
-				<p class="text-gray-300">
+				<h3 class="text-2xl font-black text-primary-content mt-6 mb-4">Group Brainstorm Mastermind</h3>
+				<p class="text-primary-content/70">
 					(Optional but encouraged. I SEE YOU INTROVERTS) We'll take turns sharing productivity
 					ideas for our business, and get feedback!
 				</p>
@@ -363,17 +362,17 @@
 </section>
 
 <!-- ABOUT PETE SECTION -->
-<section class="bg-emerald-600 py-16 lg:py-24 relative overflow-hidden">
+<section class="bg-accent text-accent-content py-16 lg:py-24 relative overflow-hidden">
 	<!-- Background pattern -->
 	<div class="absolute inset-0 opacity-10">
-		<div class="absolute top-1/4 right-1/4 w-64 h-64 border-8 border-white rounded-full"></div>
-		<div class="absolute bottom-1/4 left-1/4 w-48 h-48 border-8 border-white rotate-45"></div>
+		<div class="absolute top-1/4 right-1/4 w-64 h-64 border-8 border-accent-content rounded-full"></div>
+		<div class="absolute bottom-1/4 left-1/4 w-48 h-48 border-8 border-accent-content rotate-45"></div>
 	</div>
 
 	<div class="container mx-auto px-6 lg:px-12 relative z-10">
 		<div class="max-w-3xl mx-auto text-center">
-			<h2 class="text-4xl lg:text-6xl font-black text-white mb-8">
-				I'm Pete McPherson, and I'm <span class="text-yellow-300 inline-block transform rotate-2"
+			<h2 class="text-4xl lg:text-6xl font-black text-accent-content mb-8">
+				I'm Pete McPherson, and I'm <span class="text-primary inline-block transform rotate-2"
 					>time-rich</span
 				>
 			</h2>
@@ -383,26 +382,26 @@
 				<img
 					src={boom_gif}
 					alt="boom"
-					class="w-full rounded-2xl border-4 border-white/40 shadow-2xl transform hover:scale-105 transition-transform"
+					class="w-full rounded-2xl border-4 border-accent-content/40 shadow-pop transform hover:scale-105 transition-transform"
 				/>
 			</div>
 
 			<div
-				class="bg-white/20 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border-2 border-white/30 text-left space-y-6"
+				class="bg-accent-content/20 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border-2 border-accent-content/30 text-left space-y-6"
 			>
-				<p class="text-xl lg:text-2xl text-white">
+				<p class="text-xl lg:text-2xl text-accent-content">
 					I'm not the smartest. Or the richest. Or the most productive or the most motivated.
 				</p>
-				<p class="text-xl lg:text-2xl text-white">
-					But I am <span class="bg-yellow-400 text-black px-2 font-bold">time rich.</span>
+				<p class="text-xl lg:text-2xl text-accent-content">
+					But I am <span class="bg-primary text-primary-content px-2 font-bold">time rich.</span>
 				</p>
-				<p class="text-xl lg:text-2xl text-white">
+				<p class="text-xl lg:text-2xl text-accent-content">
 					Over the years, I've figured out how to work less while getting things done.
 				</p>
-				<p class="text-xl lg:text-2xl text-white">
+				<p class="text-xl lg:text-2xl text-accent-content">
 					I'm also a tech wizard and AI expert (#humblebrag).
 				</p>
-				<p class="text-xl lg:text-2xl text-white font-bold">
+				<p class="text-xl lg:text-2xl text-accent-content font-bold">
 					If <em>anybody</em> can help you with AI, automations, or building systems, I can.
 				</p>
 			</div>
@@ -411,27 +410,27 @@
 </section>
 
 <!-- WHO'S IT FOR SECTION -->
-<section class="bg-gray-900 py-16 lg:py-24">
+<section class="bg-neutral text-neutral-content py-16 lg:py-24">
 	<div class="container mx-auto px-6 lg:px-12">
 		<div class="max-w-4xl mx-auto">
-			<h2 class="text-4xl lg:text-6xl font-black text-white text-center mb-12">
+			<h2 class="text-4xl lg:text-6xl font-black text-neutral-content text-center mb-12">
 				This workshop is for you if...
 			</h2>
 
 			<div class="grid md:grid-cols-2 gap-4 lg:gap-6">
 				{#each ['you want more hours in your week', "you're overwhelmed with AI", "you're not clear on what you COULD build", "you're interested in vibe coding", "you're interested in tools like Zapier, n8n, Make.com, IFTTT"] as item}
 					<div
-						class="bg-gradient-to-r from-gray-800 to-gray-750 p-6 rounded-xl border-2 border-gray-700 flex items-center gap-4 hover:border-yellow-400 transition-colors"
+						class="bg-neutral-content/10 p-6 rounded-xl border-2 border-neutral-content/20 flex items-center gap-4 hover:border-accent transition-colors"
 					>
-						<span class="text-3xl text-yellow-400">✓</span>
-						<p class="text-white text-lg lg:text-xl">{item}</p>
+						<span class="text-3xl text-accent">✓</span>
+						<p class="text-neutral-content text-lg lg:text-xl">{item}</p>
 					</div>
 				{/each}
 			</div>
 
 			<div class="mt-12 text-center">
-				<p class="text-xl lg:text-2xl text-gray-300">
-					But really, if <span class="text-yellow-400 font-bold"
+				<p class="text-xl lg:text-2xl text-neutral-content/70">
+					But really, if <span class="text-accent font-bold"
 						>you are looking for ways to gain/save an extra hour per week,</span
 					> this workshop is for you.
 				</p>
@@ -448,10 +447,10 @@
 </section>
 
 <!-- FAQ SECTION -->
-<section class="bg-gradient-to-br from-blue-900 to-indigo-900 py-16 lg:py-24">
+<section class="bg-base-200 py-16 lg:py-24">
 	<div class="container mx-auto px-6 lg:px-12">
 		<div class="max-w-3xl mx-auto">
-			<h2 class="text-4xl lg:text-5xl font-black text-white text-center mb-12">
+			<h2 class="text-4xl lg:text-5xl font-black text-base-content text-center mb-12">
 				Frequently Asked Q's
 			</h2>
 
@@ -459,14 +458,14 @@
 				<!-- FAQ Items -->
 				{#each faqs as faq, i}
 					<div
-						class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border-2 border-white/20 transform {i %
+						class="bg-base-content/10 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border-2 border-base-content/20 transform {i %
 							2 ===
 						0
 							? 'hover:-rotate-1'
 							: 'hover:rotate-1'} transition-transform"
 					>
-						<h3 class="text-xl lg:text-2xl font-black text-yellow-400 mb-3">{faq.q}</h3>
-						<p class="text-white text-lg">{faq.a}</p>
+						<h3 class="text-xl lg:text-2xl font-black text-primary mb-3">{faq.q}</h3>
+						<p class="text-base-content text-lg">{faq.a}</p>
 					</div>
 				{/each}
 			</div>
@@ -475,13 +474,13 @@
 </section>
 
 <!-- FUNNY GIF SECTION -->
-<section class="bg-black py-12 lg:py-16">
+<section class="bg-neutral text-neutral-content py-12 lg:py-16">
 	<div class="container mx-auto px-6 text-center">
 		<div
-			class="max-w-md mx-auto bg-gray-900 border-4 border-yellow-400 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform"
+			class="max-w-md mx-auto bg-neutral text-neutral-content border-4 border-accent rounded-2xl overflow-hidden shadow-pop transform hover:scale-105 transition-transform"
 		>
 			<div
-				class="aspect-video flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900"
+				class="aspect-video flex items-center justify-center bg-neutral-content/10"
 			>
 				<div class="text-center p-8">
 					<img src={my_turn_question} alt="my turn question" class="w-full" />
@@ -493,15 +492,14 @@
 
 <!-- FINAL CTA SECTION -->
 <section
-	class="bg-gradient-to-br from-amber-500 via-orange-600 to-red-700 py-16 lg:py-28 relative overflow-hidden"
+	class="bg-secondary text-secondary-content py-16 lg:py-28 relative overflow-hidden"
 >
 	<!-- Animated background elements -->
 	<div class="absolute inset-0 overflow-hidden">
 		{#each Array(25) as _, i}
 			<div
-				class="absolute w-4 h-4 rounded-full opacity-30"
+				class="absolute w-4 h-4 rounded-full opacity-40 {['bg-base-100', 'bg-accent', 'bg-primary', 'bg-neutral'][i % 4]}"
 				style="
-					background: {['#fff', '#fbbf24', '#f87171', '#60a5fa'][i % 4]};
 					top: {Math.random() * 100}%;
 					left: {Math.random() * 100}%;
 					animation: float {3 + Math.random() * 4}s ease-in-out infinite;
@@ -513,19 +511,19 @@
 
 	<div class="container mx-auto px-6 lg:px-12 relative z-10">
 		<div class="max-w-3xl mx-auto text-center">
-			<h2 class="text-4xl lg:text-6xl font-black text-white mb-8">My turn to ask a question!</h2>
+			<h2 class="text-4xl lg:text-6xl font-black text-secondary-content mb-8">My turn to ask a question!</h2>
 
 			<div
-				class="bg-white/20 backdrop-blur-lg rounded-3xl p-8 lg:p-12 border-2 border-white/30 space-y-6 text-left"
+				class="bg-secondary-content/20 backdrop-blur-lg rounded-3xl p-8 lg:p-12 border-2 border-secondary-content/30 space-y-6 text-left"
 			>
-				<p class="text-xl lg:text-2xl text-white">
+				<p class="text-xl lg:text-2xl text-secondary-content">
 					Do you believe I can help you be more productive?
 				</p>
-				<p class="text-xl lg:text-2xl text-white">
+				<p class="text-xl lg:text-2xl text-secondary-content">
 					Do you believe <em>fancy AI tools</em> can help you in SOME WAY (even if that's not super clear
 					yet)?
 				</p>
-				<p class="text-xl lg:text-2xl text-white font-bold">
+				<p class="text-xl lg:text-2xl text-secondary-content font-bold">
 					Then sign up for the workshop! It's only $49 and a great way to kick off 2026 👍
 				</p>
 			</div>
@@ -542,21 +540,21 @@
 				</button>
 			</div>
 
-			<p class="text-white/70 mt-6 text-lg">🗓️ January 29th, 1:00pm ET</p>
+			<p class="text-secondary-content/70 mt-6 text-lg">🗓️ January 29th, 1:00pm ET</p>
 
 			<!-- Countdown Timer -->
 			<div class="mt-8 max-w-4xl mx-auto">
 				<div
-					class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 lg:p-8 border-2 border-white/30 shadow-2xl"
+					class="bg-secondary-content/10 backdrop-blur-lg rounded-3xl p-6 lg:p-8 border-2 border-secondary-content/30 shadow-pop"
 				>
 					<div class="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
 						<!-- Days -->
 						<div class="text-center">
 							<div
-								class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
+								class="bg-accent text-accent-content border-2 border-neutral rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
 							>
-								<div class="text-3xl lg:text-5xl font-black text-white mb-2">{days}</div>
-								<div class="text-sm lg:text-base font-bold text-white/90 uppercase tracking-wide">
+								<div class="text-3xl lg:text-5xl font-black text-accent-content mb-2">{days}</div>
+								<div class="text-sm lg:text-base font-bold text-accent-content/90 uppercase tracking-wide">
 									Days
 								</div>
 							</div>
@@ -565,10 +563,10 @@
 						<!-- Hours -->
 						<div class="text-center">
 							<div
-								class="bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
+								class="bg-accent text-accent-content border-2 border-neutral rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
 							>
-								<div class="text-3xl lg:text-5xl font-black text-white mb-2">{hours}</div>
-								<div class="text-sm lg:text-base font-bold text-white/90 uppercase tracking-wide">
+								<div class="text-3xl lg:text-5xl font-black text-accent-content mb-2">{hours}</div>
+								<div class="text-sm lg:text-base font-bold text-accent-content/90 uppercase tracking-wide">
 									Hours
 								</div>
 							</div>
@@ -577,10 +575,10 @@
 						<!-- Minutes -->
 						<div class="text-center">
 							<div
-								class="bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
+								class="bg-accent text-accent-content border-2 border-neutral rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
 							>
-								<div class="text-3xl lg:text-5xl font-black text-white mb-2">{minutes}</div>
-								<div class="text-sm lg:text-base font-bold text-white/90 uppercase tracking-wide">
+								<div class="text-3xl lg:text-5xl font-black text-accent-content mb-2">{minutes}</div>
+								<div class="text-sm lg:text-base font-bold text-accent-content/90 uppercase tracking-wide">
 									Minutes
 								</div>
 							</div>
@@ -589,10 +587,10 @@
 						<!-- Seconds -->
 						<div class="text-center">
 							<div
-								class="bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
+								class="bg-accent text-accent-content border-2 border-neutral rounded-2xl p-4 lg:p-6 shadow-lg transform hover:scale-105 transition-transform"
 							>
-								<div class="text-3xl lg:text-5xl font-black text-white mb-2">{seconds}</div>
-								<div class="text-sm lg:text-base font-bold text-white/90 uppercase tracking-wide">
+								<div class="text-3xl lg:text-5xl font-black text-accent-content mb-2">{seconds}</div>
+								<div class="text-sm lg:text-base font-bold text-accent-content/90 uppercase tracking-wide">
 									Seconds
 								</div>
 							</div>

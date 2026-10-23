@@ -122,9 +122,3 @@
 </div>
 
 <Emailpopup />
-
-<style>
-	:global(.sticky-note) {
-		background-color: #ffffe0;
-	}
-</style>

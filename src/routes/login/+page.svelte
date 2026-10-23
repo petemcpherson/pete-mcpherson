@@ -63,7 +63,7 @@
 			bind:value={email}
 			class="input input-bordered neo-box mr-1 w-full max-w-xs rounded-none md:mr-2"
 		/>
-		<button class="btn btn-primary border-4 border-black" onclick={handleEmailSubmit}>Submit</button
+		<button class="btn btn-primary" onclick={handleEmailSubmit}>Submit</button
 		>
 
 		<!-- confirmation message -->

@@ -72,7 +72,7 @@
 
 <!-- pain points -->
 
-<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+<div class="bg-neutral py-8 lg:py-24 text-neutral-content">
 	<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
 		<h1 class="my-10 font-black text-3xl lg:text-7xl text-center">Ugh, pain point.</h1>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3 md:p-6">
@@ -331,7 +331,7 @@
 </div>
 
 <!-- CTA  -->
-<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+<div class="bg-neutral py-8 lg:py-24 text-neutral-content">
 	<div class="md:w-1/2 mx-2 md:mx-auto leading-loose text-center">
 		<h1 class="my-10 font-black text-3xl lg:text-7xl">Oh look, a CTA section.</h1>
 		<p class="mb-3">

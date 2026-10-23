@@ -110,7 +110,7 @@
 
 	<!-- copy 1 -->
 
-	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+	<div class="bg-neutral py-8 lg:py-24 text-neutral-content">
 		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose">
 			<h2 class="my-10 font-black text-3xl lg:text-7xl text-center">
 				Wanna get more stuff done? (with <i class="text-primary">clarity</i> and
@@ -310,7 +310,7 @@
 	</div>
 
 	<!-- CTA  -->
-	<div class="bg-gradient-to-br from-neutral to-neutral-700 py-8 lg:py-24 text-neutral-content">
+	<div class="bg-neutral py-8 lg:py-24 text-neutral-content">
 		<div class="md:w-1/2 mx-2 md:mx-auto leading-loose text-center">
 			<h1 class="my-10 font-black text-3xl lg:text-7xl">1 Month SPRINT. Let's do this.</h1>
 			<p class="mb-3">$99 one-time payment. No refunds.</p>

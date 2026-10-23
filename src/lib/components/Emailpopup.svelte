@@ -37,13 +37,13 @@
 	};
 </script>
 
-<button class="underline fixed bottom-4 left-4" onclick={() => modal.showModal()}>
+<button class="btn btn-sm btn-secondary fixed bottom-4 left-4 z-30 rotate-2 hover:rotate-0" onclick={() => modal.showModal()}>
 	weekly roundup 👋
 </button>
 
 <dialog bind:this={modal} class="modal">
-	<div class="modal-box bg-primary text-primary-content">
-		<h3 class="text-3xl font-bold">
+	<div class="modal-box border-2 border-neutral bg-primary text-primary-content shadow-pop-lg">
+		<h3 class="text-3xl font-extrabold">
 			Each week, I send a simple roundup newsletter for creators & entrepreneurs.
 		</h3>
 		<p class="py-4">No salesy stuff. No spam.</p>
@@ -57,15 +57,15 @@
 				id="email"
 				bind:value={email}
 				placeholder="your@email.com"
-				class="input input-bordered w-full text-neutral-content"
+				class="input w-full border-2 border-neutral bg-base-100 text-base-content"
 				required
 			/>
 
 			<div class="modal-action">
-				<button type="button" class="btn btn-outline" onclick={() => modal.close()}
+				<button type="button" class="btn btn-ghost text-primary-content" onclick={() => modal.close()}
 					>no thanks</button
 				>
-				<button type="submit" class="btn">I'm in!</button>
+				<button type="submit" class="btn btn-accent">I'm in!</button>
 			</div>
 		</form>
 	</div>

@@ -135,7 +135,7 @@
 					<img
 						src={boom}
 						alt="boom"
-						class="w-full rounded-2xl border-4 border-white/40 shadow-2xl transform hover:scale-105 transition-transform"
+						class="w-full rounded-box border-2 border-neutral shadow-pop-lg -rotate-1"
 					/>
 				</div>
 			</div>

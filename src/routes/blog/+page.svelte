@@ -26,28 +26,36 @@
 	// console.log('Posts data:', posts); // For debugging
 </script>
 
-<div class="container mx-auto px-4 py-8">
-	<h1 class="text-4xl font-bold mb-8">Pete's Blog</h1>
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20">
+	<header class="mb-12 max-w-2xl md:mb-16">
+		<h1 class="text-5xl font-extrabold md:text-7xl">The blog</h1>
+		<p class="mt-4 text-xl text-base-content/75">
+			Notes on building stuff, tech I'm nerding out on, and whatever else I can't stop thinking
+			about.
+		</p>
+	</header>
+	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 		{#each posts as post}
 			<a
 				href={`/blog/${post.slug}`}
-				class="block border border-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+				class="group flex flex-col rounded-box border-2 border-neutral bg-base-100 p-6 shadow-key transition-[translate,box-shadow] duration-100 hover:-translate-y-1 hover:shadow-pop focus-visible:-translate-y-1 focus-visible:shadow-pop"
 			>
-				<div class="p-6">
-					<h2 class="text-xl md:text-3xl font-black mb-2">{post.title}</h2>
-					<p class="mb-4">{formatDate(post.created || post.updated)}</p>
-					<p class="text-base-content/70 mb-4">{post.description}</p>
-					{#if post.tags && post.tags.length > 0}
-						<div class="flex flex-wrap justify-start md:justify-end gap-2">
-							{#each post.tags as tag}
-								<span class="badge badge-primary">
-									{tag}
-								</span>
-							{/each}
-						</div>
-					{/if}
-				</div>
+				<p class="font-display text-sm font-bold text-base-content/60">
+					{formatDate(post.created || post.updated)}
+				</p>
+				<h2 class="mt-2 text-2xl font-extrabold group-hover:text-primary md:text-3xl">
+					{post.title}
+				</h2>
+				{#if post.description}
+					<p class="mt-3 text-base-content/75">{post.description}</p>
+				{/if}
+				{#if post.tags && post.tags.length > 0}
+					<div class="mt-auto flex flex-wrap gap-2 pt-6">
+						{#each post.tags as tag}
+							<span class="badge badge-secondary font-bold">{tag}</span>
+						{/each}
+					</div>
+				{/if}
 			</a>
 		{/each}
 	</div>

@@ -5,7 +5,7 @@
 <Head title="Expired" />
 
 <!-- Hero Section -->
-<div class="bg-gradient-to-br from-neutral to-neutral-800 text-neutral-content py-20 lg:py-32">
+<div class="bg-neutral text-neutral-content py-20 lg:py-32">
 	<div class="container mx-auto px-8 lg:px-48 text-center">
 		<h1 class="text-4xl lg:text-7xl font-black mb-6">This Offer Has Expired</h1>
 		<p class="text-xl lg:text-2xl mb-8 opacity-90">

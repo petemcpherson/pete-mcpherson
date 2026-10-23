@@ -52,7 +52,7 @@
 
 	{#if data.posts.length === 0}
 		<div class="text-center py-8">
-			<p class="text-gray-500">No posts found. Create your first post!</p>
+			<p class="text-base-content/60">No posts found. Create your first post!</p>
 		</div>
 	{:else}
 		<div class="overflow-x-auto">
@@ -81,14 +81,14 @@
 										{/each}
 									</div>
 								{:else}
-									<span class="text-gray-400">No tags</span>
+									<span class="text-base-content/50">No tags</span>
 								{/if}
 							</td>
 							<td>
 								{#if post.category}
 									<span class="badge badge-sm badge-secondary">{post.category.name}</span>
 								{:else}
-									<span class="text-gray-400">No category</span>
+									<span class="text-base-content/50">No category</span>
 								{/if}
 							</td>
 							<td>

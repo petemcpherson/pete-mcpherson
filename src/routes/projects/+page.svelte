@@ -219,13 +219,13 @@
 <Head title="Projects" />
 
 <section class="mx-auto max-w-6xl px-6 pb-28 pt-16 sm:pt-20">
-	<div class="flex flex-col gap-8 border-b border-slate-800/60 pb-12 sm:pb-14">
-		<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Projects</p>
+	<div class="flex flex-col gap-8 border-b-2 border-neutral pb-12 sm:pb-14">
+		<p class="font-display text-lg font-extrabold text-primary">Projects</p>
 		<div class="flex flex-col gap-5">
-			<h1 class="text-3xl font-black tracking-tight text-white sm:text-4xl">
+			<h1 class="text-4xl font-extrabold sm:text-6xl">
 				Full‑Stack Products, AI Tools, and Native Apps
 			</h1>
-			<p class="max-w-3xl text-base text-slate-300 sm:text-lg">
+			<p class="max-w-3xl text-lg text-base-content/80 sm:text-xl">
 				Entrepreneurial technologist with 8+ years shipping SaaS, native, and automation‑heavy
 				products. I build end‑to‑end systems—from UX and data architecture to integrations, billing,
 				and growth—focused on speed, clarity, and measurable outcomes.
@@ -234,7 +234,7 @@
 		<div class="flex flex-wrap gap-3">
 			{#each ['AI & ML', 'SvelteKit', 'Firebase', 'Stripe', 'SwiftUI', 'Flutter', 'Automation'] as skill}
 				<span
-					class="rounded-full border border-slate-700/70 bg-slate-900/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-300"
+					class="kbd kbd-md"
 				>
 					{skill}
 				</span>
@@ -245,20 +245,20 @@
 	<div class="mt-14 space-y-14">
 		{#each sections as section}
 			<div class="space-y-8">
-				<h2 class="text-lg font-black uppercase tracking-[0.25em] text-white sm:text-xl">
+				<h2 class="text-2xl font-extrabold sm:text-3xl">
 					{section.title}
 				</h2>
 				<div class="grid gap-8 lg:grid-cols-2">
 					{#each section.items as item}
 						<article
-							class="flex h-full flex-col gap-6 rounded-2xl border border-slate-800/60 bg-slate-950/60 p-8 shadow-[0_0_40px_rgba(15,23,42,0.35)]"
+							class="flex h-full flex-col gap-6 rounded-box border-2 border-neutral bg-base-100 p-8 shadow-pop"
 						>
 							<div class="flex flex-col gap-4">
 								<div class="flex flex-wrap items-center justify-between gap-2">
-									<h3 class="text-xl font-black text-white">
+									<h3 class="text-2xl font-extrabold">
 										{#if item.url}
 											<a
-												class="transition hover:text-slate-100"
+												class="underline decoration-secondary decoration-2 underline-offset-4 transition-colors hover:text-primary"
 												href={item.url}
 												rel="noreferrer"
 												target="_blank"
@@ -270,20 +270,20 @@
 										{/if}
 									</h3>
 									<span
-										class="rounded-full bg-slate-800/80 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-300"
+										class="badge badge-accent font-bold"
 									>
 										{item.period}
 									</span>
 								</div>
-								<p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+								<p class="font-display font-bold text-primary">
 									{item.role}
 								</p>
 							</div>
 
-							<ul class="space-y-3 text-sm text-slate-300">
+							<ul class="space-y-3 text-base text-base-content/80">
 								{#each item.bullets as bullet}
 									<li class="flex gap-3">
-										<span class="mt-1 h-1.5 w-1.5 rounded-full bg-slate-500"></span>
+										<span class="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-secondary"></span>
 										<span>{bullet}</span>
 									</li>
 								{/each}
@@ -292,7 +292,7 @@
 							<div class="mt-auto flex flex-wrap gap-2">
 								{#each item.tags as tag}
 									<span
-										class="rounded-full border border-slate-800/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-400"
+										class="badge badge-outline badge-sm"
 									>
 										{tag}
 									</span>

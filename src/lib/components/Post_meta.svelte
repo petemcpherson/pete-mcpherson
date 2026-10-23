@@ -27,7 +27,7 @@
 	<div class="flex flex-col md:flex-row flex-wrap gap-1 md:gap-4 items-start md:items-center">
 		<p class="font-bold text-sm">Written by {author}</p>
 		<img src={pete_avatar} alt="Pete McPherson" class="w-8 md:w-12 h-8 md:h-12 rounded-full" />
-		<p class="text-sm text-gray-600">Updated: {formattedDate}</p>
+		<p class="text-sm text-base-content/60">Updated: {formattedDate}</p>
 		<!-- tags -->
 		{#if tags.length > 0}
 			<div class="flex flex-wrap items-center justify-start md:justify-end gap-2">

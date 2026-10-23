@@ -457,9 +457,9 @@
 		border-radius: 6px;
 		background: linear-gradient(
 			90deg,
-			var(--color-primary, #7c3aed) 0%,
-			var(--color-primary, #7c3aed) 40%,
-			var(--color-secondary, #06b6d4) 100%
+			var(--color-primary) 0%,
+			var(--color-primary) 40%,
+			var(--color-secondary) 100%
 		);
 		background-size: 300% 100%;
 		animation: shimmer 3s ease-in-out infinite;
@@ -477,8 +477,8 @@
 		background: white;
 		border-radius: 999px;
 		box-shadow:
-			0 0 8px 4px color-mix(in srgb, var(--color-secondary, #06b6d4) 70%, white 30%),
-			0 0 24px 8px color-mix(in srgb, var(--color-primary, #7c3aed) 60%, transparent);
+			0 0 8px 4px color-mix(in srgb, var(--color-secondary) 70%, var(--color-base-100) 30%),
+			0 0 24px 8px color-mix(in srgb, var(--color-primary) 60%, transparent);
 		animation: pulse-glow 1.8s ease-in-out infinite;
 	}
 
@@ -494,7 +494,7 @@
 
 	.progress-raised {
 		font-size: 0.95rem;
-		color: var(--color-primary, #7c3aed);
+		color: var(--color-primary);
 		font-weight: 600;
 		letter-spacing: 0.02em;
 	}
@@ -516,14 +516,14 @@
 		100% {
 			opacity: 1;
 			box-shadow:
-				0 0 8px 4px color-mix(in srgb, var(--color-secondary, #06b6d4) 70%, white 30%),
-				0 0 24px 8px color-mix(in srgb, var(--color-primary, #7c3aed) 60%, transparent);
+				0 0 8px 4px color-mix(in srgb, var(--color-secondary) 70%, var(--color-base-100) 30%),
+				0 0 24px 8px color-mix(in srgb, var(--color-primary) 60%, transparent);
 		}
 		50% {
 			opacity: 0.5;
 			box-shadow:
-				0 0 4px 2px color-mix(in srgb, var(--color-secondary, #06b6d4) 40%, white 60%),
-				0 0 12px 4px color-mix(in srgb, var(--color-primary, #7c3aed) 30%, transparent);
+				0 0 4px 2px color-mix(in srgb, var(--color-secondary) 40%, var(--color-base-100) 60%),
+				0 0 12px 4px color-mix(in srgb, var(--color-primary) 30%, transparent);
 		}
 	}
 	.price-card.featured {

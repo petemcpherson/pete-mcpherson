@@ -147,7 +147,7 @@
 
 	{#if data.categories.length === 0}
 		<div class="text-center py-8">
-			<p class="text-gray-500">No categories found. Create your first category!</p>
+			<p class="text-base-content/60">No categories found. Create your first category!</p>
 		</div>
 	{:else}
 		<div

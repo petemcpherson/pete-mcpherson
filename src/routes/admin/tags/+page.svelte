@@ -94,7 +94,7 @@
 
 	{#if data.tags.length === 0}
 		<div class="text-center py-8">
-			<p class="text-gray-500">No tags found. Create your first tag!</p>
+			<p class="text-base-content/60">No tags found. Create your first tag!</p>
 		</div>
 	{:else}
 		<div
